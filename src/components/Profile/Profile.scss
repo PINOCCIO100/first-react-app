@@ -1,0 +1,25 @@
+.profile {
+  grid-area: content;
+
+  .profile__wrapper {
+    margin: 15px;
+  }
+
+  .banner {
+    overflow: hidden;
+    height: 200px;
+    width: 100%;
+    margin: -15px -15px 15px 0px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+  }
+}

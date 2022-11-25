@@ -1,0 +1,23 @@
+.post-posted {
+  padding: 15px;
+  margin: 0 0 15px 0;
+  display: flex;
+  flex-direction: row;
+}
+.post-posted .post-posted__user-photo {
+  flex: 0 0 100px;
+  align-self: center;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+}
+.post-posted .post-posted__user-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.post-posted .post-posted__message {
+  white-space: pre;
+  padding: 20px;
+}

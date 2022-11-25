@@ -1,0 +1,21 @@
+@charset "UTF-8";
+/* Цветовая схема для сайта */
+/* Background color */
+/* Font color */
+.sidebar {
+  grid-area: sidebar;
+  background-color: #f2ea86;
+  padding: 15px;
+}
+.sidebar ul li {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  color: #444;
+}
+.sidebar ul li a:visited {
+  color: inherit;
+}
+.sidebar ul li:last-child {
+  margin: 30px 0 0 0;
+}
