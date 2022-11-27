@@ -1,5 +1,5 @@
 import React from 'react';
-import './PostPostedList.css';
+import s from './PostPostedList.module.css';
 import PostPosted from '../PostPosted/PostPosted';
 
 function PostPostedList(props) {
@@ -25,7 +25,7 @@ function PostPostedList(props) {
     postedPosts[i] = <PostPosted key={key} id={tID} message={tMessage} />;
   }
   return (
-    <div className="post-posted-list">
+    <div className={s["post-posted-list"]}>
       {postedPosts}
     </div>
   );

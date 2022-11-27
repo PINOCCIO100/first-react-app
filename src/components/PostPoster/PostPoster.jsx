@@ -1,17 +1,17 @@
 import React from 'react';
-import './PostPoster.css';
+import s from './PostPoster.module.css';
 
 function PostPoster(props) {
   return (
-    <div className="post-poster">
+    <div className={s["post-poster"]}>
       <textarea
         maxLength={256}
-        className="post-poster__text-area"
+        className={s["post-poster__text-area"]}
         name="post-poster__text-area"
         placeholder='Your news...'
       />
-      <div className="post-poster__button-area">
-        <button className="post-poster__button">Send</button>
+      <div className={s["post-poster__button-area"]}>
+        <button className={s["post-poster__button"]}>Send</button>
       </div>
     </div>
   );
