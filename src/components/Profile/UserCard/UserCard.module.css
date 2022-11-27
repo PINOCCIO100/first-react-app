@@ -23,6 +23,7 @@
 }
 .UserCard .UserCard__user-name {
   font-size: 20px;
+  font-weight: 700;
   margin: 0 0 20px 0;
 }
 .UserCard .UserCard__user-info {

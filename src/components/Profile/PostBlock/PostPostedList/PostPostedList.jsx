@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './PostPostedList.module.css';
-import PostPosted from '../PostPosted/PostPosted';
+import PostPosted from './PostPosted/PostPosted';
 
 function PostPostedList(props) {
   const tID = 1;
