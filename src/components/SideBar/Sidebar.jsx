@@ -1,9 +1,11 @@
 import React from 'react';
-import './Sidebar.css';
+// import './Sidebar.css';
+import s from './Sidebar.module.css';
 
 function Sidebar(props) {
-  return ( 
-    <div className="sidebar">
+  const {sidebar , ...rest} = s; 
+  return (
+    <div className={s['side-bar']}>
       <ul>
         <li><a href='#'>Profile</a></li>
         <li><a href='#'>Messages</a></li>
