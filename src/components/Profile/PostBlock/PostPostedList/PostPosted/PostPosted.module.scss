@@ -39,6 +39,7 @@
 
       .btn-like,
       .btn-dislike {
+        user-select: none;
         border-radius: 5px;
         font-size: 15px;
         color: var(--color-ft-1);

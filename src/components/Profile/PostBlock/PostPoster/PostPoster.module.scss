@@ -12,6 +12,7 @@
     margin: 0 0 15px 0;
   }
   .post-poster__button-area{
+    user-select: none;
     display: flex;
     justify-content: flex-end;
     .post-poster__button{
