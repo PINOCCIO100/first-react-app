@@ -11,7 +11,13 @@ function PostPosted(props) {
         <img src={photo} alt="post-posted__user-photo" />
       </div>
       <div className={s["post-posted__message"]}>
-        {message}
+        {`
+        agemessagemessagemessagemessagemessagemessagemessagemesagemessagemessagemessagemessagemessagemessagemessagemesagemessagemessagemessagemessagemessagemessagemessagemesagemessagemessagemessagemessagemessagemessagemessagemesagemessagemessagemessagemessagemessagemessagemessagemes
+        `}
+      </div>
+      <div className={s["post-posted__rating-buttons"]}>
+        <button className={s['btn-like']}>Like</button>
+        <button className={s['btn-dislike']}>Dislike</button>
       </div>
     </div>
   );
