@@ -1,14 +1,12 @@
-@import '../../palette';
-
 .side-bar{
   grid-area: sidebar;
-  background-color: $color-bg-3;
+  background-color: var(--color-bg-3);
   padding: 15px;
   ul li{
     font-size: 20px;
     font-weight: 700;
     margin: 0 0 10px 0;
-    color: $color-ft-2;
+    color: var(--color-ft-2);
     & a:visited {
       color: inherit;
     }

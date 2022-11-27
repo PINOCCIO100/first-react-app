@@ -1,9 +1,7 @@
-@import '../../palette';
-
 .post-poster{
   margin: 0 0 10px 0;
   .post-poster__text-area{
-    color: $color-ft-2;
+    color: var(--color-ft-2);
     border-radius: 5px;
     font-size: 20px;
     width: 100%;
@@ -17,9 +15,9 @@
     justify-content: flex-end;
     .post-poster__button{
       border-radius: 5px;
-      background-color: $color-bg-5;
+      background-color: var(--color-bg-5);
       font-size: 20px;
-      color: $color-ft-1;
+      color: var(--color-ft-1);
       width: 100px;
       height: 35px;
       &:hover{

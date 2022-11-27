@@ -1,8 +1,6 @@
-@import '../../palette';
-
 .header{
   grid-area: header;
-  background-color: $color-bg-4;
+  background-color: var(--color-bg-4);
   display: flex;
   justify-content: flex-start;
   align-items: center;

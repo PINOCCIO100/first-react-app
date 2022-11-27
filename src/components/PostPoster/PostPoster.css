@@ -1,12 +1,8 @@
-@charset "UTF-8";
-/* Цветовая схема для сайта */
-/* Background color */
-/* Font color */
 .post-poster {
   margin: 0 0 10px 0;
 }
 .post-poster .post-poster__text-area {
-  color: #444;
+  color: var(--color-ft-2);
   border-radius: 5px;
   font-size: 20px;
   width: 100%;
@@ -21,9 +17,9 @@
 }
 .post-poster .post-poster__button-area .post-poster__button {
   border-radius: 5px;
-  background-color: #AF455A;
+  background-color: var(--color-bg-5);
   font-size: 20px;
-  color: #eee;
+  color: var(--color-ft-1);
   width: 100px;
   height: 35px;
 }

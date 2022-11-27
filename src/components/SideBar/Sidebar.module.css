@@ -1,17 +1,13 @@
-@charset "UTF-8";
-/* Цветовая схема для сайта */
-/* Background color */
-/* Font color */
 .side-bar {
   grid-area: sidebar;
-  background-color: #f2ea86;
+  background-color: var(--color-bg-3);
   padding: 15px;
 }
 .side-bar ul li {
   font-size: 20px;
   font-weight: 700;
   margin: 0 0 10px 0;
-  color: #444;
+  color: var(--color-ft-2);
 }
 .side-bar ul li a:visited {
   color: inherit;

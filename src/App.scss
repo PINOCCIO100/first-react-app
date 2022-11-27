@@ -1,5 +1,5 @@
 @use 'reset_style.css';
-@import 'palette';
+@import 'palette.css';
 
 *:has(.App) {
   height: 100%;
@@ -8,8 +8,8 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-  background-color: $color-bg-1;
-  color: $color-ft-1;
+  background-color: var(--color-bg-1);
+  color: var(--color-ft-1);
 
   a {
     &:visited {

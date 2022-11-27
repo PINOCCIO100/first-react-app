@@ -1,10 +1,6 @@
-@charset "UTF-8";
-/* Цветовая схема для сайта */
-/* Background color */
-/* Font color */
 .header {
   grid-area: header;
-  background-color: #df8b30;
+  background-color: var(--color-bg-4);
   display: flex;
   justify-content: flex-start;
   align-items: center;
