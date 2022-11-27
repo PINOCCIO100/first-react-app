@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './PostBlock.module.css';
-import PostPostedList from '../PostPostedList/PostPostedList';
-import PostPoster from '../PostPoster/PostPoster';
+import PostPostedList from './PostPostedList/PostPostedList';
+import PostPoster from './PostPoster/PostPoster';
 
 function PostBlock() {
   return (

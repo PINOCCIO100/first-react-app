@@ -1,6 +1,6 @@
 'Use sctrict';
-import userPhoto_1 from '../components/UserCard/doggo.jpg';
-import userPhoto_2 from '../components/UserCard/rus.JPG';
+import userPhoto_1 from './Profile/UserCard/doggo.jpg';
+import userPhoto_2 from './Profile/UserCard/rus.JPG';
 
 class UsersInfoClass {
   list = {}

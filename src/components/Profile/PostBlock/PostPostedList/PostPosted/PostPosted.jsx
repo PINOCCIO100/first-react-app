@@ -1,5 +1,5 @@
 import React from 'react';
-import usersInfo from '../usersDataBase';
+import usersInfo from '../../../../usersDataBase';
 import s from './PostPosted.module.css';
 
 function PostPosted(props) {
