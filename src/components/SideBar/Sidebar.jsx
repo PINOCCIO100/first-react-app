@@ -2,7 +2,6 @@ import React from 'react';
 import s from './Sidebar.module.css';
 
 function Sidebar(props) {
-  const {sidebar , ...rest} = s; 
   return (
     <div className={s['side-bar']}>
       <ul>

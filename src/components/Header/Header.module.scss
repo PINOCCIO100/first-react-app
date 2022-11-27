@@ -1,14 +1,16 @@
-.header{
+.header {
   grid-area: header;
   background-color: var(--color-bg-4);
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding: 15px;
-  .header__logo{
+
+  .header__logo {
     height: 50px;
     overflow: hidden;
-    img{
+
+    img {
       height: 100%;
       object-fit: contain;
     }
