@@ -1,0 +1,20 @@
+.FriendCard {
+  font-size: 20px;
+  padding: 10px;
+}
+.FriendCard .FriendCard__name {
+  margin: 0 0 0 1.2em;
+  position: relative;
+  overflow-wrap: break-word;
+}
+.FriendCard .FriendCard__name::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  left: -1em;
+  border-radius: 50%;
+  width: 0.5em;
+  height: 0.5em;
+  background-color: var(--color-ft-1);
+}

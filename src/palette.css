@@ -17,6 +17,10 @@
     --color-bg-6-like: #4525b6;
     /* Disike-buttons: */
     --color-bg-7-dislike: #a71230 ;
+    /* Разделитель на темном фоне */
+    --color-bg-8: #4f8e79;
+    /* Разделитель на светлом фоне */
+    --color-bg-9: #77d1b3;
 
 
   /* Font color */

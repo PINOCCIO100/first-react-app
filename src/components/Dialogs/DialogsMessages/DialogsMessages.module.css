@@ -1,0 +1,30 @@
+.DialogsMessages {
+  height: 100%;
+}
+
+.DialogsMessages__container {
+  height: 100%;
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  overflow: auto;
+}
+.DialogsMessages__container .DialogsMessages__item {
+  margin: 0 0 15px 0;
+}
+.DialogsMessages__container {
+  scrollbar-color: #d4aa70 #e4e4e4;
+  scrollbar-width: thin;
+}
+.DialogsMessages__container::-webkit-scrollbar {
+  width: 20px;
+}
+.DialogsMessages__container::-webkit-scrollbar-track {
+  background-color: var(--color-bg-3);
+  border-radius: 100px;
+}
+.DialogsMessages__container::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background-image: linear-gradient(180deg, var(--color-bg-8) 0%, var(--color-bg-5) 99%);
+  box-shadow: inset 2px 2px 5px 0 rgba(255, 255, 255, 0.5);
+}

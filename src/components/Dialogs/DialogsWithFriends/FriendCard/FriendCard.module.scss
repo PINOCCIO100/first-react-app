@@ -1,0 +1,28 @@
+.FriendCard {
+  // display: flex;
+  // flex-direction: row;
+  // column-gap: 10px;
+  font-size: 20px;
+  padding: 10px;
+
+  .FriendCard__name {
+    margin: 0 0 0 1.2em;
+    position: relative;
+
+    // white-space: pre-wrap;
+    // word-break: keep-all;
+    overflow-wrap: break-word;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      translate: 0 -50%;
+      left: -1em;
+      border-radius: 50%;
+      width: 0.5em;
+      height: 0.5em;
+      background-color: var(--color-ft-1);
+    }
+  }
+}
