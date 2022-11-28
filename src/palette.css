@@ -3,27 +3,31 @@
 :root {
   /* Background color */
 
-    /* // Site background: */
+    /* Site background: */
     --color-bg-1: #49504b;
     /* ??: */
     --color-bg-2: #77d1b3;
-    /* // Sidebar: */
+    /* Sidebar: */
     --color-bg-3: #f2ea86;
-    /* // Header: */
+    /* Header: */
     --color-bg-4: #df8b30;
-    /* // Buttons: */
+    /* Buttons: */
     --color-bg-5: #AF455A;
-    /* // Like-buttons: */
+    /* Like-buttons: */
     --color-bg-6-like: #4525b6;
-    /* // Disike-buttons: */
+    /* Disike-buttons: */
     --color-bg-7-dislike: #a71230 ;
 
 
   /* Font color */
 
-    /* // Основной шрифт на темном фоне: */
+    /* Основной шрифт на темном фоне: */
     --color-ft-1: #eee;
-    /* // Основной шрифт на светлом фоне: */
+    /* Основной шрифт на светлом фоне: */
     --color-ft-2: #444;
+    /* Шрифт ссылок на темном фоне при наведении: */
+    --color-ft-3: #fff;
+    /* Шрифт ссылок на светлом фоне при наведении: */
+    --color-ft-4: #222;
 
 }

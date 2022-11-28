@@ -1,17 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import s from './Sidebar.module.css';
+
 
 function Sidebar(props) {
   return (
-    <div className={s['side-bar']}>
+    <div className={s.sideBar}>
       <ul>
-        <li><a href='#'>Profile</a></li>
-        <li><a href='#'>Messages</a></li>
-        <li><a href='#'>News</a></li>
-        <li><a href='#'>Music</a></li>
-        <li><a href='#'>Settings</a></li>
+        <li>
+          <Link className={s.link} to='/profile'>Profile</Link>
+        </li>
+        <li>
+          <Link className={s.link} to='/dialogs'>Messages</Link>
+        </li>
+        <li>
+          <Link className={s.link} to='/news'>News</Link>
+        </li>
+        <li>
+          <Link className={s.link} to='/music'>Music</Link>
+        </li>
+        <li>
+          <Link className={s.link} to='/settings'>Settings</Link>
+        </li>
       </ul>
-    </div>
+    </div >
   );
 }
 
