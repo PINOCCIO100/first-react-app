@@ -1,17 +1,23 @@
-.side-bar {
+.sideBar {
   grid-area: sidebar;
   background-color: var(--color-bg-3);
   padding: 15px;
 }
-.side-bar ul li {
+.sideBar ul li {
   font-size: 20px;
   font-weight: 700;
   margin: 0 0 10px 0;
   color: var(--color-ft-2);
 }
-.side-bar ul li a:visited {
+.sideBar ul li .link:visited {
   color: inherit;
 }
-.side-bar ul li:last-child {
+.sideBar ul li .link:hover {
+  color: var(--color-ft-4);
+}
+.sideBar ul li .link:active {
+  color: var(--color-ft-2);
+}
+.sideBar ul li:last-child {
   margin: 30px 0 0 0;
 }
