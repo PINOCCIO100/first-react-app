@@ -1,7 +1,28 @@
+.profile {
+  height: 100%;
+  width: 100%;
+}
 .profile .profile__wrapper {
-  margin: 15px;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+.profile .profile__wrapper > * {
+  /* UserCard */
+  /* PostBlock */
+}
+.profile .profile__wrapper > *:nth-child(2) {
+  flex: 0 0 auto;
+}
+.profile .profile__wrapper > *:last-child {
+  flex: 1 1 auto;
+  height: 30%;
 }
 .profile .banner {
+  flex: 0 0 auto;
   overflow: hidden;
   height: 200px;
   width: 100%;

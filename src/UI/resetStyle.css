@@ -17,6 +17,7 @@
 
 a:focus, a:active {
   outline: none;
+  color: inherit;
 }
 
 nav, footer, header, aside {

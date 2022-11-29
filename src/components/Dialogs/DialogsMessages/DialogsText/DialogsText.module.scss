@@ -73,18 +73,21 @@
     border-style: solid;
     border-width: 30px;
     border-color: transparent;
+    /* Цвет стрелки */
     --def-color: var(--color-bg-8);
+    /* Отступ стрелки */
+    --shift--val: -2.2em;
   }
 
   &::before {
     content: '';
-    left: -2em;
+    left: var(--shift--val);
     border-left: 0;
     border-right-color: var(--def-color);
   }
 
   &::after {
-    right: -2em;
+    right: var(--shift--val);
     border-right: 0;
     border-left-color: var(--def-color);
   }

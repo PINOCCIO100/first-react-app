@@ -21,6 +21,12 @@
 
   .UserCard__text-part {
     margin: 10px 0;
+    a {
+      color: inherit;
+      &:visited{
+        color: inherit;
+      }
+    }
   }
 
   .UserCard__user-name {

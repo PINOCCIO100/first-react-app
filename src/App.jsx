@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './UI/UI.css';
 import { Route, BrowserRouter, RouterProvider, createBrowserRouter, Routes } from 'react-router-dom';
 
 import Profile from './components/Profile/Profile';

@@ -1,8 +1,7 @@
 import React from 'react';
 import s from './Dialogs.module.css';
-import userInfo from './../usersDataBase'
 
-import DialogsWithWFriends from './DialogsWithFriends/DialogsWithFriends';
+import DialogsSidebar from './DialogsSidebar/DialogsSidebar';
 import DialogsMessages from './DialogsMessages/DialogsMessages';
 
 function Dialogs(props) {
@@ -13,8 +12,8 @@ function Dialogs(props) {
           Dialogs
         </h1>
         <div className={s.Dialogs__body}>
-          <div className={s.Dialogs__friends}>
-            <DialogsWithWFriends />
+          <div className={s.Dialogs__sidebar}>
+            <DialogsSidebar />
           </div>
           <div className={s.Dialogs__messages}>
             <DialogsMessages/>

@@ -25,7 +25,7 @@ function PostPostedList(props) {
     postedPosts[i] = <PostPosted key={key} id={tID} message={tMessage} />;
   }
   return (
-    <div className={s["post-posted-list"]}>
+    <div className={s["post-posted-list"] + " scrollBar"}>
       {postedPosts}
     </div>
   );

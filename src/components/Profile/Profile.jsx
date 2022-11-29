@@ -7,7 +7,7 @@ import PostBlock from './PostBlock/PostBlock';
 import usersInfo from '../usersDataBase';
 
 function Profile(props) {
-  const userInfo = usersInfo.list[2];
+  const userInfo = usersInfo.list[3];
   return (
     <div className={s["profile"]}>
       <div className={s["profile__wrapper"]}>

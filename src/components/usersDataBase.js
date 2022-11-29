@@ -1,6 +1,7 @@
 'Use sctrict';
-import userPhoto_1 from './Profile/UserCard/doggo.jpg';
-import userPhoto_2 from './Profile/UserCard/rus.JPG';
+import userPhoto_1 from '../media/usersPhoto/1/avatar.jpg';
+import userPhoto_2 from '../media/usersPhoto/2/avatar.jpg';
+import userPhoto_3 from '../media/usersPhoto/3/avatar.jpg';
 
 class UsersInfoClass {
   list = {}
@@ -8,6 +9,7 @@ class UsersInfoClass {
     this.list[id] = userInfo;
   }
 }
+
 
 const usersInfo = new UsersInfoClass();
 
@@ -27,9 +29,18 @@ const userInfo_Rustam = {
   education: 'SPMI\'14',
   webSite: 'https://t.me/rustam_nigmatullin',
 };
+const userInfo_Kamilya = {
+  photo: userPhoto_3,
+  name: 'Kamilya Z.',
+  birthDate: '14 august',
+  city: 'Chirchik',
+  education: 'SPMI\'15',
+  webSite: 'https://t.me/zagidulya',
+};
 
 
 usersInfo.add(1,userInfo_Dima);
 usersInfo.add(2,userInfo_Rustam);
+usersInfo.add(3,userInfo_Kamilya);
 
 export default usersInfo;

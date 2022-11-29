@@ -21,6 +21,12 @@
 .UserCard .UserCard__text-part {
   margin: 10px 0;
 }
+.UserCard .UserCard__text-part a {
+  color: inherit;
+}
+.UserCard .UserCard__text-part a:visited {
+  color: inherit;
+}
 .UserCard .UserCard__user-name {
   font-size: 20px;
   font-weight: 700;

@@ -6,7 +6,7 @@ import DialogsText from './DialogsText/DialogsText';
 
 function DialogsMessages(props) {
   return (
-    <div className={s.DialogsMessages}>
+    <div className={s.DialogsMessages + " scrollBar"}>
       <div className={s.DialogsMessages__container}>
         <div className={s.DialogsMessages__item}>
           <DialogsText My userID="2" usersInfo={usersInfo} />

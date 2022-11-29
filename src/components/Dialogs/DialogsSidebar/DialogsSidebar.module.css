@@ -1,9 +1,9 @@
-.DialogsWithFriends {
+.DialogsSidebar {
   width: 100%;
   height: 100%;
 }
 
-.DialogsWithFriends__container {
+.DialogsSidebar__container {
   overflow: hidden;
   width: 100%;
   height: 100%;
@@ -11,6 +11,6 @@
   display: flex;
   flex-direction: column;
 }
-.DialogsWithFriends__container .DialogsWithFriends__item {
+.DialogsSidebar__container .DialogsSidebar__item {
   margin: 0 0 15px 0;
 }

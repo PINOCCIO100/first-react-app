@@ -1,5 +1,10 @@
-.post-block{
-  .post-block__title{
+.post-block {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .post-block__title {
     font-size: 25px;
     font-weight: 700;
     margin: 0 0 15px 0;
