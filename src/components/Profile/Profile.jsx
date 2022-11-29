@@ -4,10 +4,10 @@ import banner from './banner.jpg';
 
 import UserCard from './UserCard/UserCard';
 import PostBlock from './PostBlock/PostBlock';
-import usersInfo from '../usersDataBase';
+import { usersInfo, currentUserID } from '../../dataBase/usersProfileInfo';
 
 function Profile(props) {
-  const userInfo = usersInfo.list[3];
+  const userInfo = usersInfo.list[currentUserID];
   return (
     <div className={s["profile"]}>
       <div className={s["profile__wrapper"]}>

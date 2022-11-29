@@ -18,3 +18,6 @@
   height: 0.5em;
   background-color: var(--color-ft-1);
 }
+.FriendCard .active {
+  font-weight: 900;
+}

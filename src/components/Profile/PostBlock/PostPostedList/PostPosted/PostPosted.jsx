@@ -1,10 +1,10 @@
 import React from 'react';
-import usersInfo from '../../../../usersDataBase';
+import { usersInfo, currentUserID } from '../../../../../dataBase/usersProfileInfo';
 import s from './PostPosted.module.css';
 
 function PostPosted(props) {
   const photo = usersInfo.list[props.id].photo;
-  const message = props.message;
+  // const message = props.message;
   return (
     <div className={s["post-posted"]}>
       <div className={s["post-posted__user-photo"]}>

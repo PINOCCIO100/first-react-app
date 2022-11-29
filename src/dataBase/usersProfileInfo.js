@@ -3,13 +3,14 @@ import userPhoto_1 from '../media/usersPhoto/1/avatar.jpg';
 import userPhoto_2 from '../media/usersPhoto/2/avatar.jpg';
 import userPhoto_3 from '../media/usersPhoto/3/avatar.jpg';
 
+const currentUserID = 2;
+
 class UsersInfoClass {
   list = {}
   add(id, userInfo) {
     this.list[id] = userInfo;
   }
 }
-
 
 const usersInfo = new UsersInfoClass();
 
@@ -39,8 +40,10 @@ const userInfo_Kamilya = {
 };
 
 
-usersInfo.add(1,userInfo_Dima);
-usersInfo.add(2,userInfo_Rustam);
-usersInfo.add(3,userInfo_Kamilya);
+usersInfo.add(1, userInfo_Dima);
+usersInfo.add(2, userInfo_Rustam);
+usersInfo.add(3, userInfo_Kamilya);
 
-export default usersInfo;
+
+
+export { usersInfo, currentUserID };

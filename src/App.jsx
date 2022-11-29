@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import './UI/UI.css';
-import { Route, BrowserRouter, RouterProvider, createBrowserRouter, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import Profile from './components/Profile/Profile';
 import Header from './components/Header/Header';
@@ -20,11 +20,11 @@ function App() {
         <div className="App__content-wrapper">
           <Routes>
             <Route index element={<Profile />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="dialogs" element={<Dialogs />} />
-            <Route path="news" element={<News />} />
-            <Route path="music" element={<Music />} />
-            <Route path="settings" element={<Settings />} />
+            <Route path="profile/*" element={<Profile />} />
+            <Route path="dialogs/*" element={<Dialogs />} />
+            <Route path="news/*" element={<News />} />
+            <Route path="music/*" element={<Music />} />
+            <Route path="settings/*" element={<Settings />} />
           </Routes>
         </div>
       </div>

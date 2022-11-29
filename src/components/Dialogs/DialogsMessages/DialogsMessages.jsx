@@ -1,48 +1,19 @@
 import React from 'react';
 import s from './DialogsMessages.module.css';
-import usersInfo from './../../usersDataBase';
+import { currentUserID } from './../../../dataBase/usersProfileInfo';
 
 import DialogsText from './DialogsText/DialogsText';
+import { userMessages } from '../../../dataBase/usersMessages/userMessages';
 
-function DialogsMessages(props) {
+function DialogsMessages({ userID }) {
+  let key = 1;
+  const arrayOfDialogText = userMessages.list[userID]
+    .map(({ me, message }) => <DialogsText my={me} key={key++} userID={me ? currentUserID : userID} message={message} />);
   return (
     <div className={s.DialogsMessages + " scrollBar"}>
       <div className={s.DialogsMessages__container}>
         <div className={s.DialogsMessages__item}>
-          <DialogsText My userID="2" usersInfo={usersInfo} />
-        </div>
-        <div className={s.DialogsMessages__item}>
-          <DialogsText userID="1" usersInfo={usersInfo} />
-        </div>
-        <div className={s.DialogsMessages__item}>
-          <DialogsText userID="1" usersInfo={usersInfo} />
-        </div>
-        <div className={s.DialogsMessages__item}>
-          <DialogsText userID="1" usersInfo={usersInfo} />
-        </div>
-        <div className={s.DialogsMessages__item}>
-          <DialogsText userID="1" usersInfo={usersInfo} />
-        </div>
-        <div className={s.DialogsMessages__item}>
-          <DialogsText userID="1" usersInfo={usersInfo} />
-        </div>
-        <div className={s.DialogsMessages__item}>
-          <DialogsText userID="1" usersInfo={usersInfo} />
-        </div>
-        <div className={s.DialogsMessages__item}>
-          <DialogsText userID="1" usersInfo={usersInfo} />
-        </div>
-        <div className={s.DialogsMessages__item}>
-          <DialogsText userID="1" usersInfo={usersInfo} />
-        </div>
-        <div className={s.DialogsMessages__item}>
-          <DialogsText userID="1" usersInfo={usersInfo} />
-        </div>
-        <div className={s.DialogsMessages__item}>
-          <DialogsText userID="1" usersInfo={usersInfo} />
-        </div>
-        <div className={s.DialogsMessages__item}>
-          <DialogsText My userID="2" usersInfo={usersInfo} />
+          {arrayOfDialogText}
         </div>
       </div>
     </div>
