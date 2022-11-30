@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './DialogsText.module.css';
-import { usersInfo } from '../../../../dataBase/usersProfileInfo';
+import { usersInfo } from '../../../../dataBase/usersProfileInfo/usersProfileInfo';
 
 
 function DialogsText({ userID, my, message }) {

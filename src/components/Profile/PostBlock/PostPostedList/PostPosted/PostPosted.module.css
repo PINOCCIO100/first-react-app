@@ -1,39 +1,46 @@
-.post-posted {
+.postPosted {
   display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  column-gap: 15px;
+  margin: 0 0 15px 0;
 }
-.post-posted .post-posted__user-photo {
+.postPosted .postPosted__userPhoto {
   flex: 0 0 auto;
-  margin: 15px;
   border-radius: 50%;
   height: 100px;
   width: 100px;
   overflow: hidden;
 }
-.post-posted .post-posted__user-photo img {
+.postPosted .postPosted__userPhoto img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.post-posted .post-posted__msg-and-btns-cont {
+.postPosted .postPosted__msgAndBtnsCont {
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
-.post-posted .post-posted__msg-and-btns-cont .post-posted__message p {
-  padding: 0 15px;
+.postPosted .postPosted__msgAndBtnsCont .postPosted__message {
+  flex: 1 1 auto;
+}
+.postPosted .postPosted__msgAndBtnsCont .postPosted__message p {
+  height: 100%;
+  padding: 15px;
   border: 1px solid var(--color-bg-4);
   border-radius: 20px;
   white-space: pre-wrap;
   word-break: break-word;
 }
-.post-posted .post-posted__msg-and-btns-cont .post-posted__rating-buttons {
+.postPosted .postPosted__msgAndBtnsCont .postPosted__ratingButtons {
   padding: 10px;
   display: flex;
   gap: 10px;
   justify-content: flex-end;
 }
-.post-posted .post-posted__msg-and-btns-cont .post-posted__rating-buttons .btn-like,
-.post-posted .post-posted__msg-and-btns-cont .post-posted__rating-buttons .btn-dislike {
+.postPosted .postPosted__msgAndBtnsCont .postPosted__ratingButtons .btnLike,
+.postPosted .postPosted__msgAndBtnsCont .postPosted__ratingButtons .btnDislike {
   -webkit-user-select: none;
           user-select: none;
   border-radius: 5px;
@@ -42,17 +49,17 @@
   width: 55px;
   height: 25px;
 }
-.post-posted .post-posted__msg-and-btns-cont .post-posted__rating-buttons .btn-like:hover,
-.post-posted .post-posted__msg-and-btns-cont .post-posted__rating-buttons .btn-dislike:hover {
+.postPosted .postPosted__msgAndBtnsCont .postPosted__ratingButtons .btnLike:hover,
+.postPosted .postPosted__msgAndBtnsCont .postPosted__ratingButtons .btnDislike:hover {
   box-shadow: 0 0 10px 3px #999;
 }
-.post-posted .post-posted__msg-and-btns-cont .post-posted__rating-buttons .btn-like:active,
-.post-posted .post-posted__msg-and-btns-cont .post-posted__rating-buttons .btn-dislike:active {
+.postPosted .postPosted__msgAndBtnsCont .postPosted__ratingButtons .btnLike:active,
+.postPosted .postPosted__msgAndBtnsCont .postPosted__ratingButtons .btnDislike:active {
   box-shadow: 0 0 10px 3px #ccc;
 }
-.post-posted .post-posted__msg-and-btns-cont .post-posted__rating-buttons .btn-like {
-  background-color: var(--color-bg-6-like);
+.postPosted .postPosted__msgAndBtnsCont .postPosted__ratingButtons .btnLike {
+  background-color: var(--color-bg-6);
 }
-.post-posted .post-posted__msg-and-btns-cont .post-posted__rating-buttons .btn-dislike {
-  background-color: var(--color-bg-7-dislike);
+.postPosted .postPosted__msgAndBtnsCont .postPosted__ratingButtons .btnDislike {
+  background-color: var(--color-bg-7);
 }

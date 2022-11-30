@@ -4,7 +4,7 @@ import banner from './banner.jpg';
 
 import UserCard from './UserCard/UserCard';
 import PostBlock from './PostBlock/PostBlock';
-import { usersInfo, currentUserID } from '../../dataBase/usersProfileInfo';
+import { usersInfo, currentUserID } from '../../dataBase/usersProfileInfo/usersProfileInfo';
 
 function Profile(props) {
   const userInfo = usersInfo.list[currentUserID];

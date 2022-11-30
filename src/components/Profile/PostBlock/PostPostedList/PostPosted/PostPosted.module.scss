@@ -1,9 +1,12 @@
-.post-posted {
+.postPosted {
   display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  column-gap: 15px;
+  margin: 0 0 15px 0;
 
-  .post-posted__user-photo {
+  .postPosted__userPhoto {
     flex: 0 0 auto;
-    margin: 15px;
     border-radius: 50%;
     height: 100px;
     width: 100px;
@@ -17,28 +20,33 @@
 
   }
 
-  .post-posted__msg-and-btns-cont {
+  .postPosted__msgAndBtnsCont {
     display: flex;
     flex-direction: column;
     align-items: stretch;
 
-    .post-posted__message p {
-      padding: 0 15px;
-      border: 1px solid var(--color-bg-4);
-      border-radius: 20px;
-      white-space: pre-wrap;
-      // overflow-wrap: break-word;
-      word-break: break-word;
+    .postPosted__message {
+      flex: 1 1 auto;
+
+      p {
+        height: 100%;
+        padding: 15px;
+        border: 1px solid var(--color-bg-4);
+        border-radius: 20px;
+        white-space: pre-wrap;
+        // overflow-wrap: break-word;
+        word-break: break-word;
+      }
     }
 
-    .post-posted__rating-buttons {
+    .postPosted__ratingButtons {
       padding: 10px;
       display: flex;
       gap: 10px;
       justify-content: flex-end;
 
-      .btn-like,
-      .btn-dislike {
+      .btnLike,
+      .btnDislike {
         user-select: none;
         border-radius: 5px;
         font-size: 15px;
@@ -55,12 +63,12 @@
         }
       }
 
-      .btn-like {
-        background-color: var(--color-bg-6-like);
+      .btnLike {
+        background-color: var(--color-bg-6);
       }
 
-      .btn-dislike {
-        background-color: var(--color-bg-7-dislike);
+      .btnDislike {
+        background-color: var(--color-bg-7);
       }
     }
   }

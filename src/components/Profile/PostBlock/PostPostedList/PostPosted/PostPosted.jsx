@@ -1,26 +1,24 @@
 import React from 'react';
-import { usersInfo, currentUserID } from '../../../../../dataBase/usersProfileInfo';
+import { usersInfo, currentUserID } from '../../../../../dataBase/usersProfileInfo/usersProfileInfo';
 import s from './PostPosted.module.css';
 
-function PostPosted(props) {
-  const photo = usersInfo.list[props.id].photo;
-  // const message = props.message;
+function PostPosted({ userID, message }) {
+  const photo = usersInfo.list[userID].photo;
   return (
-    <div className={s["post-posted"]}>
-      <div className={s["post-posted__user-photo"]}>
-        <img src={photo} alt="post-posted__user-photo" />
+    <div className={s.postPosted}>
+
+      <div className={s.postPosted__userPhoto}>
+        <img src={photo} alt="postPosted__userPhoto" />
       </div>
-      <div className={s["post-posted__msg-and-btns-cont"]}>
-        <div className={s["post-posted__message"]}>
+      <div className={s.postPosted__msgAndBtnsCont}>
+        <div className={s.postPosted__message}>
           <p>
-            {`
-            agemessagemessagemessageagemessagemessagemessageagemessagemessagemessageagemessagemessagemessage agemessagemessagemessage agemessagemessagemessage agemessagemessagemessage agemessagemessagemessage agemessagemessagemessage agemessagemessagemessage agemessagemessagemessage agemessagemessagemessage agemessagemessagemessage agemessagemessagemessage agemessagemessagemessage agemessagemessagemessage agemessagemessagemessage agemessagemessagemessage agemessagemessagemessage agemessagemessagemessage agemessagemessagemessage agemessagemessagemessage agemessagemessagemessage
-            `}
+            {message}
           </p>
         </div>
-        <div className={s["post-posted__rating-buttons"]}>
-          <button className={s['btn-like']}>Like</button>
-          <button className={s['btn-dislike']}>Dislike</button>
+        <div className={s.postPosted__ratingButtons}>
+          <button className={s.btnLike}>Like</button>
+          <button className={s.btnDislike}>Dislike</button>
         </div>
       </div>
     </div>

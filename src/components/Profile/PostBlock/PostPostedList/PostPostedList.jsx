@@ -1,29 +1,14 @@
 import React from 'react';
 import s from './PostPostedList.module.css';
+import { usersPosts } from '../../../../dataBase/usersPosts/usersPosts';
+import { currentUserID } from '../../../../dataBase/usersProfileInfo/usersProfileInfo';
+
 import PostPosted from './PostPosted/PostPosted';
 
 function PostPostedList(props) {
-  const tID = 1;
-  // const tMessage = 'Hey! Why nobody love me?'
-  const tMessage = `
-  Hey! Why nobody love me? Hey! Why nobody love me? Hey! Why nobody love me? 
-  Hey! Why nobody love me? Hey! Why nobody love me? Hey! Why nobody love me? 
-  Hey! Why nobody love me? Hey! Why nobody love me? Hey! Why nobody love me? 
-  Hey! Why nobody love me? Hey! Why nobody love me? Hey! Why nobody love me? 
-  Hey! Why nobody love me? Hey! Why nobody love me? Hey! Why nobody love me? 
-  Hey! Why nobody love me? Hey! Why nobody love me? Hey! Why nobody love me? 
-  Hey! Why nobody love me? Hey! Why nobody love me? Hey! Why nobody love me? 
-  Hey! Why nobody love me? Hey! Why nobody love me? Hey! Why nobody love me? 
-  Hey! Why nobody love me? Hey! Why nobody love me? Hey! Why nobody love me? 
-  Hey! Why nobody love me? Hey! Why nobody love me? Hey! Why nobody love me? 
-  `
-  const tPostsCount = 3;
-
-  let postedPosts = [];
-  for (let i = 0; i < tPostsCount; i++) {
-    const key = Math.round(Math.random() * 1000);
-    postedPosts[i] = <PostPosted key={key} id={tID} message={tMessage} />;
-  }
+  let postedPosts = usersPosts.list[currentUserID]
+    .map((post) => <PostPosted key={post.messageID} userID={post.userID} message={post.message} />);
+  // debugger;
   return (
     <div className={s["post-posted-list"] + " scrollBar"}>
       {postedPosts}

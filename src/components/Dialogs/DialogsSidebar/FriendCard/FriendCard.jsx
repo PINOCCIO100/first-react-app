@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { usersInfo } from '../../../../dataBase/usersProfileInfo';
+import { usersInfo } from '../../../../dataBase/usersProfileInfo/usersProfileInfo';
 import s from './FriendCard.module.css';
 
 import ProfilePhoto from '../../../#sharedComponents/ProfilePhoto/ProfilePhoto';
