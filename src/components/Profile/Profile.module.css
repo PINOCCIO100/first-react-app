@@ -2,7 +2,7 @@
   height: 100%;
   width: 100%;
 }
-.profile .profile__wrapper {
+.profile .profileWrapper {
   box-sizing: border-box;
   height: 100%;
   width: 100%;
@@ -10,14 +10,14 @@
   flex-direction: column;
   padding: 15px;
 }
-.profile .profile__wrapper > * {
+.profile .profileWrapper > * {
   /* UserCard */
   /* PostBlock */
 }
-.profile .profile__wrapper > *:nth-child(2) {
+.profile .profileWrapper > *:nth-child(2) {
   flex: 0 0 auto;
 }
-.profile .profile__wrapper > *:last-child {
+.profile .profileWrapper > *:last-child {
   flex: 1 1 auto;
   height: 30%;
 }

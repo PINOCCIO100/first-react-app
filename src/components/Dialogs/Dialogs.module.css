@@ -30,6 +30,9 @@
   border-right: 4px solid var(--color-bg-8);
   flex: 0 0 auto;
   width: 25%;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
 }
 
 .Dialogs__messages {

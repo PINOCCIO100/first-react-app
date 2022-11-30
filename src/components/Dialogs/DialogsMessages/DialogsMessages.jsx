@@ -4,8 +4,10 @@ import { currentUserID } from './../../../dataBase/usersProfileInfo';
 
 import DialogsText from './DialogsText/DialogsText';
 import { userMessages } from '../../../dataBase/usersMessages/userMessages';
+import { useParams } from 'react-router-dom';
 
-function DialogsMessages({ userID }) {
+function DialogsMessages(props) {
+  const {userID} = useParams();
   let key = 1;
   const arrayOfDialogText = userMessages.list[userID]
     .map(({ me, message }) => <DialogsText my={me} key={key++} userID={me ? currentUserID : userID} message={message} />);
@@ -20,4 +22,4 @@ function DialogsMessages({ userID }) {
   );
 }
 
-export default DialogsMessages;
+export { DialogsMessages };

@@ -1,11 +1,26 @@
 .FriendCard {
   font-size: 20px;
   padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.FriendCard .NavLink {
+  flex: 0 0 auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .FriendCard .FriendCard__name {
   margin: 0 0 0 1.2em;
   position: relative;
-  overflow-wrap: break-word;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .FriendCard .FriendCard__name::before {
   content: "";
@@ -17,6 +32,10 @@
   width: 0.5em;
   height: 0.5em;
   background-color: var(--color-ft-1);
+}
+.FriendCard .FriendCard__photo {
+  flex: 0 1 90px;
+  min-width: 50px;
 }
 .FriendCard .active {
   font-weight: 900;

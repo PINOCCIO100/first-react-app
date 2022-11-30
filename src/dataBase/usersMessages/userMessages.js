@@ -169,8 +169,61 @@ const userMessagesWithKamilya = [
 
 ]
 
+const userMessagesWithRuslan = [
+  {
+    me: false,
+    message: tMessage
+  },
+  {
+    me: false,
+    message: tMessage
+  },
+  {
+    me: true,
+    message: tMessage
+  },
+  {
+    me: false,
+    message: tMessage
+  },
+  {
+    me: false,
+    message: tMessage
+  },
+  {
+    me: false,
+    message: tMessage
+  },
+  {
+    me: true,
+    message: tMessage
+  },
+  {
+    me: false,
+    message: tMessage
+  },
+  {
+    me: true,
+    message: tMessage
+  },
+  {
+    me: false,
+    message: tMessage
+  },
+  {
+    me: false,
+    message: tMessage
+  },
+  {
+    me: false,
+    message: tMessage
+  },
+
+]
+
 userMessages.add(1, userMessagesWithDima);
 userMessages.add(2, userMessagesWithRustam);
 userMessages.add(3, userMessagesWithKamilya);
+userMessages.add(4, userMessagesWithRuslan);
 
 export {userMessages}

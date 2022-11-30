@@ -1,22 +1,21 @@
 import React from 'react';
 import s from './DialogsSidebar.module.css';
-import { usersInfo, currentUserID } from './../../../dataBase/usersProfileInfo';
 
 import FriendCard from './FriendCard/FriendCard';
+import { usersInfo } from '../../../dataBase/usersProfileInfo';
 
-
-function DialogsWithWFriends(props) {
+function DialogsSidebar(props) {
+  const listOfFriends = Object.keys(usersInfo.list)
+    .map((friendID) => <FriendCard key={friendID} userID={friendID} />);
   return (
     <div className={s.DialogsSidebar}>
       <ul className={s.DialogsSidebar__container}>
         <li className={s.DialogsSidebar__item}>
-          <FriendCard userID="1" usersInfo={usersInfo} />
-          <FriendCard userID="2" usersInfo={usersInfo} />
-          <FriendCard userID="3" usersInfo={usersInfo} />
+          {listOfFriends}
         </li>
       </ul>
     </div>
   );
 }
 
-export default DialogsWithWFriends;
+export { DialogsSidebar };

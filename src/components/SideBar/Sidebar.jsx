@@ -5,7 +5,7 @@ import s from './Sidebar.module.css';
 
 function Sidebar(props) {
   return (
-    <div className={s.sideBar}>
+    <nav className={s.sideBar}>
       <ul>
         <li>
           <Link className={s.link + " Link"} to='/profile'>Profile</Link>
@@ -23,7 +23,7 @@ function Sidebar(props) {
           <Link className={s.link + " Link"} to='/settings'>Settings</Link>
         </li>
       </ul>
-    </div >
+    </nav >
   );
 }
 
