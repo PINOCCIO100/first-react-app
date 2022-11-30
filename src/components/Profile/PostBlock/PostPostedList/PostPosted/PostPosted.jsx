@@ -1,12 +1,13 @@
 import React from 'react';
 import { usersInfo, currentUserID } from '../../../../../dataBase/usersProfileInfo/usersProfileInfo';
+import ButtonRating from './ButtonRating/ButtonRating';
 import s from './PostPosted.module.css';
 
-function PostPosted({ userID, message }) {
+function PostPosted({ post }) {
+  const { userID, message, rating } = post;
   const photo = usersInfo.list[userID].photo;
   return (
     <div className={s.postPosted}>
-
       <div className={s.postPosted__userPhoto}>
         <img src={photo} alt="postPosted__userPhoto" />
       </div>
@@ -17,8 +18,8 @@ function PostPosted({ userID, message }) {
           </p>
         </div>
         <div className={s.postPosted__ratingButtons}>
-          <button className={s.btnLike}>Like</button>
-          <button className={s.btnDislike}>Dislike</button>
+          <ButtonRating like={rating.likes} />
+          <ButtonRating dislike={rating.dislikes} />
         </div>
       </div>
     </div>

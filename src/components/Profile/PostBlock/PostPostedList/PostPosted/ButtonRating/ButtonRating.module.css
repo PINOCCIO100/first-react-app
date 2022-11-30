@@ -1,0 +1,31 @@
+.ButtonRating button {
+  -webkit-user-select: none;
+          user-select: none;
+  border-radius: 5px;
+  font-size: 15px;
+  color: var(--color-ft-1);
+  min-width: 55px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: auto;
+  padding: 5px;
+}
+.ButtonRating button:hover {
+  box-shadow: 0 0 10px 3px #999;
+}
+.ButtonRating button:active {
+  box-shadow: 0 0 10px 3px #ccc;
+}
+.ButtonRating span {
+  display: inline-block;
+  margin: 0 0 0 3px;
+  padding: 0 0 0 3px;
+  border-left: 1px solid rgba(153, 153, 153, 0.3);
+}
+.ButtonRating .btnLike {
+  background-color: var(--color-bg-6);
+}
+.ButtonRating .btnDislike {
+  background-color: var(--color-bg-7);
+}

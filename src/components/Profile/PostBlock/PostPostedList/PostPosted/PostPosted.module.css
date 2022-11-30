@@ -39,27 +39,3 @@
   gap: 10px;
   justify-content: flex-end;
 }
-.postPosted .postPosted__msgAndBtnsCont .postPosted__ratingButtons .btnLike,
-.postPosted .postPosted__msgAndBtnsCont .postPosted__ratingButtons .btnDislike {
-  -webkit-user-select: none;
-          user-select: none;
-  border-radius: 5px;
-  font-size: 15px;
-  color: var(--color-ft-1);
-  width: 55px;
-  height: 25px;
-}
-.postPosted .postPosted__msgAndBtnsCont .postPosted__ratingButtons .btnLike:hover,
-.postPosted .postPosted__msgAndBtnsCont .postPosted__ratingButtons .btnDislike:hover {
-  box-shadow: 0 0 10px 3px #999;
-}
-.postPosted .postPosted__msgAndBtnsCont .postPosted__ratingButtons .btnLike:active,
-.postPosted .postPosted__msgAndBtnsCont .postPosted__ratingButtons .btnDislike:active {
-  box-shadow: 0 0 10px 3px #ccc;
-}
-.postPosted .postPosted__msgAndBtnsCont .postPosted__ratingButtons .btnLike {
-  background-color: var(--color-bg-6);
-}
-.postPosted .postPosted__msgAndBtnsCont .postPosted__ratingButtons .btnDislike {
-  background-color: var(--color-bg-7);
-}
