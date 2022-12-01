@@ -11,7 +11,8 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 
-function App() {
+function App(props) {
+
   return (
     <div className="App">
       <div className="App__wrapper">
@@ -20,7 +21,7 @@ function App() {
         <div className="App__content-wrapper">
           <Routes>
             <Route index element={<Profile />} />
-            <Route path="profile/*" element={<Profile />} />
+            <Route path="profile/*" element={<Profile  />} />
             <Route path="dialogs/*" element={<Dialogs />} />
             <Route path="news/*" element={<News />} />
             <Route path="music/*" element={<Music />} />

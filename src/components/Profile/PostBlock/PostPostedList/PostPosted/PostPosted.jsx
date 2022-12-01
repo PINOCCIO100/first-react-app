@@ -1,11 +1,11 @@
 import React from 'react';
-import { usersInfo, currentUserID } from '../../../../../dataBase/usersProfileInfo/usersProfileInfo';
+import { usersProfileInfo, currentUserID } from '../../../../../dataBase/usersProfileInfo/usersProfileInfo';
 import ButtonRating from './ButtonRating/ButtonRating';
 import s from './PostPosted.module.css';
 
 function PostPosted({ post }) {
   const { userID, message, rating } = post;
-  const photo = usersInfo.list[userID].photo;
+  const { photo } = usersProfileInfo.list[userID];
   return (
     <div className={s.postPosted}>
       <div className={s.postPosted__userPhoto}>

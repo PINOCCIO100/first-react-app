@@ -1,10 +1,10 @@
 import React from 'react';
 import s from './DialogsText.module.css';
-import { usersInfo } from '../../../../dataBase/usersProfileInfo/usersProfileInfo';
+import { usersProfileInfo } from '../../../../dataBase/usersProfileInfo/usersProfileInfo';
 
 
 function DialogsText({ userID, my, message }) {
-  const userInfo = usersInfo.list[userID];
+  const userProfileInfo = usersProfileInfo.list[userID];
   const signOfMe = my ? s.DialogsText__My : "";
   return (
     <div className={s.DialogsText + " " + signOfMe}>
@@ -12,11 +12,11 @@ function DialogsText({ userID, my, message }) {
         <div className={s.DialogsText__column}>
           <div className={s.DialogsText__item}>
             <div className={s.DialogsText__photo}>
-              <img src={userInfo.photo} alt="" />
+              <img src={userProfileInfo.photo} alt="" />
             </div>
           </div>
           <div className={s.DialogsText__item}>
-            <div className={s.DialogsText__name}>{userInfo.name}</div>
+            <div className={s.DialogsText__name}>{userProfileInfo.name}</div>
           </div>
         </div>
         <div className={s.DialogsText__column}>

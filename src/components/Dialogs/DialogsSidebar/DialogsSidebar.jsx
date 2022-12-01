@@ -2,10 +2,10 @@ import React from 'react';
 import s from './DialogsSidebar.module.css';
 
 import FriendCard from './FriendCard/FriendCard';
-import { usersInfo } from '../../../dataBase/usersProfileInfo/usersProfileInfo';
+import { usersProfileInfo } from '../../../dataBase/usersProfileInfo/usersProfileInfo';
 
 function DialogsSidebar(props) {
-  const listOfFriends = Object.keys(usersInfo.list)
+  const listOfFriends = Object.keys(usersProfileInfo.list)
     .map((friendID) => <FriendCard key={friendID} userID={friendID} />);
   return (
     <div className={s.DialogsSidebar}>

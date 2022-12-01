@@ -5,7 +5,7 @@ import userInfo_4 from './usersByID/userProfileInfo_4';
 
 const currentUserID = 4;
 
-class UsersInfoClass {
+class UsersProfileInfoClass {
   list = {}
   add(id, userInfo) {
     this.list[id] = userInfo;
@@ -13,11 +13,11 @@ class UsersInfoClass {
   getUser = (id) => this.list[id];
 }
 
-const usersInfo = new UsersInfoClass();
+const usersProfileInfo = new UsersProfileInfoClass();
 
-usersInfo.add(1, userInfo_1);
-usersInfo.add(2, userInfo_2);
-usersInfo.add(3, userInfo_3);
-usersInfo.add(4, userInfo_4);
+usersProfileInfo.add(1, userInfo_1);
+usersProfileInfo.add(2, userInfo_2);
+usersProfileInfo.add(3, userInfo_3);
+usersProfileInfo.add(4, userInfo_4);
 
-export { usersInfo, currentUserID };
+export { usersProfileInfo, currentUserID };
