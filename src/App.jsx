@@ -11,8 +11,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 
-function App(props) {
-
+function App({ state }) {
   return (
     <div className="App">
       <div className="App__wrapper">
@@ -20,9 +19,9 @@ function App(props) {
         <Sidebar />
         <div className="App__content-wrapper">
           <Routes>
-            <Route index element={<Profile />} />
-            <Route path="profile/*" element={<Profile  />} />
-            <Route path="dialogs/*" element={<Dialogs />} />
+            <Route index element={<Profile state={state} />} />
+            <Route path="profile/*" element={<Profile state={state} />} />
+            <Route path="dialogs/*" element={<Dialogs state={state} />} />
             <Route path="news/*" element={<News />} />
             <Route path="music/*" element={<Music />} />
             <Route path="settings/*" element={<Settings />} />

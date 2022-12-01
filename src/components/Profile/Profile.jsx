@@ -4,9 +4,9 @@ import banner from './banner.jpg';
 
 import UserCard from './UserCard/UserCard';
 import PostBlock from './PostBlock/PostBlock';
-import { usersProfileInfo, currentUserID } from '../../dataBase/usersProfileInfo/usersProfileInfo';
 
-function Profile(props) {
+function Profile({ state }) {
+  const { usersProfileInfo, currentUserID } = state;
   const userProfileInfo = usersProfileInfo.list[currentUserID];
   return (
     <div className={s.profile}>
@@ -14,7 +14,7 @@ function Profile(props) {
         <div className={s.banner}>
           <img src={banner} alt="banner" />
         </div>
-        <UserCard userInfo={userProfileInfo} />
+        <UserCard userProfileInfo={userProfileInfo} />
         <PostBlock />
       </div>
     </div>

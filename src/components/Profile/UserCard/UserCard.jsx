@@ -1,20 +1,20 @@
 import React from 'react';
 import s from './UserCard.module.css';
 
-function UserCard(props) {
+function UserCard({ userProfileInfo }) {
 
   return (
-    <div className={s["UserCard"]}>
-      <div className={s["UserCard__user-photo"]}>
-        <img src={props.userInfo.photo} alt="UserCard__photo" className={s["UserCard__photo"]} />
+    <div className={s.UserCard}>
+      <div className={s.UserCard__userPhoto}>
+        <img src={userProfileInfo.photo} alt="UserCard__photo" className={s.UserCard__photo} />
       </div>
-      <div className={s["UserCard__text-part"]}>
-        <h1 className={s["UserCard__user-name"]}>{props.userInfo.name}</h1>
-        <div className={s["UserCard__user-info"]}>
-          <div>Date of Birth: <span>{props.userInfo.birthDate}</span></div>
-          <div>City: <span>{props.userInfo.city}</span></div>
-          <div>Eductaion: <span>{props.userInfo.education}</span></div>
-          <div>Web Site: <a target='_blank' href={props.userInfo.webSite}>{props.userInfo.webSite}</a></div>
+      <div className={s.UserCard__textPart}>
+        <h1 className={s.UserCard__userName}>{userProfileInfo.name}</h1>
+        <div className={s.UserCard__userInfo}>
+          <div>Date of Birth: <span>{userProfileInfo.birthDate}</span></div>
+          <div>City: <span>{userProfileInfo.city}</span></div>
+          <div>Eductaion: <span>{userProfileInfo.education}</span></div>
+          <div>Web Site: <a target='_blank' href={userProfileInfo.webSite}>{userProfileInfo.webSite}</a></div>
         </div>
       </div>
     </div>

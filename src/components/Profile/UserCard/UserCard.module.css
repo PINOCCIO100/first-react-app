@@ -4,7 +4,7 @@
   gap: 15px;
   margin: 0 0 15px 0;
 }
-.UserCard .UserCard__user-photo {
+.UserCard .UserCard__userPhoto {
   overflow: hidden;
   border-radius: 10px;
   width: 150px;
@@ -13,25 +13,25 @@
   justify-content: center;
   align-items: flex-end;
 }
-.UserCard .UserCard__user-photo img {
+.UserCard .UserCard__userPhoto img {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
-.UserCard .UserCard__text-part {
+.UserCard .UserCard__textPart {
   margin: 10px 0;
 }
-.UserCard .UserCard__text-part a {
+.UserCard .UserCard__textPart a {
   color: inherit;
 }
-.UserCard .UserCard__text-part a:visited {
+.UserCard .UserCard__textPart a:visited {
   color: inherit;
 }
-.UserCard .UserCard__user-name {
+.UserCard .UserCard__userName {
   font-size: 20px;
   font-weight: 700;
   margin: 0 0 20px 0;
 }
-.UserCard .UserCard__user-info {
+.UserCard .UserCard__userInfo {
   line-height: 20px;
 }

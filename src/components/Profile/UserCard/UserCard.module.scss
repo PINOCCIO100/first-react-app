@@ -3,7 +3,7 @@
   flex-direction: row;
   gap: 15px;
   margin: 0 0 15px 0;
-  .UserCard__user-photo {
+  .UserCard__userPhoto {
     overflow: hidden;
     border-radius: 10px;
     width: 150px;
@@ -19,7 +19,7 @@
     }
   }
 
-  .UserCard__text-part {
+  .UserCard__textPart {
     margin: 10px 0;
     a {
       color: inherit;
@@ -29,13 +29,13 @@
     }
   }
 
-  .UserCard__user-name {
+  .UserCard__userName {
     font-size: 20px;
     font-weight: 700;
     margin: 0 0 20px 0;
   }
 
-  .UserCard__user-info {
+  .UserCard__userInfo {
     line-height: 20px;
   }
 }
