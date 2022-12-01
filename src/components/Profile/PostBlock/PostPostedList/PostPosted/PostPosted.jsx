@@ -8,8 +8,8 @@ function PostPosted({ post }) {
   const { photo } = usersProfileInfo.list[userID];
   return (
     <div className={s.postPosted}>
-      <div className={s.postPosted__userPhoto}>
-        <img src={photo} alt="postPosted__userPhoto" />
+      <div className={s.postPosted__userProfilePhoto}>
+        <img src={photo} alt="postPosted__userProfilePhoto" />
       </div>
       <div className={s.postPosted__msgAndBtnsCont}>
         <div className={s.postPosted__message}>

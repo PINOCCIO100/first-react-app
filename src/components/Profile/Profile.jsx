@@ -6,7 +6,9 @@ import UserCard from './UserCard/UserCard';
 import PostBlock from './PostBlock/PostBlock';
 
 function Profile({ state }) {
-  const { usersProfileInfo, currentUserID } = state;
+  const { usersProfileInfo, currentUserID, usersPosts } = state;
+  const stateTo__PostBlock = { usersPosts, currentUserID };
+
   const userProfileInfo = usersProfileInfo.list[currentUserID];
   return (
     <div className={s.profile}>
@@ -15,7 +17,7 @@ function Profile({ state }) {
           <img src={banner} alt="banner" />
         </div>
         <UserCard userProfileInfo={userProfileInfo} />
-        <PostBlock />
+        <PostBlock state={stateTo__PostBlock} />
       </div>
     </div>
   );

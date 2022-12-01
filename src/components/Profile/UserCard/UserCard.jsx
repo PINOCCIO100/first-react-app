@@ -5,7 +5,7 @@ function UserCard({ userProfileInfo }) {
 
   return (
     <div className={s.UserCard}>
-      <div className={s.UserCard__userPhoto}>
+      <div className={s.UserCard__userProfilePhoto}>
         <img src={userProfileInfo.photo} alt="UserCard__photo" className={s.UserCard__photo} />
       </div>
       <div className={s.UserCard__textPart}>

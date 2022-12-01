@@ -1,8 +1,8 @@
 
-import userPhoto_3 from '../../../media/usersPhoto/3/avatar.jpg';
+import userProfilePhoto_3 from '../../../media/usersPhoto/3/avatar.jpg';
 
-const userInfo = {
-  photo: userPhoto_3,
+const userProfileInfo = {
+  photo: userProfilePhoto_3,
   name: 'Kamilya Z.',
   birthDate: '14 august',
   city: 'Chirchik',
@@ -10,4 +10,4 @@ const userInfo = {
   webSite: 'https://t.me/zagidulya',
 };
 
-export default userInfo;
+export default userProfileInfo;

@@ -1,12 +1,11 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import s from './DialogsMessages.module.css';
-import { currentUserID } from './../../../dataBase/usersProfileInfo/usersProfileInfo';
 
 import DialogsText from './DialogsText/DialogsText';
-import { userMessages } from '../../../dataBase/usersMessages/userMessages';
-import { useParams } from 'react-router-dom';
 
-function DialogsMessages(props) {
+function DialogsMessages({ state }) {
+  const { userMessages, currentUserID } = state;
   const { userID } = useParams();
   let key = 1;
   const arrayOfDialogText = userMessages.list[userID]

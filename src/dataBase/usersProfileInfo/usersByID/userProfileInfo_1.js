@@ -1,8 +1,8 @@
 
-import userPhoto_1 from '../../../media/usersPhoto/1/avatar.jpg';
+import userProfilePhoto_1 from '../../../media/usersPhoto/1/avatar.jpg';
 
-const userInfo = {
-  photo: userPhoto_1,
+const userProfileInfo = {
+  photo: userProfilePhoto_1,
   name: 'Dmitry K.',
   birthDate: '2 january',
   city: 'Minsk',
@@ -10,4 +10,4 @@ const userInfo = {
   webSite: 'https://it-kamasutra.com',
 };
 
-export default userInfo;
+export default userProfileInfo;

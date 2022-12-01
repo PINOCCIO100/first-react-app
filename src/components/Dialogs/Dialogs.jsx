@@ -5,8 +5,11 @@ import { Route, Routes } from 'react-router-dom';
 import { DialogsSidebar } from './DialogsSidebar/DialogsSidebar';
 import { DialogsMessages } from './DialogsMessages/DialogsMessages';
 
-function Dialogs() {
-
+function Dialogs({ state }) {
+  const { userMessages, currentUserID, usersProfileInfo } = state;
+  const stateTo__DialogsSidebar = { usersProfileInfo };
+  const stateTo__DialogsMessages = { userMessages, currentUserID };
+  
   return (
     <div className={s.Dialogs}>
       <div className={s.Dialogs__wrapper}>
@@ -15,12 +18,12 @@ function Dialogs() {
         </h1>
         <div className={s.Dialogs__body}>
           <div className={s.Dialogs__sidebar}>
-            <DialogsSidebar />
+            <DialogsSidebar state={stateTo__DialogsSidebar} />
           </div>
           <div className={s.Dialogs__messages}>
             <Routes>
               <Route index />
-              <Route path="user/:userID" element={<DialogsMessages />} />
+              <Route path="user/:userID" element={<DialogsMessages state={stateTo__DialogsMessages} />} />
             </Routes>
           </div>
         </div>

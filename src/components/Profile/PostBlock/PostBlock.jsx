@@ -3,12 +3,14 @@ import s from './PostBlock.module.css';
 import PostPostedList from './PostPostedList/PostPostedList';
 import PostPoster from './PostPoster/PostPoster';
 
-function PostBlock() {
+function PostBlock({ state }) {
+  const { usersPosts, currentUserID } = state;
+  const stateTo__PostPostedList = { usersPosts, currentUserID };
   return (
-    <div className={s["post-block"]}>
-      <h1 className={s["post-block__title"]}>My posts</h1>
+    <div className={s.postBlock}>
+      <h1 className={s.postBlock__title}>My posts</h1>
       <PostPoster />
-      <PostPostedList />
+      <PostPostedList state={stateTo__PostPostedList} />
     </div>
   );
 }
