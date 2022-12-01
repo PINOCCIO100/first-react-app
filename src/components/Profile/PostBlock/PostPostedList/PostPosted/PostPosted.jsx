@@ -1,11 +1,9 @@
 import React from 'react';
-import { usersProfileInfo, currentUserID } from '../../../../../dataBase/usersProfileInfo/usersProfileInfo';
 import ButtonRating from './ButtonRating/ButtonRating';
 import s from './PostPosted.module.css';
 
-function PostPosted({ post }) {
-  const { userID, message, rating } = post;
-  const { photo } = usersProfileInfo.list[userID];
+function PostPosted({ post, photo }) {
+  const {message, rating } = post;
   return (
     <div className={s.postPosted}>
       <div className={s.postPosted__userProfilePhoto}>

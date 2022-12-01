@@ -8,8 +8,8 @@ import { DialogsMessages } from './DialogsMessages/DialogsMessages';
 function Dialogs({ state }) {
   const { userMessages, currentUserID, usersProfileInfo } = state;
   const stateTo__DialogsSidebar = { usersProfileInfo };
-  const stateTo__DialogsMessages = { userMessages, currentUserID };
-  
+  const stateTo__DialogsMessages = { userMessages, currentUserID, usersProfileInfo };
+
   return (
     <div className={s.Dialogs}>
       <div className={s.Dialogs__wrapper}>

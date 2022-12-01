@@ -1,10 +1,9 @@
 import React from 'react';
 import s from './DialogsText.module.css';
-import { usersProfileInfo } from '../../../../dataBase/usersProfileInfo/usersProfileInfo';
 
 
-function DialogsText({ userID, my, message }) {
-  const userProfileInfo = usersProfileInfo.list[userID];
+function DialogsText({ props }) {
+  const { my, message, userProfileInfo } = props;
   const signOfMe = my ? s.DialogsText__My : "";
   return (
     <div className={s.DialogsText + " " + signOfMe}>
