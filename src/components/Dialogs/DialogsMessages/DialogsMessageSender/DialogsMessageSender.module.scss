@@ -1,0 +1,17 @@
+.DialogsMessageSender {
+  height: fit-content;
+  width: 100%;
+  padding: 10px;
+  color: var(--color-ft-2);
+  font-size: 20px;
+
+  textarea {
+    padding: 10px;
+    min-height: 50px;
+    max-height: 150px;
+    width: 100%;
+    border-radius: 5px;
+    resize: none;
+    overflow-y: auto;
+  }
+}
