@@ -1,7 +1,5 @@
-import { React, createRef, useState } from 'react';
+import { React, useState } from 'react';
 import s from './PostPoster.module.css';
-
-const textArea = createRef();
 
 function PostPoster({ addPost, state }) {
   const { usersPostPosterText, currentUserID } = state;
@@ -11,16 +9,14 @@ function PostPoster({ addPost, state }) {
     // функция отрабатывает при вводе в textarea
     // сначала передаем содержимое textarea  в usersPostPosterText (BLL) c возмжностью использовать пред. значение prevValue
     usersPostPosterText.edit(currentUserID.id, (prevVal) => e.target.value);
-    // usersPostPosterText.list[id] = e.tarsержимое передаем обратно в textarea (UI), имеея возможность обработать его в BLL (FLUX)   
+    // содержимое usersPostPosterText.list[id]  передаем обратно в textarea (UI), имеея возможность обработать его в BLL (FLUX)   
     setCurrentText(usersPostPosterText.take(currentUserID.id));
   }
   const onClick = () => {
     // если пустой пост - не выводим его
     if (currentText === '') return;
     // добавляем наш пост по кнопке Send
-    addPost(usersPostPosterText.take(currentUserID.id));
-    // обнуляем поле ввода после добавления нового поста на стороне BLL
-    usersPostPosterText.edit(currentUserID.id, () => '');
+    addPost();
     // обнуляем поле ввода на стороне UI через стэйт currentText, что заставлет перерендериться весь PostPoster
     setCurrentText(usersPostPosterText.take(currentUserID.id));
   }

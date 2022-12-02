@@ -1,9 +1,10 @@
 import { React, useState } from 'react';
 import s from './PostBlock.module.css';
+
 import PostPostedList from './PostPostedList/PostPostedList';
 import PostPoster from './PostPoster/PostPoster';
 import PostPosted from './PostPostedList/PostPosted/PostPosted';
- 
+
 
 function PostBlock({ state, actions }) {
   const { usersPostPosterText, currentUserID, usersPosts, usersProfileInfo } = state;
@@ -19,8 +20,8 @@ function PostBlock({ state, actions }) {
     }));
 
   const [postedPosts, setPostedPosts] = useState(stateOfPostsList());
-  const addPost = (message) => {
-    actions.createPost(message);
+  const addPost = () => {
+    actions.createPost();
     setPostedPosts(stateOfPostsList());
   };
   return (
