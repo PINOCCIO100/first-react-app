@@ -14,7 +14,7 @@ function UserCard({ userProfileInfo }) {
           <div>Date of Birth: <span>{userProfileInfo.birthDate}</span></div>
           <div>City: <span>{userProfileInfo.city}</span></div>
           <div>Eductaion: <span>{userProfileInfo.education}</span></div>
-          <div>Web Site: <a target='_blank' href={userProfileInfo.webSite}>{userProfileInfo.webSite}</a></div>
+          <div>Web Site: <a target='_blank' rel="noreferrer" href={userProfileInfo.webSite}>{userProfileInfo.webSite}</a></div>
         </div>
       </div>
     </div>

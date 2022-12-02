@@ -3,7 +3,7 @@ import s from './ButtonRating.module.css';
 
 function ButtonRating({ like, dislike }) {
   let ratingType, tVotes;
-  if (like != undefined) {
+  if (like !== undefined) {
     ratingType = s.btnLike
     tVotes = like;
   } else {
@@ -18,7 +18,7 @@ function ButtonRating({ like, dislike }) {
       <button
         onClick={(() => setVotes(votes + 1))}
         className={ratingType}>
-        {(like != undefined ? "Like" : "Dislike")}{votes > 0 ? <span>{votes}</span> : ""}</button>
+        {(like !== undefined ? "Like" : "Dislike")}{votes > 0 ? <span>{votes}</span> : ""}</button>
     </div>
   );
 }

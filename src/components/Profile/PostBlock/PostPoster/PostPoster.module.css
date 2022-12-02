@@ -1,8 +1,8 @@
-.post-poster {
+.postPoster {
   width: 100%;
   margin: 0 0 10px 0;
 }
-.post-poster .post-poster__text-area {
+.postPoster .postPoster__textArea {
   color: var(--color-ft-2);
   border-radius: 5px;
   font-size: 20px;
@@ -12,13 +12,13 @@
   padding: 5px;
   margin: 0 0 15px 0;
 }
-.post-poster .post-poster__button-area {
+.postPoster .postPoster__buttonArea {
   -webkit-user-select: none;
           user-select: none;
   display: flex;
   justify-content: flex-end;
 }
-.post-poster .post-poster__button-area .post-poster__button {
+.postPoster .postPoster__buttonArea .postPoster__button {
   border-radius: 5px;
   background-color: var(--color-bg-5);
   font-size: 20px;
@@ -26,9 +26,9 @@
   width: 100px;
   height: 35px;
 }
-.post-poster .post-poster__button-area .post-poster__button:hover {
+.postPoster .postPoster__buttonArea .postPoster__button:hover {
   box-shadow: 0 0 10px 3px #999;
 }
-.post-poster .post-poster__button-area .post-poster__button:active {
+.postPoster .postPoster__buttonArea .postPoster__button:active {
   box-shadow: 0 0 10px 3px #ccc;
 }

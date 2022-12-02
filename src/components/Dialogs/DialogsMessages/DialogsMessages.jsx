@@ -1,4 +1,4 @@
-import { createRef, React, useEffect, useState } from 'react';
+import { React } from 'react';
 import { useParams } from 'react-router-dom';
 import s from './DialogsMessages.module.css';
 
@@ -25,7 +25,7 @@ function DialogsMessages({ state }) {
       <div className={s.DialogsMessages__container + " scrollBar"}>
         {arrayOfDialogText}
       </div>
-      <DialogsMessageSender/>
+      <DialogsMessageSender />
     </div >
   );
 }

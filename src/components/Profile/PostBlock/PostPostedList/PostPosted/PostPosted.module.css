@@ -1,4 +1,5 @@
 .postPosted {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -18,14 +19,19 @@
   object-fit: cover;
 }
 .postPosted .postPosted__msgAndBtnsCont {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
 .postPosted .postPosted__msgAndBtnsCont .postPosted__message {
+  width: 100%;
+  height: 100%;
   flex: 1 1 auto;
 }
 .postPosted .postPosted__msgAndBtnsCont .postPosted__message p {
+  width: 100%;
   height: 100%;
   padding: 15px;
   border: 1px solid var(--color-bg-4);

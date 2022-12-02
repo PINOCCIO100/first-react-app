@@ -1,7 +1,7 @@
-.post-poster{
+.postPoster{
   width: 100%;
   margin: 0 0 10px 0;
-  .post-poster__text-area{
+  .postPoster__textArea{
     color: var(--color-ft-2);
     border-radius: 5px;
     font-size: 20px;
@@ -11,11 +11,11 @@
     padding: 5px;
     margin: 0 0 15px 0;
   }
-  .post-poster__button-area{
+  .postPoster__buttonArea{
     user-select: none;
     display: flex;
     justify-content: flex-end;
-    .post-poster__button{
+    .postPoster__button{
       border-radius: 5px;
       background-color: var(--color-bg-5);
       font-size: 20px;

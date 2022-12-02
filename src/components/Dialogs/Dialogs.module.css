@@ -13,7 +13,7 @@
 
 .Dialogs__title {
   text-transform: uppercase;
-  flex: 1 1 auto;
+  flex: 0 1;
   height: 5%;
   font-size: 25px;
   font-weight: 700;
@@ -21,8 +21,8 @@
 }
 
 .Dialogs__body {
+  flex: 1 1;
   height: 95%;
-  flex: 1 1 auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

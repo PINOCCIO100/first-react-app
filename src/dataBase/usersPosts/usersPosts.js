@@ -10,7 +10,7 @@ class UserPostsClass {
   }
 }
 
-const usersPosts = new UserPostsClass;
+const usersPosts = new UserPostsClass();
 
 usersPosts.add(1, userPosts_1);
 usersPosts.add(2, userPosts_2);

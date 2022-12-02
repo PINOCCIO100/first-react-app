@@ -1,17 +1,25 @@
-import React from 'react';
+import { React, createRef } from 'react';
 import s from './PostPoster.module.css';
 
-function PostPoster(props) {
+const textArea = createRef();
+
+function PostPoster({ addPost }) {
+  const onClick = () => {
+    // if (textArea.current.value === '') return;
+    addPost(textArea.current.value);
+    textArea.current.value = '';
+  }
   return (
-    <div className={s["post-poster"]}>
+    <div className={s.postPoster} >
       <textarea
+        ref={textArea}
         maxLength={256}
-        className={s["post-poster__text-area"]}
-        name="post-poster__text-area"
+        className={s.postPoster__textArea}
+        name="postPoster__textArea"
         placeholder='Your news...'
       />
-      <div className={s["post-poster__button-area"]}>
-        <button className={s["post-poster__button"]}>Send</button>
+      <div className={s.postPoster__buttonArea}>
+        <button onClick={onClick} className={s.postPoster__button}>Send</button>
       </div>
     </div>
   );

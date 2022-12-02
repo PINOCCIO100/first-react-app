@@ -7,6 +7,22 @@ const state = {
   usersProfileInfo: usersProfileInfo,
   usersPosts: usersPosts,
   userMessages: userMessages,
+
+}
+const actions = {
+  createPost(message) {
+    const messageID = state.usersPosts.list[currentUserID].length + 1;
+    state.usersPosts.list[currentUserID].push({
+      messageID: messageID,
+      userID: currentUserID,
+      message: message,
+      time: 1,
+      rating: {
+        likes: 5,
+        dislikes: 1,
+      }
+    })
+  }
 }
 
-export default state
+export { state, actions }

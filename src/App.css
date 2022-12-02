@@ -1,5 +1,6 @@
 *:has(.App) {
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
 }
 
 body {
@@ -7,8 +8,6 @@ body {
   font-size: 16px;
   background-color: var(--color-bg-1);
   color: var(--color-ft-1);
-  width: 100vw;
-  height: 100vh;
 }
 
 .App {
