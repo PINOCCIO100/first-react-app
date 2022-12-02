@@ -3,9 +3,9 @@ import s from './PostPoster.module.css';
 
 const textArea = createRef();
 
-function PostPoster({ addPost, state }) {
+function PostPoster({ addPost, state, actions }) {
   const { usersPostPosterText, currentUserID } = state;
-  const [currentText, setCurrentText] = useState('');
+  const [currentText, setCurrentText] = useState(usersPostPosterText.take(currentUserID.id));
 
   const onInput = (e) => {
     // функция отрабатывает при вводе в textarea
@@ -15,9 +15,14 @@ function PostPoster({ addPost, state }) {
     setCurrentText(usersPostPosterText.take(currentUserID.id));
   }
   const onClick = () => {
+    // если пустой пост - не выводим его
     if (textArea.current.value === '') return;
-    addPost(textArea.current.value);
-    textArea.current.value = '';
+    // добавляем наш пост по кнопке Send
+    addPost(usersPostPosterText.take(currentUserID.id));
+    // обнуляем поле ввода после добавления нового поста на стороне BLL
+    usersPostPosterText.edit(currentUserID.id, () => '');
+    // обнуляем поле ввода на стороне UI через стэйт currentText, что заставлет перерендериться весь PostPoster
+    setCurrentText(usersPostPosterText.take(currentUserID.id));
   }
   return (
     <div className={s.postPoster} >

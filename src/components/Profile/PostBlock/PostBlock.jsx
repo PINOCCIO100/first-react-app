@@ -10,12 +10,13 @@ function PostBlock({ state, actions }) {
   const [trigger, setTrigger] = useState(false);
   const addPost = (message) => {
     actions.createPost(message);
-    // setTrigger((prev) => !prev);  // для реренедера PostPostedList
+    actions.rerenderApp(); // для рендера PostPostedList через рендер всего root
+    // setTrigger((prev) => !prev);  // для реренедера PostPostedList через триггерный useState
   };
   return (
     <div className={s.postBlock}>
       <h1 className={s.postBlock__title}>My posts</h1>
-      <PostPoster addPost={addPost} state={stateTo_PostPoster} />
+      <PostPoster addPost={addPost} state={stateTo_PostPoster} actions={actions} />
       <PostPostedList state={state} trigger={trigger} />
     </div>
   );
