@@ -6,7 +6,7 @@ import PostPosted from './PostPosted/PostPosted';
 function PostPostedList({ state, trigger }) {
   const { usersPosts, currentUserID, usersProfileInfo } = state;
 
-  let postedPosts = usersPosts.list[currentUserID]
+  let postedPosts = usersPosts.list[currentUserID.id]
     .map((post) => <PostPosted
       key={post.messageID}
       post={post}

@@ -16,7 +16,7 @@ function DialogsMessages({ state }) {
       const props = {
         my: me,
         message: message,
-        userProfileInfo: usersProfileInfo.list[me ? currentUserID : userID],
+        userProfileInfo: usersProfileInfo.list[me ? currentUserID.id : userID],
       };
       return <DialogsText key={key++} props={props} />
     });

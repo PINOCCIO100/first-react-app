@@ -1,0 +1,14 @@
+.IDSelector {
+  width: fit-content;
+  height: fit-content;
+  text-align: center;
+
+  select {
+    width: 100px;
+    height: fit-content;
+    color: var(--color-ft-2);
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 5px;
+  }
+}

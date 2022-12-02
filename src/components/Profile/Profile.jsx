@@ -8,7 +8,7 @@ import PostBlock from './PostBlock/PostBlock';
 function Profile({ state, actions }) {
   const { usersProfileInfo, currentUserID } = state;
 
-  const userProfileInfo = usersProfileInfo.list[currentUserID];
+  const userProfileInfo = usersProfileInfo.list[currentUserID.id];
   return (
     <div className={s.profile}>
       <div className={s.profileWrapper}>

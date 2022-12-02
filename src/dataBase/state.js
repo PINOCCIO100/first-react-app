@@ -1,19 +1,23 @@
-import { usersProfileInfo, currentUserID } from './usersProfileInfo/usersProfileInfo';
-import { usersPosts } from './usersPosts/usersPosts';
-import { userMessages } from './usersMessages/userMessages';
 import { rerender } from '../render';
+
+import { usersProfileInfo, currentUserID } from './usersProfileInfo/usersProfileInfo';
+import { usersPostPosterText, usersPosts } from './usersPosts/usersPosts';
+import { userMessages } from './usersMessages/userMessages';
+
 
 const state = {
   currentUserID: currentUserID,
   usersProfileInfo: usersProfileInfo,
   usersPosts: usersPosts,
   userMessages: userMessages,
-
+  usersPostPosterText: usersPostPosterText,
 }
 const actions = {
+  rerenderApp: () => rerender(state, actions),
+
   createPost(message) {
-    const messageID = state.usersPosts.list[currentUserID].length + 1;
-    state.usersPosts.list[currentUserID].push({
+    const messageID = state.usersPosts.list[currentUserID.id].length + 1;
+    state.usersPosts.list[currentUserID.id].push({
       messageID: messageID,
       userID: currentUserID,
       message: message,
@@ -23,8 +27,11 @@ const actions = {
         dislikes: 1,
       }
     });
-    rerender(state, actions);
+    this.rerender();
+    // rerender(state, actions);  // ререндер всего приложения
   }
 }
+
+
 
 export { state, actions }

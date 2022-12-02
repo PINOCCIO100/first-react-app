@@ -2,7 +2,7 @@ const message = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corpo
 
 const time = Date.now();
 
-const userPosts = [
+export const userPosts = [
   {
     messageID: 1,
     userID: 2,

@@ -3,9 +3,15 @@ import userProfileInfo_2 from './usersByID/userProfileInfo_2';
 import userProfileInfo_3 from './usersByID/userProfileInfo_3';
 import userProfileInfo_4 from './usersByID/userProfileInfo_4';
 
-const currentUserID = 4;
+const currentUserID = {
+  id: 2,
+  setID(id) {
+    this.id = id;
+  }
+};
 
 class UsersProfileInfoClass {
+
   list = {}
   add(id, userProfileInfo) {
     this.list[id] = userProfileInfo;

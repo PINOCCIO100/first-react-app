@@ -24,7 +24,7 @@ function App({ state, actions }) {
             <Route path="dialogs/*" element={<Dialogs state={state} actions={actions} />} />
             <Route path="news/*" element={<News />} />
             <Route path="music/*" element={<Music />} />
-            <Route path="settings/*" element={<Settings />} />
+            <Route path="settings/*" element={<Settings state={state} actions={actions} />} />
           </Routes>
         </div>
       </div>
