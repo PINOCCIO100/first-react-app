@@ -3,7 +3,7 @@ import s from './PostPoster.module.css';
 
 const textArea = createRef();
 
-function PostPoster({ addPost, state, actions }) {
+function PostPoster({ addPost, state }) {
   const { usersPostPosterText, currentUserID } = state;
   const [currentText, setCurrentText] = useState(usersPostPosterText.take(currentUserID.id));
 
@@ -16,7 +16,7 @@ function PostPoster({ addPost, state, actions }) {
   }
   const onClick = () => {
     // если пустой пост - не выводим его
-    if (textArea.current.value === '') return;
+    if (currentText === '') return;
     // добавляем наш пост по кнопке Send
     addPost(usersPostPosterText.take(currentUserID.id));
     // обнуляем поле ввода после добавления нового поста на стороне BLL
@@ -27,7 +27,6 @@ function PostPoster({ addPost, state, actions }) {
   return (
     <div className={s.postPoster} >
       <textarea
-        ref={textArea}
         onInput={onInput}
         value={currentText}
         maxLength={256}
