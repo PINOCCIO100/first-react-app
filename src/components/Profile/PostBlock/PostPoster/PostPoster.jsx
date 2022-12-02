@@ -5,7 +5,7 @@ const textArea = createRef();
 
 function PostPoster({ addPost }) {
   const onClick = () => {
-    // if (textArea.current.value === '') return;
+    if (textArea.current.value === '') return;
     addPost(textArea.current.value);
     textArea.current.value = '';
   }
