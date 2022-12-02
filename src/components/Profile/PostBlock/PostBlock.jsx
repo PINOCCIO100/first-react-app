@@ -7,7 +7,7 @@ function PostBlock({ state, actions }) {
   const [trigger, setTrigger] = useState(false);
   const addPost = (message) => {
     actions.createPost(message);
-    setTrigger((prev) => !prev);
+    // setTrigger((prev) => !prev);  // для реренедера PostPostedList
   };
   return (
     <div className={s.postBlock}>

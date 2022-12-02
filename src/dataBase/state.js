@@ -1,6 +1,7 @@
 import { usersProfileInfo, currentUserID } from './usersProfileInfo/usersProfileInfo';
 import { usersPosts } from './usersPosts/usersPosts';
 import { userMessages } from './usersMessages/userMessages';
+import { rerender } from '../render';
 
 const state = {
   currentUserID: currentUserID,
@@ -21,7 +22,8 @@ const actions = {
         likes: 5,
         dislikes: 1,
       }
-    })
+    });
+    rerender(state, actions);
   }
 }
 
