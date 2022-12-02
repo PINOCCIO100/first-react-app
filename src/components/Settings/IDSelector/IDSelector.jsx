@@ -13,6 +13,9 @@ function IDSelector({ state, actions }) {
   });
   return (
     <div className={s.IDSelector}>
+      <p className={s.IDSelector__infoText}>
+        Current user ID is <span>{currentUserID.id}</span>
+      </p>
       <select onChange={onChange} defaultValue={currentUserID.id}>
         {usersList}
       </select>

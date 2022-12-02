@@ -1,14 +1,24 @@
 .IDSelector {
   width: fit-content;
   height: fit-content;
-  text-align: center;
+
+  .IDSelector__infoText {
+    margin: 0 0 15px 0;
+
+    span {
+      font-weight: 900;
+      color: var(--color-bg-9);
+    }
+  }
 
   select {
-    width: 100px;
+    width: 100%;
+    text-indent: 10px;
     height: fit-content;
     color: var(--color-ft-2);
     font-size: 20px;
     border-radius: 5px;
     padding: 5px;
+    
   }
 }

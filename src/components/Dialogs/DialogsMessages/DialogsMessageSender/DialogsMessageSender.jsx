@@ -8,9 +8,9 @@ const autoresize = (txtaElem) => {
 
 function DialogsMessageSender(props) {
   const txtaElem = createRef();
-  const [val, setVal] = useState(false);
+  const [trigger, setTrigger] = useState(false);
   useEffect(() => autoresize(txtaElem));
-  const onChange = () => setVal((prev) => !prev);
+  const onChange = () => setTrigger((prev) => !prev);
   return (
     <div className={s.DialogsMessageSender}>
       <textarea
@@ -19,7 +19,7 @@ function DialogsMessageSender(props) {
         name="DialogsMessageSender"
         className='scrollBar'
         placeholder='Text your message..'
-        trigger={val} //Триггер для рендера компнента при inpute
+        trigger={+trigger} //Триггер для рендера компнента при inpute
       ></textarea>
     </div>
   );

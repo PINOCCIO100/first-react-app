@@ -12,10 +12,7 @@ function Settings({ state, actions }) {
         <h1 className={s.Settings__title}>
           Settings
         </h1>
-        <div className={s.Settings_body}>
-          <p className={s.Setting__infoText}>
-            Current user ID is <span>{currentUserID.id}</span>
-          </p>
+        <div className={s.Settings__body}>
           <IDSelector state={state} actions={actions} />
         </div>
       </div>

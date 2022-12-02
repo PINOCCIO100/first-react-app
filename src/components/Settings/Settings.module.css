@@ -18,15 +18,8 @@
   font-weight: 700;
   margin: 0 0 15px 0;
 }
-.Settings .Settings_body {
+.Settings .Settings__body {
   font-size: 20px;
   flex: 1 1;
   height: 95%;
-}
-.Settings .Settings_body .Setting__infoText {
-  margin: 0 0 15px 0;
-}
-.Settings .Settings_body .Setting__infoText span {
-  font-weight: 900;
-  color: var(--color-bg-9);
 }
