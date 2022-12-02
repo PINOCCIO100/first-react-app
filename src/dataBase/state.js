@@ -15,8 +15,9 @@ export const state = {
   usersPostPosterText: usersPostPosterText,
 }
 export const actions = {
-  /*   Ререндер всего приложения.  Задается через subscribr/observer 
-  (желательно не использовать)  */
+  //  Ререндер всего приложения.  
+  //  Задается через subscriber(observer) в index.js 
+  //  (желательно не использовать) 
   rerenderApp: () => { },
 
   createPost() {
