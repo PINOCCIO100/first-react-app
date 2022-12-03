@@ -3,10 +3,10 @@ import s from './DialogsSidebar.module.css';
 
 import FriendCard from './FriendCard/FriendCard';
 
-function DialogsSidebar({ state }) {
-  const { usersProfileInfo } = state;
+function DialogsSidebar({ store }) {
+  const { usersProfileInfo } = store.state;
   const listOfFriends = Object.keys(usersProfileInfo.list)
-    .map((friendID) => <FriendCard key={friendID} userID={friendID} state={state} />);
+    .map((friendID) => <FriendCard key={friendID} userID={friendID} store={store} />);
   return (
     <div className={s.DialogsSidebar}>
       <ul className={s.DialogsSidebar__container}>

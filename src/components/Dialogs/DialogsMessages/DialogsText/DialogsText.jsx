@@ -2,8 +2,8 @@ import React from 'react';
 import s from './DialogsText.module.css';
 
 
-function DialogsText({ props }) {
-  const { my, message, userProfileInfo } = props;
+function DialogsText({ messageAttributes }) {
+  const { my, message, userProfileInfo } = messageAttributes;
   const signOfMe = my ? s.DialogsText__My : "";
   return (
     <div className={s.DialogsText + " " + signOfMe}>

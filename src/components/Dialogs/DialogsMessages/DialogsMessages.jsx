@@ -6,19 +6,19 @@ import DialogsText from './DialogsText/DialogsText';
 import DialogsMessageSender from './DialogsMessageSender/DialogsMessageSender';
 
 
-function DialogsMessages({ state }) {
-  const { userMessages, currentUserID, usersProfileInfo } = state;
+function DialogsMessages({ store }) {
+  const { userMessages, currentUserID, usersProfileInfo } = store.state;
   const { userID } = useParams();
 
   let key = 1;
   const arrayOfDialogText = userMessages.list[userID]
     .map(({ me, message }) => {
-      const props = {
+      const messageAttributes = {
         my: me,
         message: message,
         userProfileInfo: usersProfileInfo.list[me ? currentUserID.id : userID],
       };
-      return <DialogsText key={key++} props={props} />
+      return <DialogsText key={key++} messageAttributes={messageAttributes} />
     });
   return (
     <div className={s.DialogsMessages}>

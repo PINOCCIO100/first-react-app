@@ -3,9 +3,7 @@ import s from './Settings.module.css';
 
 import IDSelector from './IDSelector/IDSelector';
 
-function Settings({ state, actions }) {
-  const { currentUserID } = state;
-
+function Settings({ store }) {
   return (
     <div className={s.Settings}>
       <div className={s.Settings__wrapper}>
@@ -13,7 +11,7 @@ function Settings({ state, actions }) {
           Settings
         </h1>
         <div className={s.Settings__body}>
-          <IDSelector state={state} actions={actions} />
+          <IDSelector store={store} />
         </div>
       </div>
     </div>

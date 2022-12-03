@@ -5,10 +5,10 @@ import { Route, Routes } from 'react-router-dom';
 import { DialogsSidebar } from './DialogsSidebar/DialogsSidebar';
 import { DialogsMessages } from './DialogsMessages/DialogsMessages';
 
-function Dialogs({ state }) {
-  const { userMessages, currentUserID, usersProfileInfo } = state;
-  const stateTo__DialogsSidebar = { usersProfileInfo };
-  const stateTo__DialogsMessages = { userMessages, currentUserID, usersProfileInfo };
+function Dialogs({ store }) {
+  const { userMessages, currentUserID, usersProfileInfo } = store.state;
+  const storeTo__DialogsSidebar = { state: { usersProfileInfo } };
+  const storeTo__DialogsMessages = { state: { userMessages, currentUserID, usersProfileInfo } };
 
   return (
     <div className={s.Dialogs}>
@@ -18,12 +18,12 @@ function Dialogs({ state }) {
         </h1>
         <div className={s.Dialogs__body}>
           <div className={s.Dialogs__sidebar}>
-            <DialogsSidebar state={stateTo__DialogsSidebar} />
+            <DialogsSidebar store={storeTo__DialogsSidebar} />
           </div>
           <div className={s.Dialogs__messages}>
             <Routes>
               <Route index />
-              <Route path="user/:userID" element={<DialogsMessages state={stateTo__DialogsMessages} />} />
+              <Route path="user/:userID" element={<DialogsMessages store={storeTo__DialogsMessages} />} />
             </Routes>
           </div>
         </div>

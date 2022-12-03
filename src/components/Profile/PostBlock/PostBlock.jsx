@@ -6,9 +6,10 @@ import PostPoster from './PostPoster/PostPoster';
 import PostPosted from './PostPostedList/PostPosted/PostPosted';
 
 
-function PostBlock({ state, actions }) {
-  const { usersPostPosterText, currentUserID, usersPosts, usersProfileInfo } = state;
-  const stateTo_PostPoster = { usersPostPosterText, currentUserID };
+function PostBlock({ store }) {
+  const { usersPostPosterText, currentUserID, usersPosts, usersProfileInfo } = store.state;
+  const storeTo_PostPoster = {};
+  storeTo_PostPoster.state = { usersPostPosterText, currentUserID };
 
   const stateOfPostsList = () => (usersPosts.list[currentUserID.id]
     .map((post) => {
@@ -21,14 +22,14 @@ function PostBlock({ state, actions }) {
 
   const [postedPosts, setPostedPosts] = useState(stateOfPostsList());
   const addPost = () => {
-    actions.createPost();
+    store.createPost();
     setPostedPosts(stateOfPostsList());
   };
   return (
     <div className={s.postBlock}>
       <h1 className={s.postBlock__title}>My posts</h1>
-      <PostPoster addPost={addPost} state={stateTo_PostPoster} />
-      <PostPostedList state={state} postedPosts={postedPosts} />
+      <PostPoster addPost={addPost} store={storeTo_PostPoster} />
+      <PostPostedList postedPosts={postedPosts} />
     </div>
   );
 }

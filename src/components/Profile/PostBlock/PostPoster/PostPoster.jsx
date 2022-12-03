@@ -1,8 +1,8 @@
 import { React, useState } from 'react';
 import s from './PostPoster.module.css';
 
-function PostPoster({ addPost, state }) {
-  const { usersPostPosterText, currentUserID } = state;
+function PostPoster({ addPost, store }) {
+  const { usersPostPosterText, currentUserID } = store.state;
   const [currentText, setCurrentText] = useState(usersPostPosterText.take(currentUserID.id));
 
   const onInput = (e) => {

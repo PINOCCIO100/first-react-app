@@ -3,30 +3,27 @@ import { usersProfileInfo, currentUserID } from './usersProfileInfo/usersProfile
 import { usersPostPosterText, usersPosts } from './usersPosts/usersPosts';
 import { userMessages } from './usersMessages/userMessages';
 
-export const subscriber = (obsever) => {
-  actions.rerenderApp = obsever;
-}
+export const store = {
+  subscriber(obsever) {
+    this.rerenderApp = obsever;
+  },
 
-export const state = {
-  currentUserID: currentUserID,
-  usersProfileInfo: usersProfileInfo,
-  usersPosts: usersPosts,
-  userMessages: userMessages,
-  usersPostPosterText: usersPostPosterText,
-}
-export const actions = {
-  //  Ререндер всего приложения.  
-  //  Задается через subscriber(observer) в index.js 
-  //  (желательно не использовать) 
-  rerenderApp: () => { },
+  state: {
+    currentUserID: currentUserID,
+    usersProfileInfo: usersProfileInfo,
+    usersPosts: usersPosts,
+    userMessages: userMessages,
+    usersPostPosterText: usersPostPosterText,
+  },
 
   createPost() {
+    const curUsID = this.state.currentUserID.id;
+    const messageID = this.state.usersPosts.list[curUsID].length + 1;
 
-    const messageID = state.usersPosts.list[currentUserID.id].length + 1;
-    state.usersPosts.list[currentUserID.id].push({
+    this.state.usersPosts.list[curUsID].push({
       messageID: messageID,
-      userID: currentUserID.id,
-      message: usersPostPosterText.take(currentUserID.id),
+      userID: curUsID,
+      message: this.state.usersPostPosterText.take(curUsID),
       time: 1,
       rating: {
         likes: 5,
@@ -35,7 +32,13 @@ export const actions = {
     }
     );
     // обнуляем поле ввода после добавления нового поста на стороне BLL
-    usersPostPosterText.edit(currentUserID.id, () => '');
-  }
+    this.state.usersPostPosterText.edit(currentUserID.id, () => '');
+  },
+
+  //  Ререндер всего приложения.  
+  //  Задается через subscriber(observer) в index.js 
+  //  (желательно не использовать) 
+  //  Создание поста на свое стене 
+  rerenderApp() { },
 }
 

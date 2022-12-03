@@ -4,8 +4,8 @@ import s from './FriendCard.module.css';
 
 import ProfilePhoto from '../../../#sharedComponents/ProfilePhoto/ProfilePhoto';
 
-function FriendCard({ userID, state }) {
-  const { usersProfileInfo } = state;
+function FriendCard({ userID, store }) {
+  const { usersProfileInfo } = store.state;
   const userProfileInfo = usersProfileInfo.list[userID]
   const navLinkStyle = ({ isActive }) =>
     [(isActive ? s.active : ""), s.NavLink, 'Link'].join(" ");

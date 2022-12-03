@@ -1,11 +1,11 @@
 import React from 'react';
 import s from './IDSelector.module.css';
 
-function IDSelector({ state, actions }) {
-  const { currentUserID, usersProfileInfo } = state;
+function IDSelector({ store }) {
+  const { currentUserID, usersProfileInfo } = store.state;
   const onChange = (e) => {
     currentUserID.setID(e.target.value);
-    actions.rerenderApp();
+    store.rerenderApp();
   }
 
   let usersList = Object.keys(usersProfileInfo.list).map((userID) => {
