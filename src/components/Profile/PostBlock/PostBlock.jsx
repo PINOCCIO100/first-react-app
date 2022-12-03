@@ -1,10 +1,11 @@
 import { React, useState } from 'react';
 import s from './PostBlock.module.css';
+// TODO как-то убрать импорты
+import { addPostActionCreator } from '../../../dataBase/state';
 
 import PostPostedList from './PostPostedList/PostPostedList';
 import PostPoster from './PostPoster/PostPoster';
 import PostPosted from './PostPostedList/PostPosted/PostPosted';
-
 
 function PostBlock({ store }) {
   const { usersPostPosterText, currentUserID, usersPosts, usersProfileInfo } = store.state;
@@ -22,7 +23,7 @@ function PostBlock({ store }) {
 
   const [postedPosts, setPostedPosts] = useState(stateOfPostsList());
   const addPost = () => {
-    store.createPost();
+    store.dispatch(addPostActionCreator());
     setPostedPosts(stateOfPostsList());
   };
   return (

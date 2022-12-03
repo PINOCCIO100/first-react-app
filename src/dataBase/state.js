@@ -3,12 +3,12 @@ import { usersProfileInfo, currentUserID } from './usersProfileInfo/usersProfile
 import { usersPostPosterText, usersPosts } from './usersPosts/usersPosts';
 import { userMessages } from './usersMessages/userMessages';
 
-export const store = {
-  subscriber(obsever) {
-    this.rerenderApp = obsever;
-  },
+const SET_CURRENT_USER_ID = 'SET-CURRENT-USER-ID';
+const CREATE_POST = 'CREATE-POST';
 
-  state: {
+export const store = {
+
+  _state: {
     currentUserID: currentUserID,
     usersProfileInfo: usersProfileInfo,
     usersPosts: usersPosts,
@@ -16,29 +16,66 @@ export const store = {
     usersPostPosterText: usersPostPosterText,
   },
 
-  createPost() {
-    const curUsID = this.state.currentUserID.id;
-    const messageID = this.state.usersPosts.list[curUsID].length + 1;
+  _rerenderApp() {
+    //  Ререндер всего приложения.  
+    //  Задается через subscribe(observer) в index.js 
+    //  (желательно не использовать) 
+  },
 
-    this.state.usersPosts.list[curUsID].push({
+  _createPost() {
+    //  Создание поста на свое стене 
+    const {
+      currentUserID: { id: curUsID },
+      usersPosts,
+      usersPostPosterText
+    } = this.state;
+    const messageID = usersPosts.list[curUsID].length + 1;
+
+    usersPosts.list[curUsID].push({
       messageID: messageID,
       userID: curUsID,
-      message: this.state.usersPostPosterText.take(curUsID),
+      message: usersPostPosterText.take(curUsID),
       time: 1,
       rating: {
         likes: 5,
         dislikes: 1,
       }
-    }
-    );
+    });
     // обнуляем поле ввода после добавления нового поста на стороне BLL
-    this.state.usersPostPosterText.edit(currentUserID.id, () => '');
+    usersPostPosterText.edit(currentUserID.id, () => '');
   },
 
-  //  Ререндер всего приложения.  
-  //  Задается через subscriber(observer) в index.js 
-  //  (желательно не использовать) 
-  //  Создание поста на свое стене 
-  rerenderApp() { },
+  _setCurrentUserID(userID) {
+    this._state.currentUserID.setID(userID);
+    // TODO: избавиться от ререндера всего приложения
+    this._rerenderApp();
+  },
+
+  get state() {
+    return this._state;
+  },
+
+  subscribe(obsever) {
+    this._rerenderApp = obsever;
+  },
+
+  dispatch(action) {
+    switch (action.type) {
+      case CREATE_POST:
+        this._createPost(); break;
+      case SET_CURRENT_USER_ID:
+        this._setCurrentUserID(action.userID); break;
+      default:
+        throw new Error('Selected non-existed action type');
+    }
+  },
 }
 
+export const addPostActionCreator = () => ({
+  type: CREATE_POST,
+});
+
+export const setCurretUserIDActionCreator = (userID) => ({
+  type: SET_CURRENT_USER_ID,
+  userID: userID,
+});
