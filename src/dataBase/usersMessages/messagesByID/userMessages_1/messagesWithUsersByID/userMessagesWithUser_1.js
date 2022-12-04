@@ -1,6 +1,11 @@
 
 const tMessage = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis, repudiandae! Corporis fugiat aspernatur assumenda consequatur, cum, ipsum temporibus doloremque quos error dolore eum veritatis? Distinctio similique tenetur modi maxime. Quod.`
-const userMessagesWithFriend = [
+
+const userMessagesWithUser = [
+  {
+    me: true,
+    message: tMessage
+  },
   {
     me: true,
     message: tMessage
@@ -14,10 +19,6 @@ const userMessagesWithFriend = [
     message: tMessage
   },
   {
-    me: false,
-    message: tMessage
-  },
-  {
     me: true,
     message: tMessage
   },
@@ -30,7 +31,7 @@ const userMessagesWithFriend = [
     message: tMessage
   },
   {
-    me: false,
+    me: true,
     message: tMessage
   },
   {
@@ -52,4 +53,4 @@ const userMessagesWithFriend = [
 
 ]
 
-export default userMessagesWithFriend 
+export default userMessagesWithUser 

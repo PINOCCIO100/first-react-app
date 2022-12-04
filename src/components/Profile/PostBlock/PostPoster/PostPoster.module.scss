@@ -1,7 +1,10 @@
-.postPoster{
+.postPoster {
   width: 100%;
   margin: 0 0 10px 0;
-  .postPoster__textArea{
+
+  // TODO создать компонент по типу text-area + send button
+
+  .postPoster__textArea {
     color: var(--color-ft-2);
     border-radius: 5px;
     font-size: 20px;
@@ -11,21 +14,25 @@
     padding: 15px;
     margin: 0 0 15px 0;
   }
-  .postPoster__buttonArea{
+
+  .postPoster__buttonArea {
     user-select: none;
     display: flex;
     justify-content: flex-end;
-    .postPoster__button{
+
+    .postPoster__button {
       border-radius: 5px;
       background-color: var(--color-bg-5);
       font-size: 20px;
       color: var(--color-ft-1);
       width: 100px;
       height: 35px;
-      &:hover{
+
+      &:hover {
         box-shadow: 0 0 10px 3px #999;
       }
-      &:active{
+
+      &:active {
         box-shadow: 0 0 10px 3px #ccc;
       }
     }

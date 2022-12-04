@@ -1,10 +1,13 @@
 
 import { usersProfileInfo, currentUserID } from './usersProfileInfo/usersProfileInfo';
 import { usersPostPosterText, usersPosts } from './usersPosts/usersPosts';
-import { userMessages } from './usersMessages/userMessages';
+import { usersMessageSenderText, userMessages } from './usersMessages/userMessages';
 
 const SET_CURRENT_USER_ID = 'SET-CURRENT-USER-ID';
 const CREATE_POST = 'CREATE-POST';
+const SEND_MESSAGE = 'SEND-MESSAGE';
+const GET_MESSAGE_SENDER_TEXT = 'GET-MESSAGE-SENDER-TEXT';
+const SET_MESSAGE_SENDER_TEXT = 'SET-MESSAGE-SENDER-TEXT';
 
 export const store = {
 
@@ -61,10 +64,26 @@ export const store = {
 
   dispatch(action) {
     switch (action.type) {
+      case GET_MESSAGE_SENDER_TEXT:
+        return usersMessageSenderText.take(this._state.currentUserID.id);
+        break;
+      case SET_MESSAGE_SENDER_TEXT:
+        usersMessageSenderText.edit(this._state.currentUserID.id, action.text);
+        break;
+      case SEND_MESSAGE:
+        const curUsID = this._state.currentUserID.id;
+        // console.log(userMessages.list[curUsID]);
+        userMessages.list[curUsID].list[action.userID].push({
+          me: true,
+          message: usersMessageSenderText.take(curUsID),
+        });
+        break;
       case CREATE_POST:
-        this._createPost(); break;
+        this._createPost();
+        break;
       case SET_CURRENT_USER_ID:
-        this._setCurrentUserID(action.userID); break;
+        this._setCurrentUserID(action.userID);
+        break;
       default:
         throw new Error('Selected non-existed action type');
     }
@@ -77,5 +96,18 @@ export const addPostActionCreator = () => ({
 
 export const setCurretUserIDActionCreator = (userID) => ({
   type: SET_CURRENT_USER_ID,
+  userID: userID,
+});
+
+export const getMessageSenderTextActionCreator = () => ({
+  type: GET_MESSAGE_SENDER_TEXT,
+});
+
+export const setMessageSenderTextActionCreator = (text) => ({
+  type: SET_MESSAGE_SENDER_TEXT,
+  text: text,
+});
+export const sendMessageSenderTextActionCreator = (userID) => ({
+  type: SEND_MESSAGE,
   userID: userID,
 });

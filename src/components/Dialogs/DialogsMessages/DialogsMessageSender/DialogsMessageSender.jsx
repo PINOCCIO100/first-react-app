@@ -2,26 +2,47 @@ import { createRef, React, useEffect, useState } from 'react';
 import s from './DialogsMessageSender.module.css';
 
 const autoresize = (txtaElem) => {
-  txtaElem.current.style.height = `auto`;
-  txtaElem.current.style.height = `${txtaElem.current.scrollHeight}px`;
+  const txtaElemStyle = window.getComputedStyle(txtaElem);
+  const height = Number.parseInt(txtaElemStyle.height);
+  const maxHeight = Number.parseInt(txtaElemStyle.maxHeight);
+
+  txtaElem.style.height = `auto`;
+  txtaElem.style.height = `${txtaElem.scrollHeight}px`;
+
+  if (!isNaN(maxHeight)) {
+    txtaElem.style.overflowY = height >= maxHeight ? 'auto' : 'hidden';
+  }
 }
 
-function DialogsMessageSender(props) {
+function DialogsMessageSender({ getTextFromBLL, setTextToBLL, sendText }) {
+
+  // создаем ref на textarea и при рендере компонента и применяем к нему autoresize в useEffect   
   const txtaElem = createRef();
-  const [trigger, setTrigger] = useState(false);
-  useEffect(() => autoresize(txtaElem));
-  const onChange = () => setTrigger((prev) => !prev);
+  useEffect(() => autoresize(txtaElem.current));
+
+  const [currentTextUI, setCurrentTextUI] = useState(getTextFromBLL());
+  const onInput = (e) => {
+    setTextToBLL(e.target.value);
+    setCurrentTextUI(getTextFromBLL());
+    autoresize(e.target);
+  }
+  const onClick = () => {
+    sendText();
+  }
   return (
     <div className={s.DialogsMessageSender}>
       <textarea
         ref={txtaElem}
-        onInput={onChange}
-        name="DialogsMessageSender"
+        value={currentTextUI}
+        onInput={onInput}
         className='scrollBar'
+        name="DialogsMessageSender"
         placeholder='Text your message..'
-        trigger={+trigger} //Триггер для рендера компнента при inpute
       ></textarea>
-    </div>
+      <div className={s.DialogsMessageSender__buttonArea}>
+        <button onClick={onClick} className={s.DialogsMessageSender__button}>Send</button>
+      </div>
+    </div >
   );
 }
 

@@ -14,5 +14,25 @@
   width: 100%;
   border-radius: 5px;
   resize: none;
-  overflow-y: auto;
+  margin: 0 0 7px 0;
+}
+.DialogsMessageSender .DialogsMessageSender__buttonArea {
+  -webkit-user-select: none;
+          user-select: none;
+  display: flex;
+  justify-content: flex-end;
+}
+.DialogsMessageSender .DialogsMessageSender__buttonArea .DialogsMessageSender__button {
+  border-radius: 5px;
+  background-color: var(--color-bg-5);
+  font-size: 1.2rem;
+  color: var(--color-ft-1);
+  width: 80px;
+  height: 30px;
+}
+.DialogsMessageSender .DialogsMessageSender__buttonArea .DialogsMessageSender__button:hover {
+  box-shadow: 0 0 10px 3px #999;
+}
+.DialogsMessageSender .DialogsMessageSender__buttonArea .DialogsMessageSender__button:active {
+  box-shadow: 0 0 10px 3px #ccc;
 }

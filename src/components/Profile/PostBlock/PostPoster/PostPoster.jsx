@@ -8,7 +8,7 @@ function PostPoster({ addPost, store }) {
   const onInput = (e) => {
     // функция отрабатывает при вводе в textarea
     // сначала передаем содержимое textarea  в usersPostPosterText (BLL) c возмжностью использовать пред. значение prevValue
-    usersPostPosterText.edit(currentUserID.id, (prevVal) => e.target.value);
+    usersPostPosterText.edit(currentUserID.id, e.target.value);
     // содержимое usersPostPosterText.list[id]  передаем обратно в textarea (UI), имеея возможность обработать его в BLL (FLUX)   
     setCurrentText(usersPostPosterText.take(currentUserID.id));
   }
