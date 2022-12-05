@@ -14,11 +14,14 @@ const autoresize = (txtaElem) => {
   }
 }
 
-function DialogsMessageSender({ getTextFromBLL, setTextToBLL, sendText }) {
+function DialogsMessageSender({ userID, getTextFromBLL, setTextToBLL, sendText }) {
 
   // создаем ref на textarea и при рендере компонента и применяем к нему autoresize в useEffect   
   const txtaElem = createRef();
-  useEffect(() => autoresize(txtaElem.current));
+  useEffect(() => {
+    autoresize(txtaElem.current);
+    setCurrentTextUI(getTextFromBLL());
+  }, [userID]);
 
   const [currentTextUI, setCurrentTextUI] = useState(getTextFromBLL());
   const onInput = (e) => {

@@ -13,6 +13,7 @@
     &:nth-child(1) {
       flex: 0 0 auto;
       width: 20%;
+      height: 100%;
       min-width: fit-content;
       display: flex;
       flex-direction: column;
@@ -21,13 +22,27 @@
     }
 
     &:nth-child(2) {
+      overflow: hidden;
       flex: 0 1 auto;
       width: 80%;
-      min-width: min-content;
+      height: 100%;
+      // min-width: min-content;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+
+      >*:nth-child(1) {
+        flex: 0 1 auto;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+      }
     }
   }
 
   .DialogsText__item {
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,6 +70,7 @@
 }
 
 .DialogsText__text {
+  overflow: hidden;
   min-height: 110px;
   width: 100%;
   position: relative;
@@ -63,7 +79,7 @@
   padding: 20px;
   white-space: pre-wrap;
   // word-break: keep-all;
-  // overflow-wrap: break-word;
+  overflow-wrap: break-word;
 
   &::before,
   &::after {

@@ -48,26 +48,28 @@ export const store = {
       usersMessageSenderText,
       userMessages,
     } = this._state;
+    const curUserMessageSenderText = usersMessageSenderText.list[curUsID];
 
     switch (action.type) {
       case GET_MESSAGE_SENDER_TEXT:
-        return usersMessageSenderText.take(curUsID);
+        return curUserMessageSenderText.take(action.userID);
         break;
       case SET_MESSAGE_SENDER_TEXT:
-        usersMessageSenderText.edit(curUsID, action.text);
+        curUserMessageSenderText.edit(action.userID, action.text);
         break;
       case SEND_MESSAGE:
-        if (usersMessageSenderText.take(curUsID) === '') return;
+        if (curUserMessageSenderText.take(action.userID) === '') return;
         userMessages.list[curUsID].list[action.userID].push({
           me: true,
-          message: usersMessageSenderText.take(curUsID),
+          message: curUserMessageSenderText.take(action.userID),
         });
-        usersMessageSenderText.edit(curUsID, '');
+        curUserMessageSenderText.edit(action.userID, '');
         break;
       case CREATE_POST:
         // если пустой пост - не выводим его
         if (usersPostPosterText.take(curUsID) === '') return;
         //  Создание поста на свое стене 
+        // TODO: лайки и дизлайки нужно пропустить через BLL. Сейчас они при ререндере обнуляются 
         const messageID = usersPosts.list[curUsID].length + 1;
         usersPosts.list[curUsID].push({
           messageID: messageID,
@@ -75,8 +77,8 @@ export const store = {
           message: usersPostPosterText.take(curUsID),
           time: 1,
           rating: {
-            likes: 5,
-            dislikes: 1,
+            likes: 0,
+            dislikes: 0,
           }
         });
         // обнуляем поле ввода после добавления нового поста на стороне BLL
@@ -94,18 +96,17 @@ export const store = {
 export const addPostActionCreator = () => ({
   type: CREATE_POST,
 });
-
 export const setCurretUserIDActionCreator = (userID) => ({
   type: SET_CURRENT_USER_ID,
   userID: userID,
 });
-
-export const getMessageSenderTextActionCreator = () => ({
+export const getMessageSenderTextActionCreator = (userID) => ({
   type: GET_MESSAGE_SENDER_TEXT,
+  userID: userID,
 });
-
-export const setMessageSenderTextActionCreator = (text) => ({
+export const setMessageSenderTextActionCreator = (userID, text) => ({
   type: SET_MESSAGE_SENDER_TEXT,
+  userID: userID,
   text: text,
 });
 export const sendMessageSenderTextActionCreator = (userID) => ({

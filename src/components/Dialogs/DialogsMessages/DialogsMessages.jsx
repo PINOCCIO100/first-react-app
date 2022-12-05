@@ -34,10 +34,10 @@ export function DialogsMessages({ store }) {
   }, [userID]);
 
   const getTextFromBLL = () => {
-    return store.dispatch(getMessageSenderTextActionCreator());
+    return store.dispatch(getMessageSenderTextActionCreator(userID));
   }
   const setTextToBLL = (currentTextUI) => {
-    store.dispatch(setMessageSenderTextActionCreator(currentTextUI));
+    store.dispatch(setMessageSenderTextActionCreator(userID, currentTextUI));
   }
   const sendText = () => {
     store.dispatch(sendMessageSenderTextActionCreator(userID));
@@ -50,6 +50,7 @@ export function DialogsMessages({ store }) {
         <DialogsMessagesList arrayOfDialogText={arrayOfDialogText} />
       </div>
       <DialogsMessageSender
+        userID={userID}
         getTextFromBLL={getTextFromBLL}
         setTextToBLL={setTextToBLL}
         sendText={sendText}
