@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import s from './Dialogs.module.css';
 import { Route, Routes } from 'react-router-dom';
 
@@ -11,7 +11,6 @@ function Dialogs({ store }) {
   const storeTo__DialogsMessages = {
     state: { userMessages, currentUserID, usersProfileInfo },
     dispatch: store.dispatch.bind(store),
-    rerender: store._rerenderApp,
   };
 
   return (

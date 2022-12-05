@@ -17,35 +17,13 @@ export const store = {
     usersPosts: usersPosts,
     userMessages: userMessages,
     usersPostPosterText: usersPostPosterText,
+    usersMessageSenderText: usersMessageSenderText,
   },
 
   _rerenderApp() {
     //  Ререндер всего приложения.  
     //  Задается через subscribe(observer) в index.js 
     //  (желательно не использовать) 
-  },
-
-  _createPost() {
-    //  Создание поста на свое стене 
-    const {
-      currentUserID: { id: curUsID },
-      usersPosts,
-      usersPostPosterText
-    } = this.state;
-    const messageID = usersPosts.list[curUsID].length + 1;
-
-    usersPosts.list[curUsID].push({
-      messageID: messageID,
-      userID: curUsID,
-      message: usersPostPosterText.take(curUsID),
-      time: 1,
-      rating: {
-        likes: 5,
-        dislikes: 1,
-      }
-    });
-    // обнуляем поле ввода после добавления нового поста на стороне BLL
-    usersPostPosterText.edit(currentUserID.id, () => '');
   },
 
   _setCurrentUserID(userID) {
@@ -63,23 +41,46 @@ export const store = {
   },
 
   dispatch(action) {
+    const {
+      currentUserID: { id: curUsID },
+      usersPosts,
+      usersPostPosterText,
+      usersMessageSenderText,
+      userMessages,
+    } = this._state;
+
     switch (action.type) {
       case GET_MESSAGE_SENDER_TEXT:
-        return usersMessageSenderText.take(this._state.currentUserID.id);
+        return usersMessageSenderText.take(curUsID);
         break;
       case SET_MESSAGE_SENDER_TEXT:
-        usersMessageSenderText.edit(this._state.currentUserID.id, action.text);
+        usersMessageSenderText.edit(curUsID, action.text);
         break;
       case SEND_MESSAGE:
-        const curUsID = this._state.currentUserID.id;
-        // console.log(userMessages.list[curUsID]);
+        if (usersMessageSenderText.take(curUsID) === '') return;
         userMessages.list[curUsID].list[action.userID].push({
           me: true,
           message: usersMessageSenderText.take(curUsID),
         });
+        usersMessageSenderText.edit(curUsID, '');
         break;
       case CREATE_POST:
-        this._createPost();
+        // если пустой пост - не выводим его
+        if (usersPostPosterText.take(curUsID) === '') return;
+        //  Создание поста на свое стене 
+        const messageID = usersPosts.list[curUsID].length + 1;
+        usersPosts.list[curUsID].push({
+          messageID: messageID,
+          userID: curUsID,
+          message: usersPostPosterText.take(curUsID),
+          time: 1,
+          rating: {
+            likes: 5,
+            dislikes: 1,
+          }
+        });
+        // обнуляем поле ввода после добавления нового поста на стороне BLL
+        usersPostPosterText.edit(curUsID, '');
         break;
       case SET_CURRENT_USER_ID:
         this._setCurrentUserID(action.userID);

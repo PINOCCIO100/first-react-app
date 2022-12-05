@@ -1,10 +1,11 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import s from './DialogsMessages.module.css';
 
 import DialogsText from './DialogsText/DialogsText';
 import DialogsMessageSender from './DialogsMessageSender/DialogsMessageSender';
 import { getMessageSenderTextActionCreator, sendMessageSenderTextActionCreator, setMessageSenderTextActionCreator } from '../../../dataBase/state';
+import DialogsMessagesList from './DialogsMessagesList/DialogsMessagesList';
 
 export function DialogsMessages({ store }) {
   const {
@@ -14,10 +15,8 @@ export function DialogsMessages({ store }) {
   } = store.state;
 
   const { userID } = useParams();
-
   const stateOfDialogsMessages = () => {
     let key = 1;
-    console.log(userID);
     return userMessages.list[currentUserID.id].list[userID].map(({ me, message }) => {
       const messageAttributes = {
         my: me,
@@ -27,10 +26,15 @@ export function DialogsMessages({ store }) {
       return <DialogsText key={key++} messageAttributes={messageAttributes} />
     });
   }
-  const [arrayOfDialogText, setArrayOfDialogText] = useState(stateOfDialogsMessages()); //!!!
+
+  const [arrayOfDialogText, setArrayOfDialogText] = useState(stateOfDialogsMessages());
+
+  useEffect(() => {
+    setArrayOfDialogText(stateOfDialogsMessages());
+  }, [userID]);
 
   const getTextFromBLL = () => {
-    store.dispatch(getMessageSenderTextActionCreator());
+    return store.dispatch(getMessageSenderTextActionCreator());
   }
   const setTextToBLL = (currentTextUI) => {
     store.dispatch(setMessageSenderTextActionCreator(currentTextUI));
@@ -38,14 +42,12 @@ export function DialogsMessages({ store }) {
   const sendText = () => {
     store.dispatch(sendMessageSenderTextActionCreator(userID));
     setArrayOfDialogText(stateOfDialogsMessages());
-    // store.rerender();
-    // setArrayOfDialogText((prev) => prev + 1); //!!!
   };
 
   return (
     <div className={s.DialogsMessages}>
       <div className={s.DialogsMessages__container + " scrollBar"}>
-        {arrayOfDialogText}
+        <DialogsMessagesList arrayOfDialogText={arrayOfDialogText} />
       </div>
       <DialogsMessageSender
         getTextFromBLL={getTextFromBLL}

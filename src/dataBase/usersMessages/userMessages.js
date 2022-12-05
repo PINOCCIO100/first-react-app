@@ -14,6 +14,9 @@ class UserMessagesClass {
 }
 class UsersMessageSenderTextClass {
   list = {}
+  constructor(usersProfileInfo) {
+    Object.keys(usersProfileInfo.list).forEach(userID => this.add(userID, ''));
+  }
   add(id, text) {
     this.list[id] = text;
   }
@@ -24,14 +27,13 @@ class UsersMessageSenderTextClass {
     return this.list[id];
   }
 }
-export const userMessages = new UserMessagesClass();
 
+
+export const userMessages = new UserMessagesClass();
 userMessages.add(1, userMessages_1);
 userMessages.add(2, userMessages_2);
 userMessages.add(3, userMessages_3);
 userMessages.add(4, userMessages_4);
 userMessages.add(5, userMessages_5);
 
-
-export const usersMessageSenderText = new UsersMessageSenderTextClass
-Object.keys(usersProfileInfo.list).forEach(userID => usersMessageSenderText.add(userID, ''));
+export const usersMessageSenderText = new UsersMessageSenderTextClass(usersProfileInfo)

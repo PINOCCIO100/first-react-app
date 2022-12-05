@@ -13,8 +13,6 @@ function PostPoster({ addPost, store }) {
     setCurrentText(usersPostPosterText.take(currentUserID.id));
   }
   const onClick = () => {
-    // если пустой пост - не выводим его
-    if (currentText === '') return;
     // добавляем наш пост по кнопке Send
     addPost();
     // обнуляем поле ввода на стороне UI через стэйт currentText, что заставлет перерендериться весь PostPoster
