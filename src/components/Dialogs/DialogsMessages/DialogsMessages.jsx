@@ -11,7 +11,7 @@ import DialogsMessagesList from './DialogsMessagesList/DialogsMessagesList';
 
 export function DialogsMessages({ store }) {
   const {
-    userMessages,
+    usersMessages,
     currentUserID,
     usersProfileInfo,
   } = store.state;
@@ -19,7 +19,7 @@ export function DialogsMessages({ store }) {
   const { userID } = useParams();
   const stateOfDialogsMessages = () => {
     let key = 1;
-    return userMessages.list[currentUserID.id].list[userID].map(({ me, message }) => {
+    return usersMessages.list[currentUserID.id].list[userID].map(({ me, message }) => {
       const messageAttributes = {
         my: me,
         message: message,

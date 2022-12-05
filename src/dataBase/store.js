@@ -1,7 +1,7 @@
 
 import { usersProfileInfo, currentUserID } from './usersProfileInfo/usersProfileInfo';
 import { usersPostPosterText, usersPosts } from './usersPosts/usersPosts';
-import { usersMessageSenderText, userMessages } from './usersMessages/userMessages';
+import { usersMessageSenderText, usersMessages } from './usersMessages/usersMessages';
 
 const SET_CURRENT_USER_ID = 'SET-CURRENT-USER-ID';
 
@@ -19,7 +19,7 @@ export const store = {
     currentUserID: currentUserID,
     usersProfileInfo: usersProfileInfo,
     usersPosts: usersPosts,
-    userMessages: userMessages,
+    usersMessages: usersMessages,
     usersPostPosterText: usersPostPosterText,
     usersMessageSenderText: usersMessageSenderText,
   },
@@ -50,11 +50,12 @@ export const store = {
       usersPosts,
       usersPostPosterText,
       usersMessageSenderText,
-      userMessages,
+      usersMessages,
     } = this._state;
     const curUserMessageSenderText = usersMessageSenderText.list[curUsID];
 
     switch (action.type) {
+      //Работа с инпутом в сообщениях
       case GET_MESSAGE_SENDER_TEXT:
         return curUserMessageSenderText.take(action.userID);
         break;
@@ -63,12 +64,13 @@ export const store = {
         break;
       case SEND_MESSAGE:
         if (curUserMessageSenderText.take(action.userID) === '') return;
-        userMessages.list[curUsID].list[action.userID].push({
+        usersMessages.list[curUsID].list[action.userID].push({
           me: true,
           message: curUserMessageSenderText.take(action.userID),
         });
         curUserMessageSenderText.edit(action.userID, '');
         break;
+      //Работа с инпутом в профиле
       case GET_POST_POSTER_TEXT:
         return usersPostPosterText.take(curUsID);
         break;
@@ -94,9 +96,11 @@ export const store = {
         // обнуляем поле ввода после добавления нового поста на стороне BLL
         usersPostPosterText.edit(curUsID, '');
         break;
+      // Смена текущего пользователя
       case SET_CURRENT_USER_ID:
         this._setCurrentUserID(action.userID);
         break;
+
       default:
         throw new Error('Selected non-existed action type');
     }

@@ -6,10 +6,10 @@ import { DialogsSidebar } from './DialogsSidebar/DialogsSidebar';
 import { DialogsMessages } from './DialogsMessages/DialogsMessages';
 
 function Dialogs({ store }) {
-  const { userMessages, currentUserID, usersProfileInfo } = store.state;
+  const { usersMessages, currentUserID, usersProfileInfo } = store.state;
   const storeTo__DialogsSidebar = { state: { usersProfileInfo } };
   const storeTo__DialogsMessages = {
-    state: { userMessages, currentUserID, usersProfileInfo },
+    state: { usersMessages, currentUserID, usersProfileInfo },
     dispatch: store.dispatch.bind(store),
   };
 

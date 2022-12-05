@@ -4,7 +4,7 @@ import { userMessagesWithUsers as userMessages_3, userMessageSenderText as userM
 import { userMessagesWithUsers as userMessages_4, userMessageSenderText as userMessageSenderText_4 } from './messagesByID/userMessages_4/userMessagesWithUsers';
 import { userMessagesWithUsers as userMessages_5, userMessageSenderText as userMessageSenderText_5 } from './messagesByID/userMessages_5/userMessagesWithUsers';
 
-class UserMessagesClass {
+class UsersMessagesClass {
   list = {}
   add(id, userMessages) {
     this.list[id] = userMessages;
@@ -17,12 +17,12 @@ class UsersMessageSenderTextClass {
   }
 }
 
-export const userMessages = new UserMessagesClass();
-userMessages.add(1, userMessages_1);
-userMessages.add(2, userMessages_2);
-userMessages.add(3, userMessages_3);
-userMessages.add(4, userMessages_4);
-userMessages.add(5, userMessages_5);
+export const usersMessages = new UsersMessagesClass();
+usersMessages.add(1, userMessages_1);
+usersMessages.add(2, userMessages_2);
+usersMessages.add(3, userMessages_3);
+usersMessages.add(4, userMessages_4);
+usersMessages.add(5, userMessages_5);
 
 export const usersMessageSenderText = new UsersMessageSenderTextClass;
 usersMessageSenderText.add(1, userMessageSenderText_1);
