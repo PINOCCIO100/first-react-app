@@ -4,10 +4,14 @@ import { usersPostPosterText, usersPosts } from './usersPosts/usersPosts';
 import { usersMessageSenderText, userMessages } from './usersMessages/userMessages';
 
 const SET_CURRENT_USER_ID = 'SET-CURRENT-USER-ID';
-const CREATE_POST = 'CREATE-POST';
-const SEND_MESSAGE = 'SEND-MESSAGE';
+
 const GET_MESSAGE_SENDER_TEXT = 'GET-MESSAGE-SENDER-TEXT';
 const SET_MESSAGE_SENDER_TEXT = 'SET-MESSAGE-SENDER-TEXT';
+const SEND_MESSAGE = 'SEND-MESSAGE';
+
+const GET_POST_POSTER_TEXT = 'GET-POST-POSTER-TEXT';
+const SET_POST_POSTER_TEXT = 'SET-POST-POSTER-TEXT';
+const CREATE_POST = 'CREATE-POST';
 
 export const store = {
 
@@ -65,6 +69,12 @@ export const store = {
         });
         curUserMessageSenderText.edit(action.userID, '');
         break;
+      case GET_POST_POSTER_TEXT:
+        return usersPostPosterText.take(curUsID);
+        break;
+      case SET_POST_POSTER_TEXT:
+        usersPostPosterText.edit(curUsID, action.text);
+        break;
       case CREATE_POST:
         // если пустой пост - не выводим его
         if (usersPostPosterText.take(curUsID) === '') return;
@@ -93,9 +103,7 @@ export const store = {
   },
 }
 
-export const addPostActionCreator = () => ({
-  type: CREATE_POST,
-});
+
 export const setCurretUserIDActionCreator = (userID) => ({
   type: SET_CURRENT_USER_ID,
   userID: userID,
@@ -112,4 +120,14 @@ export const setMessageSenderTextActionCreator = (userID, text) => ({
 export const sendMessageSenderTextActionCreator = (userID) => ({
   type: SEND_MESSAGE,
   userID: userID,
+});
+export const getPostPosterTextActionCreator = () => ({
+  type: GET_POST_POSTER_TEXT,
+});
+export const setPostPosterTextActionCreator = (text) => ({
+  type: SET_POST_POSTER_TEXT,
+  text: text,
+});
+export const addPostActionCreator = () => ({
+  type: CREATE_POST,
 });

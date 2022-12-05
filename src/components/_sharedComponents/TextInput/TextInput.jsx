@@ -1,5 +1,5 @@
 import { createRef, React, useEffect, useState } from 'react';
-import s from './DialogsMessageSender.module.css';
+import s from './TextInput.module.css';
 
 const autoresize = (txtaElem) => {
   const txtaElemStyle = window.getComputedStyle(txtaElem);
@@ -14,14 +14,14 @@ const autoresize = (txtaElem) => {
   }
 }
 
-function DialogsMessageSender({ getTextFromBLL, setTextToBLL, sendText }) {
+function TextInput({ className, getTextFromBLL, setTextToBLL, sendText, labels }) {
 
   // создаем ref на textarea и при рендере компонента и применяем к нему autoresize в useEffect   
   const txtaElem = createRef();
   useEffect(() => {
     autoresize(txtaElem.current);
     setCurrentTextUI(getTextFromBLL());
-  });
+  }, [txtaElem, getTextFromBLL]);
 
   const [currentTextUI, setCurrentTextUI] = useState(getTextFromBLL());
   const onInput = (e) => {
@@ -34,20 +34,20 @@ function DialogsMessageSender({ getTextFromBLL, setTextToBLL, sendText }) {
     setCurrentTextUI(getTextFromBLL());
   }
   return (
-    <div className={s.DialogsMessageSender}>
+    <div className={[s.TextInput, className].join(' ')}>
       <textarea
         ref={txtaElem}
         value={currentTextUI}
         onInput={onInput}
         className='scrollBar'
-        name="DialogsMessageSender"
-        placeholder='Text your message..'
+        name="TextInput"
+        placeholder={labels.placeholder}
       ></textarea>
-      <div className={s.DialogsMessageSender__buttonArea}>
-        <button onClick={onClick} className={s.DialogsMessageSender__button}>Send</button>
+      <div className={s.TextInput__buttonArea}>
+        <button onClick={onClick} className={s.TextInput__button}>{labels.button}</button>
       </div>
     </div >
   );
 }
 
-export default DialogsMessageSender
+export default TextInput

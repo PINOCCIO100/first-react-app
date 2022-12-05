@@ -1,4 +1,6 @@
-  .DialogsMessageSender {
+  // TODO создать компонент по типу text-area + send button
+
+  .TextInput {
     height: fit-content;
     width: 100%;
     padding: 10px;
@@ -15,12 +17,12 @@
       margin: 0 0 7px 0;
     }
 
-    .DialogsMessageSender__buttonArea {
+    .TextInput__buttonArea {
       user-select: none;
       display: flex;
       justify-content: flex-end;
 
-      .DialogsMessageSender__button {
+      .TextInput__button {
         border-radius: 5px;
         background-color: var(--color-bg-5);
         font-size: 1.2rem;

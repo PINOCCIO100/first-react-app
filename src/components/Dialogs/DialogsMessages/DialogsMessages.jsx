@@ -1,10 +1,12 @@
 import { React, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import s from './DialogsMessages.module.css';
+// TODO как-то убрать импорты
+import { getMessageSenderTextActionCreator, sendMessageSenderTextActionCreator, setMessageSenderTextActionCreator } from '../../../dataBase/store';
 
+import TextInput from '../../_sharedComponents/TextInput/TextInput';
 import DialogsText from './DialogsText/DialogsText';
 import DialogsMessageSender from './DialogsMessageSender/DialogsMessageSender';
-import { getMessageSenderTextActionCreator, sendMessageSenderTextActionCreator, setMessageSenderTextActionCreator } from '../../../dataBase/state';
 import DialogsMessagesList from './DialogsMessagesList/DialogsMessagesList';
 
 export function DialogsMessages({ store }) {
@@ -49,11 +51,15 @@ export function DialogsMessages({ store }) {
       <div className={s.DialogsMessages__container + " scrollBar"}>
         <DialogsMessagesList arrayOfDialogText={arrayOfDialogText} />
       </div>
-      <DialogsMessageSender
-        userID={userID}
+      <TextInput
+        className={s.DialogsMessages__TextInput}
         getTextFromBLL={getTextFromBLL}
         setTextToBLL={setTextToBLL}
         sendText={sendText}
+        labels={{
+          placeholder: 'Text your message...',
+          button: 'Send',
+        }}
       />
     </div >
   );

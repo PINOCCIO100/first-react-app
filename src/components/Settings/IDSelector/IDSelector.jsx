@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './IDSelector.module.css';
 // TODO как-то убрать импорты
-import { setCurretUserIDActionCreator } from '../../../dataBase/state';
+import { setCurretUserIDActionCreator } from '../../../dataBase/store';
 
 function IDSelector({ store }) {
   const { currentUserID, usersProfileInfo } = store.state;

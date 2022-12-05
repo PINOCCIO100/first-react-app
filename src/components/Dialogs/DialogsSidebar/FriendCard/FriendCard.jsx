@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import s from './FriendCard.module.css';
 
-import ProfilePhoto from '../../../#sharedComponents/ProfilePhoto/ProfilePhoto';
+import ProfilePhoto from '../../../_sharedComponents/ProfilePhoto/ProfilePhoto';
 
 function FriendCard({ userID, store }) {
   const { usersProfileInfo } = store.state;
