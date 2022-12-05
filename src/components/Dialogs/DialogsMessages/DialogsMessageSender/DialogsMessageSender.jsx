@@ -23,7 +23,7 @@ function DialogsMessageSender({ getTextFromBLL, setTextToBLL, sendText }) {
   const [currentTextUI, setCurrentTextUI] = useState(getTextFromBLL());
   const onInput = (e) => {
     setTextToBLL(e.target.value);
-    setCurrentTextUI(getTextFromBLL() + 1);
+    setCurrentTextUI(getTextFromBLL());
     autoresize(e.target);
   }
   const onClick = () => {
