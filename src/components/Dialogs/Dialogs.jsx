@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import s from './Dialogs.module.css';
 import { Route, Routes } from 'react-router-dom';
 

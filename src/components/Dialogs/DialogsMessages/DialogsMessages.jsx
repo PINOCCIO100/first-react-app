@@ -6,7 +6,6 @@ import { getMessageSenderTextActionCreator, sendMessageSenderTextActionCreator, 
 
 import TextInput from '../../_sharedComponents/TextInput/TextInput';
 import DialogsText from './DialogsText/DialogsText';
-import DialogsMessageSender from './DialogsMessageSender/DialogsMessageSender';
 import DialogsMessagesList from './DialogsMessagesList/DialogsMessagesList';
 
 export function DialogsMessages({ store }) {
@@ -30,7 +29,7 @@ export function DialogsMessages({ store }) {
   }
 
   const [arrayOfDialogText, setArrayOfDialogText] = useState(stateOfDialogsMessages());
-
+  // TODO разобраться почему без useEffect'а не обнавляется arrayOfDialogText
   useEffect(() => {
     setArrayOfDialogText(stateOfDialogsMessages());
   }, [userID]);

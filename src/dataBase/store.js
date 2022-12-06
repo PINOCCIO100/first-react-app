@@ -3,6 +3,13 @@ import { usersProfileInfo, currentUserID } from './usersProfileInfo/usersProfile
 import { usersPostPosterText, usersPosts } from './usersPosts/usersPosts';
 import { usersMessageSenderText, usersMessages } from './usersMessages/usersMessages';
 
+import usersMessageSenderTextReducer from './usersMessageSenderTextReducer';
+import usersMessagesReducer from './usersMessagesReducer';
+import usersPostsReducer from './usersPostsReducer';
+import usersPostPosterTextReducer from './usersPostPosterTextReducer';
+import currentUserIDReducer from './currentUserIDReducer';
+
+
 const SET_CURRENT_USER_ID = 'SET-CURRENT-USER-ID';
 
 const GET_MESSAGE_SENDER_TEXT = 'GET-MESSAGE-SENDER-TEXT';
@@ -13,14 +20,15 @@ const GET_POST_POSTER_TEXT = 'GET-POST-POSTER-TEXT';
 const SET_POST_POSTER_TEXT = 'SET-POST-POSTER-TEXT';
 const CREATE_POST = 'CREATE-POST';
 
+
 export const store = {
 
   _state: {
     currentUserID: currentUserID,
     usersProfileInfo: usersProfileInfo,
     usersPosts: usersPosts,
-    usersMessages: usersMessages,
     usersPostPosterText: usersPostPosterText,
+    usersMessages: usersMessages,
     usersMessageSenderText: usersMessageSenderText,
   },
 
@@ -45,20 +53,47 @@ export const store = {
   },
 
   dispatch(action) {
-    const {
+
+    let {
       currentUserID: { id: curUsID },
       usersPosts,
       usersPostPosterText,
       usersMessageSenderText,
       usersMessages,
     } = this._state;
+
+    // usersMessageSenderText = usersMessageSenderTextReducer({
+    //   currentUserID,
+    //   usersMessageSenderText,
+    // }, action);
+    // usersMessages = usersMessagesReducer({
+    //   currentUserID,
+    //   usersMessageSenderText,
+    //   usersMessages,
+    // }, action);
+    // usersPostPosterText = usersPostPosterTextReducer({
+    //   currentUserID,
+    //   usersPostPosterText,
+    // }, action);
+
+    // currentUserID = currentUserIDReducer({ currentUserID }, action);
+
+    let resState;
     const curUserMessageSenderText = usersMessageSenderText.list[curUsID];
+
+    resState = usersPostsReducer({
+      currentUserID,
+      usersPosts,
+      usersPostPosterText,
+    }, action);
+    this._state.currentUserID = resState.currentUserID;
+    this._state.usersPosts = resState.usersPosts;
+    this._state.usersPostPosterText = resState.usersPostPosterText;
 
     switch (action.type) {
       //Работа с инпутом в сообщениях
       case GET_MESSAGE_SENDER_TEXT:
         return curUserMessageSenderText.take(action.userID);
-        break;
       case SET_MESSAGE_SENDER_TEXT:
         curUserMessageSenderText.edit(action.userID, action.text);
         break;
@@ -70,31 +105,30 @@ export const store = {
         });
         curUserMessageSenderText.edit(action.userID, '');
         break;
-      //Работа с инпутом в профиле
+      //Работа с инпутом в постах
       case GET_POST_POSTER_TEXT:
         return usersPostPosterText.take(curUsID);
-        break;
       case SET_POST_POSTER_TEXT:
         usersPostPosterText.edit(curUsID, action.text);
         break;
       case CREATE_POST:
-        // если пустой пост - не выводим его
-        if (usersPostPosterText.take(curUsID) === '') return;
-        //  Создание поста на свое стене 
-        // TODO: лайки и дизлайки нужно пропустить через BLL. Сейчас они при ререндере обнуляются 
-        const messageID = usersPosts.list[curUsID].length + 1;
-        usersPosts.list[curUsID].push({
-          messageID: messageID,
-          userID: curUsID,
-          message: usersPostPosterText.take(curUsID),
-          time: 1,
-          rating: {
-            likes: 0,
-            dislikes: 0,
-          }
-        });
-        // обнуляем поле ввода после добавления нового поста на стороне BLL
-        usersPostPosterText.edit(curUsID, '');
+        // // если пустой пост - не выводим его
+        // if (usersPostPosterText.take(curUsID) === '') return;
+        // //  Создание поста на свое стене 
+        // // TODO: лайки и дизлайки нужно пропустить через BLL. Сейчас они при ререндере обнуляются 
+        // const messageID = usersPosts.list[curUsID].length + 1;
+        // usersPosts.list[curUsID].push({
+        //   messageID: messageID,
+        //   userID: curUsID,
+        //   message: usersPostPosterText.take(curUsID),
+        //   time: 1,
+        //   rating: {
+        //     likes: 0,
+        //     dislikes: 0,
+        //   }
+        // });
+        // // обнуляем поле ввода после добавления нового поста на стороне BLL
+        // usersPostPosterText.edit(curUsID, '');
         break;
       // Смена текущего пользователя
       case SET_CURRENT_USER_ID:

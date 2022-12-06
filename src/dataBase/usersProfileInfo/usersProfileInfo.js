@@ -19,6 +19,8 @@ class UsersProfileInfoClass {
   getUser = (id) => this.list[id];
 }
 
+
+
 export const usersProfileInfo = new UsersProfileInfoClass();
 usersProfileInfo.add(1, userProfileInfo_1);
 usersProfileInfo.add(2, userProfileInfo_2);

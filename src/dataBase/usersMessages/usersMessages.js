@@ -24,7 +24,7 @@ usersMessages.add(3, userMessages_3);
 usersMessages.add(4, userMessages_4);
 usersMessages.add(5, userMessages_5);
 
-export const usersMessageSenderText = new UsersMessageSenderTextClass;
+export const usersMessageSenderText = new UsersMessageSenderTextClass();
 usersMessageSenderText.add(1, userMessageSenderText_1);
 usersMessageSenderText.add(2, userMessageSenderText_2);
 usersMessageSenderText.add(3, userMessageSenderText_3);
