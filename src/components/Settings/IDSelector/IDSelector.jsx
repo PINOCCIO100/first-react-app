@@ -7,7 +7,7 @@ function IDSelector({ store }) {
   const { currentUserID, usersProfileInfo } = store.state;
   const onChange = (e) => store.dispatch(setCurretUserIDActionCreator(e.target.value));
 
-  let usersList = Object.keys(usersProfileInfo.list).map((userID) => {
+  let usersList = Object.keys(usersProfileInfo).map((userID) => {
     return <option key={userID} value={userID}>{userID}</option>
   });
   return (

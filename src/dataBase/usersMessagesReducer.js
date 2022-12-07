@@ -1,26 +1,28 @@
 const SEND_MESSAGE = 'SEND-MESSAGE';
 
 const usersMessagesReducer = (state, action) => {
-  const {
-    currentUserID: { id: curUsID },
-    usersMessageSenderText,
-    usersMessages,
-  } = state;
-  const curUserMessageSenderText = usersMessageSenderText.list[curUsID];
+  const curUsID = state.currentUserID.id;
+  const newState = {
+    usersMessageSenderText: { ...state.usersMessageSenderText },
+    usersMessages: { ...state.usersMessages },
+  }
+  let curUserMessageSenderText = newState.usersMessageSenderText[curUsID] = { ...state.usersMessageSenderText[curUsID] };
 
   switch (action.type) {
     case SEND_MESSAGE:
-      if (curUserMessageSenderText.take(action.userID) === '') return;
-      usersMessages.list[curUsID].list[action.userID].push({
-        me: true,
-        message: curUserMessageSenderText.take(action.userID),
-      });
-      curUserMessageSenderText.edit(action.userID, '');
-      break;
+      if (curUserMessageSenderText[action.userID] === '') return state;
+      newState.usersMessages[curUsID][action.userID] = [
+        ...newState.usersMessages[curUsID][action.userID],
+        {
+          me: true,
+          message: curUserMessageSenderText[action.userID],
+        }
+      ]
+      curUserMessageSenderText[action.userID] = '';
+      return newState
     default:
-        break;
+      return state;
   }
-  return usersMessages;
 }
 
 export default usersMessagesReducer

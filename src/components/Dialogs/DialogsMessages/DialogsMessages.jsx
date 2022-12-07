@@ -18,11 +18,11 @@ export function DialogsMessages({ store }) {
   const { userID } = useParams();
   const stateOfDialogsMessages = () => {
     let key = 1;
-    return usersMessages.list[currentUserID.id].list[userID].map(({ me, message }) => {
+    return usersMessages[currentUserID.id][userID].map(({ me, message }) => {
       const messageAttributes = {
         my: me,
         message: message,
-        userProfileInfo: usersProfileInfo.list[me ? currentUserID.id : userID],
+        userProfileInfo: usersProfileInfo[me ? currentUserID.id : userID],
       };
       return <DialogsText key={key++} messageAttributes={messageAttributes} />
     });
@@ -35,7 +35,8 @@ export function DialogsMessages({ store }) {
   }, [userID]);
 
   const getTextFromBLL = () => {
-    return store.dispatch(getMessageSenderTextActionCreator(userID));
+    return store.curUserMessageSenderText(userID);
+    // return store.dispatch(getMessageSenderTextActionCreator(userID));
   }
   const setTextToBLL = (currentTextUI) => {
     store.dispatch(setMessageSenderTextActionCreator(userID, currentTextUI));

@@ -10,6 +10,7 @@ function Dialogs({ store }) {
   const storeTo__DialogsSidebar = { state: { usersProfileInfo } };
   const storeTo__DialogsMessages = {
     state: { usersMessages, currentUserID, usersProfileInfo },
+    curUserMessageSenderText: store.curUserMessageSenderText.bind(store),
     dispatch: store.dispatch.bind(store),
   };
 

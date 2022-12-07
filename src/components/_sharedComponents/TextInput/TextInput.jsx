@@ -33,6 +33,8 @@ function TextInput({ className, getTextFromBLL, setTextToBLL, sendText, labels }
     sendText();
     setCurrentTextUI(getTextFromBLL());
   }
+
+  //TODO Добавить возможность отправлять сообщения по нажатию на Enterы
   return (
     <div className={[s.TextInput, className].join(' ')}>
       <textarea

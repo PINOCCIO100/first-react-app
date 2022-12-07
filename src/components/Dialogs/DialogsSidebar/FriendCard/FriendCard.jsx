@@ -6,7 +6,7 @@ import ProfilePhoto from '../../../_sharedComponents/ProfilePhoto/ProfilePhoto';
 
 function FriendCard({ userID, store }) {
   const { usersProfileInfo } = store.state;
-  const userProfileInfo = usersProfileInfo.list[userID]
+  const userProfileInfo = usersProfileInfo[userID]
   const navLinkStyle = ({ isActive }) =>
     [(isActive ? s.active : ""), s.NavLink, 'Link'].join(" ");
   return (

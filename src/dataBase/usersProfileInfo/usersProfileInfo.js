@@ -11,19 +11,19 @@ export const currentUserID = {
   }
 };
 
-class UsersProfileInfoClass {
-  list = {}
-  add(id, userProfileInfo) {
-    this.list[id] = userProfileInfo;
-  }
-  getUser = (id) => this.list[id];
-}
+// class UsersProfileInfoClass {
+//   list = {}
+//   add(id, userProfileInfo) {
+//     this.list[id] = userProfileInfo;
+//   }
+//   getUser = (id) => this.list[id];
+// }
 
+// export const usersProfileInfo = new UsersProfileInfoClass();
 
-
-export const usersProfileInfo = new UsersProfileInfoClass();
-usersProfileInfo.add(1, userProfileInfo_1);
-usersProfileInfo.add(2, userProfileInfo_2);
-usersProfileInfo.add(3, userProfileInfo_3);
-usersProfileInfo.add(4, userProfileInfo_4);
-usersProfileInfo.add(5, userProfileInfo_5);
+export const usersProfileInfo = {};
+usersProfileInfo[1] = userProfileInfo_1;
+usersProfileInfo[2] = userProfileInfo_2;
+usersProfileInfo[3] = userProfileInfo_3;
+usersProfileInfo[4] = userProfileInfo_4;
+usersProfileInfo[5] = userProfileInfo_5;

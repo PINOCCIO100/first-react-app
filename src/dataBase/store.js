@@ -48,6 +48,14 @@ export const store = {
     return this._state;
   },
 
+  get curUsersPostPosterText() {
+    return this._state.usersPostPosterText[this._state.currentUserID.id];
+  },
+
+  curUserMessageSenderText(userID) {
+    return this._state.usersMessageSenderText[this._state.currentUserID.id][userID];
+  },
+
   subscribe(obsever) {
     this._rerenderApp = obsever;
   },
@@ -78,63 +86,56 @@ export const store = {
 
     // currentUserID = currentUserIDReducer({ currentUserID }, action);
 
-    let resState;
-    const curUserMessageSenderText = usersMessageSenderText.list[curUsID];
+    let newState;
 
-    resState = usersPostsReducer({
-      currentUserID,
-      usersPosts,
-      usersPostPosterText,
+    newState = usersPostPosterTextReducer({
+      currentUserID: this._state.currentUserID,
+      usersPostPosterText: this._state.usersPostPosterText,
     }, action);
-    this._state.currentUserID = resState.currentUserID;
-    this._state.usersPosts = resState.usersPosts;
-    this._state.usersPostPosterText = resState.usersPostPosterText;
+    this._state.usersPostPosterText = newState.usersPostPosterText;
+
+    newState = usersPostsReducer({
+      currentUserID: this._state.currentUserID,
+      usersPostPosterText: this._state.usersPostPosterText,
+      usersPosts: this._state.usersPosts,
+    }, action);
+    this._state.usersPosts = newState.usersPosts;
+    this._state.usersPostPosterText = newState.usersPostPosterText;
+
+    newState = usersMessageSenderTextReducer({
+      currentUserID: this._state.currentUserID,
+      usersMessageSenderText: this._state.usersMessageSenderText,
+    }, action);
+    this._state.usersMessageSenderText = newState.usersMessageSenderText;
+
+    newState = usersMessagesReducer({
+      currentUserID: this._state.currentUserID,
+      usersMessageSenderText: this._state.usersMessageSenderText,
+      usersMessages: this._state.usersMessages,
+    }, action);
+    this._state.usersMessageSenderText = newState.usersMessageSenderText;
+    this._state.usersMessages = newState.usersMessages;
+
 
     switch (action.type) {
       //Работа с инпутом в сообщениях
       case GET_MESSAGE_SENDER_TEXT:
-        return curUserMessageSenderText.take(action.userID);
+        break;
       case SET_MESSAGE_SENDER_TEXT:
-        curUserMessageSenderText.edit(action.userID, action.text);
         break;
       case SEND_MESSAGE:
-        if (curUserMessageSenderText.take(action.userID) === '') return;
-        usersMessages.list[curUsID].list[action.userID].push({
-          me: true,
-          message: curUserMessageSenderText.take(action.userID),
-        });
-        curUserMessageSenderText.edit(action.userID, '');
         break;
       //Работа с инпутом в постах
       case GET_POST_POSTER_TEXT:
-        return usersPostPosterText.take(curUsID);
+        break;
       case SET_POST_POSTER_TEXT:
-        usersPostPosterText.edit(curUsID, action.text);
         break;
       case CREATE_POST:
-        // // если пустой пост - не выводим его
-        // if (usersPostPosterText.take(curUsID) === '') return;
-        // //  Создание поста на свое стене 
-        // // TODO: лайки и дизлайки нужно пропустить через BLL. Сейчас они при ререндере обнуляются 
-        // const messageID = usersPosts.list[curUsID].length + 1;
-        // usersPosts.list[curUsID].push({
-        //   messageID: messageID,
-        //   userID: curUsID,
-        //   message: usersPostPosterText.take(curUsID),
-        //   time: 1,
-        //   rating: {
-        //     likes: 0,
-        //     dislikes: 0,
-        //   }
-        // });
-        // // обнуляем поле ввода после добавления нового поста на стороне BLL
-        // usersPostPosterText.edit(curUsID, '');
         break;
       // Смена текущего пользователя
       case SET_CURRENT_USER_ID:
         this._setCurrentUserID(action.userID);
         break;
-
       default:
         throw new Error('Selected non-existed action type');
     }
@@ -146,9 +147,10 @@ export const setCurretUserIDActionCreator = (userID) => ({
   type: SET_CURRENT_USER_ID,
   userID: userID,
 });
-export const getMessageSenderTextActionCreator = (userID) => ({
+export const getMessageSenderTextActionCreator = (userID, destination) => ({
   type: GET_MESSAGE_SENDER_TEXT,
   userID: userID,
+  // destination: destination,
 });
 export const setMessageSenderTextActionCreator = (userID, text) => ({
   type: SET_MESSAGE_SENDER_TEXT,
@@ -159,9 +161,10 @@ export const sendMessageSenderTextActionCreator = (userID) => ({
   type: SEND_MESSAGE,
   userID: userID,
 });
-export const getPostPosterTextActionCreator = () => ({
-  type: GET_POST_POSTER_TEXT,
-});
+// export const getPostPosterTextActionCreator = (destination) => ({
+//   type: GET_POST_POSTER_TEXT,
+//   destination: destination,
+// });
 export const setPostPosterTextActionCreator = (text) => ({
   type: SET_POST_POSTER_TEXT,
   text: text,

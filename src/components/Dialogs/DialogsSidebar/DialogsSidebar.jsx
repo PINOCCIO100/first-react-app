@@ -5,7 +5,7 @@ import FriendCard from './FriendCard/FriendCard';
 
 function DialogsSidebar({ store }) {
   const { usersProfileInfo } = store.state;
-  const listOfFriends = Object.keys(usersProfileInfo.list)
+  const listOfFriends = Object.keys(usersProfileInfo)
     .map((friendID) => <FriendCard key={friendID} userID={friendID} store={store} />);
   return (
     <div className={s.DialogsSidebar}>
