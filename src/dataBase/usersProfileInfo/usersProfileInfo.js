@@ -4,12 +4,8 @@ import userProfileInfo_3 from './usersByID/userProfileInfo_3';
 import userProfileInfo_4 from './usersByID/userProfileInfo_4';
 import userProfileInfo_5 from './usersByID/userProfileInfo_5';
 
-export const currentUserID = {
-  id: 2,
-  setID(id) {
-    this.id = id;
-  }
-};
+// ID текущего пользователя
+export let currentUserID = 2;
 
 // class UsersProfileInfoClass {
 //   list = {}

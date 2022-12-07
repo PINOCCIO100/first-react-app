@@ -2,11 +2,12 @@ import { React, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import s from './DialogsMessages.module.css';
 // TODO как-то убрать импорты
-import { getMessageSenderTextActionCreator, sendMessageSenderTextActionCreator, setMessageSenderTextActionCreator } from '../../../dataBase/store';
 
 import TextInput from '../../_sharedComponents/TextInput/TextInput';
 import DialogsText from './DialogsText/DialogsText';
 import DialogsMessagesList from './DialogsMessagesList/DialogsMessagesList';
+import { setMessageSenderTextActionCreator } from '../../../dataBase/reducers/usersMessageSenderTextReducer';
+import { sendMessageSenderTextActionCreator } from '../../../dataBase/reducers/usersMessagesReducer';
 
 export function DialogsMessages({ store }) {
   const {
@@ -18,11 +19,11 @@ export function DialogsMessages({ store }) {
   const { userID } = useParams();
   const stateOfDialogsMessages = () => {
     let key = 1;
-    return usersMessages[currentUserID.id][userID].map(({ me, message }) => {
+    return usersMessages[currentUserID][userID].map(({ me, message }) => {
       const messageAttributes = {
         my: me,
         message: message,
-        userProfileInfo: usersProfileInfo[me ? currentUserID.id : userID],
+        userProfileInfo: usersProfileInfo[me ? currentUserID : userID],
       };
       return <DialogsText key={key++} messageAttributes={messageAttributes} />
     });
@@ -36,7 +37,6 @@ export function DialogsMessages({ store }) {
 
   const getTextFromBLL = () => {
     return store.curUserMessageSenderText(userID);
-    // return store.dispatch(getMessageSenderTextActionCreator(userID));
   }
   const setTextToBLL = (currentTextUI) => {
     store.dispatch(setMessageSenderTextActionCreator(userID, currentTextUI));

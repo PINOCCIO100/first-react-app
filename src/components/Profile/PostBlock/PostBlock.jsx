@@ -1,7 +1,8 @@
 import { React, useState } from 'react';
 import s from './PostBlock.module.css';
 // TODO как-то убрать импорты
-import { addPostActionCreator, setPostPosterTextActionCreator } from '../../../dataBase/store';
+import { setPostPosterTextActionCreator } from '../../../dataBase/reducers/usersPostPosterTextReducer';
+import { addPostActionCreator } from '../../../dataBase/reducers/usersPostsReducer';
 
 import TextInput from '../../_sharedComponents/TextInput/TextInput';
 import PostPostedList from './PostPostedList/PostPostedList';
@@ -12,7 +13,7 @@ function PostBlock({ store }) {
   const storeTo_PostPoster = {};
   storeTo_PostPoster.state = { usersPostPosterText, currentUserID };
 
-  const stateOfPostsList = () => (usersPosts[currentUserID.id]
+  const stateOfPostsList = () => (usersPosts[currentUserID]
     .map((post) => {
       return (<PostPosted
         key={post.messageID}
@@ -24,7 +25,7 @@ function PostBlock({ store }) {
   const [postedPosts, setPostedPosts] = useState(stateOfPostsList());
 
   const getTextFromBLL = () => {
-    return store.curUsersPostPosterText;
+    return store.curUsersPostPosterText();
   }
   const setTextToBLL = (currentTextUI) => {
     store.dispatch(setPostPosterTextActionCreator(currentTextUI));

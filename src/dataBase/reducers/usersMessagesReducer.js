@@ -1,7 +1,12 @@
 const SEND_MESSAGE = 'SEND-MESSAGE';
 
+export const sendMessageSenderTextActionCreator = (userID) => ({
+  type: SEND_MESSAGE,
+  userID: userID,
+});
+
 const usersMessagesReducer = (state, action) => {
-  const curUsID = state.currentUserID.id;
+  const curUsID = state.currentUserID;
   const newState = {
     usersMessageSenderText: { ...state.usersMessageSenderText },
     usersMessages: { ...state.usersMessages },

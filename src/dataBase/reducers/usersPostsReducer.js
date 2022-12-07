@@ -1,11 +1,15 @@
 const CREATE_POST = 'CREATE-POST';
 
+export const addPostActionCreator = () => ({
+  type: CREATE_POST,
+});
+
 const usersPostsReducer = (state, action) => {
   let newState = {
     usersPosts: { ...state.usersPosts },
     usersPostPosterText: { ...state.usersPostPosterText }
   };
-  const curUsID = state.currentUserID.id;
+  const curUsID = state.currentUserID;
 
   switch (action.type) {
     case CREATE_POST:
