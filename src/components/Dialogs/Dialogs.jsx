@@ -6,14 +6,6 @@ import { DialogsSidebar } from './DialogsSidebar/DialogsSidebar';
 import { DialogsMessages } from './DialogsMessages/DialogsMessages';
 
 function Dialogs({ store }) {
-  const { usersMessages, currentUserID, usersProfileInfo } = store.state;
-  const storeTo__DialogsSidebar = { state: { usersProfileInfo } };
-  const storeTo__DialogsMessages = {
-    state: { usersMessages, currentUserID, usersProfileInfo },
-    curUserMessageSenderText: store.curUserMessageSenderText.bind(store),
-    dispatch: store.dispatch.bind(store),
-  };
-
   return (
     <div className={s.Dialogs}>
       <div className={s.Dialogs__wrapper}>
@@ -22,12 +14,12 @@ function Dialogs({ store }) {
         </h1>
         <div className={s.Dialogs__body}>
           <div className={s.Dialogs__sidebar}>
-            <DialogsSidebar store={storeTo__DialogsSidebar} />
+            <DialogsSidebar store={store} />
           </div>
           <div className={s.Dialogs__messages}>
             <Routes>
               <Route index />
-              <Route path="user/:userID" element={<DialogsMessages store={storeTo__DialogsMessages} />} />
+              <Route path="user/:userID" element={<DialogsMessages store={store} />} />
             </Routes>
           </div>
         </div>

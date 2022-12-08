@@ -1,40 +1,40 @@
 import { React, useState } from 'react';
 import s from './PostBlock.module.css';
 // TODO как-то убрать импорты
-import { setPostPosterTextActionCreator } from '../../../dataBase/reducers/usersPostPosterTextReducer';
-import { addPostActionCreator } from '../../../dataBase/reducers/usersPostsReducer';
+import { setPostPosterTextActionCreator, addPostActionCreator } from '../../../dataBase/reducers/usersPostsReducer';
 
 import TextInput from '../../_sharedComponents/TextInput/TextInput';
 import PostPostedList from './PostPostedList/PostPostedList';
 import PostPosted from './PostPostedList/PostPosted/PostPosted';
 
 function PostBlock({ store }) {
-  const { usersPostPosterText, currentUserID, usersPosts, usersProfileInfo } = store.state;
-  const storeTo_PostPoster = {};
-  storeTo_PostPoster.state = { usersPostPosterText, currentUserID };
-
-  const stateOfPostsList = () => (usersPosts[currentUserID]
-    .map((post) => {
-      return (<PostPosted
-        key={post.messageID}
-        post={post}
-        photo={usersProfileInfo[post.userID].photo}
-      />)
-    }));
+  const {
+    usersProfileInfo,
+    currentUserID,
+  } = store.getState().ProfileState;
+  
+  const stateOfPostsList = () => {
+    return (store.getState().PostsState.usersPosts[currentUserID]
+      .map((post) => {
+        return (<PostPosted
+          key={post.messageID}
+          post={post}
+          photo={usersProfileInfo[post.userID].photo} />);
+      }));
+  };
 
   const [postedPosts, setPostedPosts] = useState(stateOfPostsList());
 
   const getTextFromBLL = () => {
-    return store.curUsersPostPosterText();
+    return store.getState().PostsState.usersPostPosterText[currentUserID]
   }
   const setTextToBLL = (currentTextUI) => {
-    store.dispatch(setPostPosterTextActionCreator(currentTextUI));
+    store.dispatch(setPostPosterTextActionCreator(currentUserID, currentTextUI));
   }
   const addPost = () => {
-    store.dispatch(addPostActionCreator());
+    store.dispatch(addPostActionCreator(currentUserID));
     setPostedPosts(stateOfPostsList());
   };
-
 
   return (
     <div className={s.postBlock}>

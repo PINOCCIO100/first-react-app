@@ -6,9 +6,11 @@ import UserCard from './UserCard/UserCard';
 import PostBlock from './PostBlock/PostBlock';
 
 function Profile({ store }) {
-  const { usersProfileInfo, currentUserID } = store.state;
-
+  const {
+    ProfileState: { usersProfileInfo, currentUserID },
+  } = store.getState();
   const userProfileInfo = usersProfileInfo[currentUserID];
+
   return (
     <div className={s.profile}>
       <div className={s.profileWrapper}>

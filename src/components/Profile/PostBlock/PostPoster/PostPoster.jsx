@@ -2,7 +2,10 @@ import { React, useState } from 'react';
 import s from './PostPoster.module.css';
 
 function PostPoster({ addPost, store }) {
-  const { usersPostPosterText, currentUserID } = store.state;
+  const {
+    ProfileState: { currentUserID },
+    usersPostPosterText: { usersPostPosterText },
+  } = store.getState();
   const [currentText, setCurrentText] = useState(usersPostPosterText[currentUserID]);
 
   const onInput = (e) => {

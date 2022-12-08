@@ -1,27 +1,31 @@
+import { usersPosts } from "../usersPosts/usersPosts";
+import { usersPostPosterText } from '../usersPosts/usersPosts';
+
 const CREATE_POST = 'CREATE-POST';
+const SET_POST_POSTER_TEXT = 'SET-POST-POSTER-TEXT';
 
-export const addPostActionCreator = () => ({
-  type: CREATE_POST,
-});
+let initialState = {
+  usersPostPosterText,
+  usersPosts,
+};
 
-const usersPostsReducer = (state, action) => {
+const usersPostsReducer = (state = initialState, action) => {
   let newState = {
+    usersPostPosterText: { ...state.usersPostPosterText },
     usersPosts: { ...state.usersPosts },
-    usersPostPosterText: { ...state.usersPostPosterText }
   };
-  const curUsID = state.currentUserID;
 
   switch (action.type) {
     case CREATE_POST:
       // если пустой пост - не выводим его
-      if (newState.usersPostPosterText[curUsID] === '') return state;
+      if (newState.usersPostPosterText[action.curUsID] === '') return state;
       //  Создание поста на свое стене 
       // TODO: лайки и дизлайки нужно пропустить через BLL. Сейчас они при ререндере обнуляются 
-      const messageID = newState.usersPosts[curUsID].length + 1;
-      newState.usersPosts[curUsID].push({
+      const messageID = newState.usersPosts[action.curUsID].length + 1;
+      newState.usersPosts[action.curUsID].push({
         messageID: messageID,
-        userID: curUsID,
-        message: newState.usersPostPosterText[curUsID],
+        userID: action.curUsID,
+        message: newState.usersPostPosterText[action.curUsID],
         time: 1,
         rating: {
           likes: 0,
@@ -30,11 +34,28 @@ const usersPostsReducer = (state, action) => {
       });
 
       // обнуляем поле ввода после добавления нового поста на стороне BLL
-      newState.usersPostPosterText[curUsID] = '';
-      return newState
+      newState.usersPostPosterText[action.curUsID] = '';
+      return newState;
+    case SET_POST_POSTER_TEXT:
+      newState.usersPostPosterText[action.curUsID] = action.text;
+      return newState;
     default:
       return state;
   }
 }
 
+export const addPostActionCreator = (curUsID) => ({
+  type: CREATE_POST,
+  curUsID: curUsID,
+});
+
+export const setPostPosterTextActionCreator = (curUsID, text) => ({
+  type: SET_POST_POSTER_TEXT,
+  curUsID: curUsID,
+  text: text,
+});
+
 export default usersPostsReducer
+
+
+

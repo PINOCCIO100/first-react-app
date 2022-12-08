@@ -6,20 +6,17 @@ import s from './DialogsMessages.module.css';
 import TextInput from '../../_sharedComponents/TextInput/TextInput';
 import DialogsText from './DialogsText/DialogsText';
 import DialogsMessagesList from './DialogsMessagesList/DialogsMessagesList';
-import { setMessageSenderTextActionCreator } from '../../../dataBase/reducers/usersMessageSenderTextReducer';
-import { sendMessageSenderTextActionCreator } from '../../../dataBase/reducers/usersMessagesReducer';
+import { setMessageSenderTextActionCreator, sendMessageSenderTextActionCreator } from '../../../dataBase/reducers/usersMessagesReducer';
 
 export function DialogsMessages({ store }) {
   const {
-    usersMessages,
-    currentUserID,
-    usersProfileInfo,
-  } = store.state;
+    ProfileState: { usersProfileInfo, currentUserID },
+  } = store.getState();
 
   const { userID } = useParams();
   const stateOfDialogsMessages = () => {
     let key = 1;
-    return usersMessages[currentUserID][userID].map(({ me, message }) => {
+    return store.getState().DialogsState.usersMessages[currentUserID][userID].map(({ me, message }) => {
       const messageAttributes = {
         my: me,
         message: message,
@@ -35,15 +32,15 @@ export function DialogsMessages({ store }) {
     setArrayOfDialogText(stateOfDialogsMessages());
   }, [userID]);
 
-  const getTextFromBLL = () => {
-    return store.curUserMessageSenderText(userID);
-  }
   const setTextToBLL = (currentTextUI) => {
-    store.dispatch(setMessageSenderTextActionCreator(userID, currentTextUI));
+    store.dispatch(setMessageSenderTextActionCreator(currentUserID, userID, currentTextUI));
+  }
+  const getTextFromBLL = () => {
+    return store.getState().DialogsState.usersMessageSenderText[currentUserID][userID];
   }
   const sendText = () => {
-    store.dispatch(sendMessageSenderTextActionCreator(userID));
-    setArrayOfDialogText(stateOfDialogsMessages());
+    store.dispatch(sendMessageSenderTextActionCreator(currentUserID, userID));
+    setArrayOfDialogText(stateOfDialogsMessages(currentUserID));
   };
 
   return (
