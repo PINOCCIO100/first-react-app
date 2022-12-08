@@ -23,6 +23,22 @@ function TextInput({ className, getTextFromBLL, setTextToBLL, sendText, labels }
     setCurrentTextUI(getTextFromBLL());
   }, [txtaElem, getTextFromBLL]);
 
+  // const [focused, setFocused] = useState(false)
+  // const onFocus = () => setFocused(true);
+  // const onBlur = () => setFocused(false);
+
+  const keyDownFunc = (e) => {
+    if (e.code === 'Enter' && e.ctrlKey) {
+      sendText();
+      setCurrentTextUI(getTextFromBLL());
+    };
+  }
+  useEffect(() => {
+    document.addEventListener('keydown', keyDownFunc);
+    return () => document.removeEventListener('keydown', keyDownFunc);
+  });
+
+
   const [currentTextUI, setCurrentTextUI] = useState(getTextFromBLL());
   const onInput = (e) => {
     setTextToBLL(e.target.value);
@@ -33,13 +49,13 @@ function TextInput({ className, getTextFromBLL, setTextToBLL, sendText, labels }
     sendText();
     setCurrentTextUI(getTextFromBLL());
   }
-
-  //TODO Добавить возможность отправлять сообщения по нажатию на Enterы
   return (
     <div className={[s.TextInput, className].join(' ')}>
       <textarea
         ref={txtaElem}
         value={currentTextUI}
+        // onFocus={onFocus}
+        // onBlur={onBlur}
         onInput={onInput}
         className='scrollBar'
         name="TextInput"

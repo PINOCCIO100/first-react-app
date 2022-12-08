@@ -25,7 +25,9 @@ export const store = {
     //  Задается через subscribe(observer) в index.js 
     //  (желательно не использовать) 
   },
-
+  subscribe(obsever) {
+    this._rerenderApp = obsever;
+  },
   // методы для получения состояний 
   get state() {
     return this._state;
@@ -37,10 +39,6 @@ export const store = {
 
   curUserMessageSenderText(userID) {
     return this._state.usersMessageSenderText[this._state.currentUserID][userID];
-  },
-
-  subscribe(obsever) {
-    this._rerenderApp = obsever;
   },
 
   dispatch(action) {
