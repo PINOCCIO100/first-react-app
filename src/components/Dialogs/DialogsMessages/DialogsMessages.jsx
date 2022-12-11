@@ -8,26 +8,21 @@ import DialogsText from './DialogsText/DialogsText';
 import DialogsMessagesList from './DialogsMessagesList/DialogsMessagesList';
 import { setMessageSenderTextActionCreator, sendMessageSenderTextActionCreator } from '../../../dataBase/reducers/usersMessagesReducer';
 
+
+
 export function DialogsMessages({ store }) {
   const {
     ProfileState: { usersProfileInfo, currentUserID },
   } = store.getState();
 
   const { userID } = useParams();
+
+
   const stateOfDialogsMessages = () => {
-    let key = 1;
-    return store.getState().DialogsState.usersMessages[currentUserID][userID].map(({ me, message }) => {
-      const messageAttributes = {
-        my: me,
-        message: message,
-        userProfileInfo: usersProfileInfo[me ? currentUserID : userID],
-      };
-      return <DialogsText key={key++} messageAttributes={messageAttributes} />
-    });
+    return [...store.getState().DialogsState.usersMessages[currentUserID][userID]];
   }
 
   const [arrayOfDialogText, setArrayOfDialogText] = useState(stateOfDialogsMessages());
-  // TODO разобраться почему без useEffect'а не обнавляется arrayOfDialogText
   useEffect(() => {
     setArrayOfDialogText(stateOfDialogsMessages());
   }, [userID]);
@@ -40,13 +35,24 @@ export function DialogsMessages({ store }) {
   }
   const sendText = () => {
     store.dispatch(sendMessageSenderTextActionCreator(currentUserID, userID));
-    setArrayOfDialogText(stateOfDialogsMessages(currentUserID));
+    setArrayOfDialogText(stateOfDialogsMessages());
   };
-
+  let key = 0;
   return (
     <div className={s.DialogsMessages}>
       <div className={s.DialogsMessages__container + " scrollBar"}>
-        <DialogsMessagesList arrayOfDialogText={arrayOfDialogText} />
+        <DialogsMessagesList>
+          {
+            arrayOfDialogText.map(({ me, message }) => {
+              const messageAttributes = {
+                my: me,
+                message: message,
+                userProfileInfo: usersProfileInfo[me ? currentUserID : userID],
+              };
+              return <DialogsText key={key++} messageAttributes={messageAttributes} />
+            })
+          }
+        </DialogsMessagesList>
       </div>
       <TextInput
         className={s.DialogsMessages__TextInput}

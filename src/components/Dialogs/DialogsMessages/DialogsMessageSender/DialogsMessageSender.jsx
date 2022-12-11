@@ -1,7 +1,7 @@
 import { createRef, React, useEffect, useState } from 'react';
 import s from './DialogsMessageSender.module.css';
 
-const autoresize = (txtaElem) => {
+const autoResize = (txtaElem) => {
   const txtaElemStyle = window.getComputedStyle(txtaElem);
   const height = Number.parseInt(txtaElemStyle.height);
   const maxHeight = Number.parseInt(txtaElemStyle.maxHeight);
@@ -16,10 +16,10 @@ const autoresize = (txtaElem) => {
 
 function DialogsMessageSender({ getTextFromBLL, setTextToBLL, sendText }) {
 
-  // создаем ref на textarea и при рендере компонента и применяем к нему autoresize в useEffect   
+  // создаем ref на textarea и при рендере компонента и применяем к нему autoResize в useEffect   
   const txtaElem = createRef();
   useEffect(() => {
-    autoresize(txtaElem.current);
+    autoResize(txtaElem.current);
     setCurrentTextUI(getTextFromBLL());
   });
 
@@ -27,7 +27,7 @@ function DialogsMessageSender({ getTextFromBLL, setTextToBLL, sendText }) {
   const onInput = (e) => {
     setTextToBLL(e.target.value);
     setCurrentTextUI(getTextFromBLL());
-    autoresize(e.target);
+    autoResize(e.target);
   }
   const onClick = () => {
     sendText();

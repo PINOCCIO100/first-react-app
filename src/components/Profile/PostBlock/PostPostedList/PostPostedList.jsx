@@ -1,11 +1,15 @@
+import { useEffect } from 'react';
 import { React } from 'react';
 import s from './PostPostedList.module.css';
 
 
-function PostPostedList({ postedPosts }) {
+function PostPostedList({ initializePosts, children }) {
+  useEffect(() => {
+    initializePosts()
+  }, []);
   return (
     <div className={s.postPostedList + " scrollBar"} >
-      {postedPosts}
+      {children}
     </div>
   );
 }

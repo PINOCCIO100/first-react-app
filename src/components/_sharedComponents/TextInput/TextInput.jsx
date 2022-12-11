@@ -1,7 +1,7 @@
 import { createRef, React, useEffect, useState } from 'react';
 import s from './TextInput.module.css';
 
-const autoresize = (txtaElem) => {
+const autoResize = (txtaElem) => {
   const txtaElemStyle = window.getComputedStyle(txtaElem);
   const height = Number.parseInt(txtaElemStyle.height);
   const maxHeight = Number.parseInt(txtaElemStyle.maxHeight);
@@ -16,12 +16,13 @@ const autoresize = (txtaElem) => {
 
 function TextInput({ className, getTextFromBLL, setTextToBLL, sendText, labels }) {
 
-  // создаем ref на textarea и при рендере компонента и применяем к нему autoresize в useEffect   
   const txtaElem = createRef();
   useEffect(() => {
-    autoresize(txtaElem.current);
+    // создаем ref на textarea и при рендере компонента и применяем к нему autoResize в useEffect   
+    autoResize(txtaElem.current);
+    // вставляем в textarea не отправленный текст из BLL
     setCurrentTextUI(getTextFromBLL());
-  }, [txtaElem, getTextFromBLL]);
+  }, [txtaElem]);
 
   // const [focused, setFocused] = useState(false)
   // const onFocus = () => setFocused(true);
@@ -38,12 +39,11 @@ function TextInput({ className, getTextFromBLL, setTextToBLL, sendText, labels }
     return () => document.removeEventListener('keydown', keyDownFunc);
   });
 
-
   const [currentTextUI, setCurrentTextUI] = useState(getTextFromBLL());
   const onInput = (e) => {
     setTextToBLL(e.target.value);
     setCurrentTextUI(getTextFromBLL());
-    autoresize(e.target);
+    autoResize(e.target);
   }
   const onClick = () => {
     sendText();

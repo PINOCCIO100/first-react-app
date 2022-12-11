@@ -30,7 +30,7 @@ const usersMessagesReducer = (state = initialState, action) => {
           me: true,
           message: curUserMessageSenderText[action.userID],
         }
-      ]
+      ];
       curUserMessageSenderText[action.userID] = '';
       return newState
     case SET_MESSAGE_SENDER_TEXT:
