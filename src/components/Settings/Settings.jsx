@@ -1,9 +1,9 @@
 import React from 'react';
 import s from './Settings.module.css';
 
-import IDSelector from './IDSelector/IDSelector';
+import IDSelectorContainer from './IDSelector/IDSelectorContainer/IDSelectorContainer';
 
-function Settings({ store }) {
+function Settings() {
   return (
     <div className={s.Settings}>
       <div className={s.Settings__wrapper}>
@@ -11,7 +11,7 @@ function Settings({ store }) {
           Settings
         </h1>
         <div className={s.Settings__body}>
-          <IDSelector store={store} />
+          <IDSelectorContainer />
         </div>
       </div>
     </div>

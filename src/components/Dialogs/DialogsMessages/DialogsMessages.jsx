@@ -1,68 +1,25 @@
-import { React, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { React, useState } from 'react';
 import s from './DialogsMessages.module.css';
 // TODO как-то убрать импорты
 
-import TextInput from '../../_sharedComponents/TextInput/TextInput';
-import DialogsText from './DialogsText/DialogsText';
-import DialogsMessagesList from './DialogsMessagesList/DialogsMessagesList';
-import { setMessageSenderTextActionCreator, sendMessageSenderTextActionCreator } from '../../../dataBase/reducers/usersMessagesReducer';
+import TextInputDialogsMessagesContainer from './TextInputDialogsMessagesContainer/TextInputDialogsMessagesContainer';
+import DialogsMessagesListContainer from './DialogsMessagesListContainer/DialogsMessagesListContainer';
 
 
+export function DialogsMessages() {
 
-export function DialogsMessages({ store }) {
-  const {
-    ProfileState: { usersProfileInfo, currentUserID },
-  } = store.getState();
+  const [arrayOfDialogText, setArrayOfDialogText] = useState([]);
 
-  const { userID } = useParams();
-
-
-  const stateOfDialogsMessages = () => {
-    return [...store.getState().DialogsState.usersMessages[currentUserID][userID]];
-  }
-
-  const [arrayOfDialogText, setArrayOfDialogText] = useState(stateOfDialogsMessages());
-  useEffect(() => {
-    setArrayOfDialogText(stateOfDialogsMessages());
-  }, [userID]);
-
-  const setTextToBLL = (currentTextUI) => {
-    store.dispatch(setMessageSenderTextActionCreator(currentUserID, userID, currentTextUI));
-  }
-  const getTextFromBLL = () => {
-    return store.getState().DialogsState.usersMessageSenderText[currentUserID][userID];
-  }
-  const sendText = () => {
-    store.dispatch(sendMessageSenderTextActionCreator(currentUserID, userID));
-    setArrayOfDialogText(stateOfDialogsMessages());
-  };
-  let key = 0;
   return (
     <div className={s.DialogsMessages}>
       <div className={s.DialogsMessages__container + " scrollBar"}>
-        <DialogsMessagesList>
-          {
-            arrayOfDialogText.map(({ me, message }) => {
-              const messageAttributes = {
-                my: me,
-                message: message,
-                userProfileInfo: usersProfileInfo[me ? currentUserID : userID],
-              };
-              return <DialogsText key={key++} messageAttributes={messageAttributes} />
-            })
-          }
-        </DialogsMessagesList>
+        <DialogsMessagesListContainer setArrayOfDialogText={setArrayOfDialogText} >
+          {arrayOfDialogText}
+        </DialogsMessagesListContainer>
       </div>
-      <TextInput
+      <TextInputDialogsMessagesContainer
+        setArrayOfDialogText={setArrayOfDialogText}
         className={s.DialogsMessages__TextInput}
-        getTextFromBLL={getTextFromBLL}
-        setTextToBLL={setTextToBLL}
-        sendText={sendText}
-        labels={{
-          placeholder: 'Text your message...',
-          button: 'Send',
-        }}
       />
     </div >
   );

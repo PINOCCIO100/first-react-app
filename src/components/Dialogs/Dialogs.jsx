@@ -19,7 +19,7 @@ function Dialogs({ store }) {
           <div className={s.Dialogs__messages}>
             <Routes>
               <Route index />
-              <Route path="user/:userID" element={<DialogsMessages store={store} />} />
+              <Route path="user/:userID" element={<DialogsMessages/>} />
             </Routes>
           </div>
         </div>
