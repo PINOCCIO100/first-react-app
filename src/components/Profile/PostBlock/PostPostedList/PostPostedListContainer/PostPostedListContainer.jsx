@@ -1,4 +1,4 @@
-import { StoreContext } from "../../../_contexts/StoreContext";
+import { StoreContext } from "../../../../_contexts/StoreContext";
 import PostPosted from "../PostPosted/PostPosted";
 import PostPostedList from "../PostPostedList";
 

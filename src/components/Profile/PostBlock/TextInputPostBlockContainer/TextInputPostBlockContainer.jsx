@@ -1,6 +1,6 @@
 import TextInput from '../../../_sharedComponents/TextInput/TextInput';
 import { setPostPosterTextActionCreator, addPostActionCreator } from '../../../../dataBase/reducers/usersPostsReducer';
-import { StoreContext } from '../../_contexts/StoreContext';
+import { StoreContext } from '../../../_contexts/StoreContext';
 
 function TextInputPostBlockContainer({ setPostedPosts, ...props }) {
   return (

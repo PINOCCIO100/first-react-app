@@ -1,6 +1,6 @@
-import { StoreContext } from "../../../Profile/_contexts/StoreContext";
+import { StoreContext } from "../../_contexts/StoreContext";
 
-import IDSelector from "../IDSelector";
+import IDSelector from "../IDSelector/IDSelector";
 
 function IDSelectorContainer() {
 

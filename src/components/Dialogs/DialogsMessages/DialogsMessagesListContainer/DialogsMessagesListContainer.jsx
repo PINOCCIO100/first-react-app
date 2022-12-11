@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { StoreContext } from "../../../Profile/_contexts/StoreContext";
+import { StoreContext } from "../../../_contexts/StoreContext";
 import DialogsMessagesList from "../DialogsMessagesList/DialogsMessagesList";
 import DialogsText from "../DialogsText/DialogsText";
 

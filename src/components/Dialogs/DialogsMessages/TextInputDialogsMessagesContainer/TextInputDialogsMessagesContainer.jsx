@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { sendMessageSenderTextActionCreator, setMessageSenderTextActionCreator } from "../../../../dataBase/reducers/usersMessagesReducer";
-import { StoreContext } from "../../../Profile/_contexts/StoreContext";
+import { StoreContext } from "../../../_contexts/StoreContext";
 import TextInput from "../../../_sharedComponents/TextInput/TextInput";
 
 function TextInputDialogsMessagesContainer({ setArrayOfDialogText, ...props }) {
