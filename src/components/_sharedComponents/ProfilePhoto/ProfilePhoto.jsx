@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './ProfilePhoto.module.css';
 
 function ProfilePhoto({ src, className }) {

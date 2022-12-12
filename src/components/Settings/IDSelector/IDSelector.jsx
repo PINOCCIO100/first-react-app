@@ -1,22 +1,19 @@
-import { useState } from 'react';
 import s from './IDSelector.module.css';
-// TODO как-то убрать импорты
 
-function IDSelector({ setInfoFToBLL, getInfoFromBLL, children }) {
-
-  const [curUsID, setCurUsID] = useState(getInfoFromBLL());
+function IDSelector({ currentUserID, usersProfileInfo, setInfoFToBLL }) {
   const onChange = (e) => {
     setInfoFToBLL(e.target.value);
-    setCurUsID(getInfoFromBLL());
   }
-
   return (
     <div className={s.IDSelector}>
       <p className={s.IDSelector__infoText}>
-        Current user ID is <span>{curUsID}</span>
+        Current user ID is <span>{currentUserID}</span>
       </p>
-      <select onChange={onChange} defaultValue={curUsID}>
-        {children}
+      <select onChange={onChange} defaultValue={currentUserID}>
+        {
+          Object.keys(usersProfileInfo)
+            .map((userID) => <option key={userID} value={userID}>{userID}</option>)
+        }
       </select>
     </div>
   );

@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.css';
 import './UI/UI.css';
 import { Route, Routes } from 'react-router-dom';

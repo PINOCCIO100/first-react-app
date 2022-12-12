@@ -1,26 +1,13 @@
 import { connect } from "react-redux";
 import PostPostedList from "../PostPostedList";
 
-
 let mapStateToProps = (state) => {
   const currentUserID = state.ProfileState.currentUserID;
-  const usersProfileInfo = { ...state.ProfileState.usersProfileInfo };
-  const curUserPosts = [...state.PostsState.usersPosts[currentUserID]];
   return {
-    usersProfileInfo,
-    curUserPosts,
-    }
-}
-
-let mergeToProps = (mapStateToProps, mapDispatchToProps, ownProps) => {
-  return {
-    ...mapStateToProps,
-    ...mapDispatchToProps,
-    ...ownProps,
-    initializePosts: () => {
-      ownProps.setPostedPosts(mapStateToProps.curUserPosts);
-    }
+    currentUserID,
+    usersProfileInfo: { ...state.ProfileState.usersProfileInfo },
+    curUserPosts: [...state.PostsState.usersPosts[currentUserID]],
   }
 }
 
-export const PostPostedListContainer = connect(mapStateToProps, null, mergeToProps)(PostPostedList)
+export const PostPostedListContainer = connect(mapStateToProps)(PostPostedList)

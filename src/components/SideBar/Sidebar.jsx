@@ -1,9 +1,8 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import s from './Sidebar.module.css';
 
 
-function Sidebar(props) {
+function Sidebar() {
   return (
     <nav className={s.sideBar}>
       <ul>

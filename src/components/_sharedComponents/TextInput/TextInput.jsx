@@ -1,37 +1,29 @@
-import { createRef, React, useEffect, useState } from 'react';
+import { createRef, useEffect } from 'react';
 import s from './TextInput.module.css';
 
-const autoResize = (txtaElem) => {
-  const txtaElemStyle = window.getComputedStyle(txtaElem);
-  const height = Number.parseInt(txtaElemStyle.height);
-  const maxHeight = Number.parseInt(txtaElemStyle.maxHeight);
+const autoResize = (textAreaElem) => {
+  const textAreaElemStyle = window.getComputedStyle(textAreaElem);
+  const height = Number.parseInt(textAreaElemStyle.height);
+  const maxHeight = Number.parseInt(textAreaElemStyle.maxHeight);
 
-  txtaElem.style.height = `auto`;
-  txtaElem.style.height = `${txtaElem.scrollHeight}px`;
+  textAreaElem.style.height = `auto`;
+  textAreaElem.style.height = `${textAreaElem.scrollHeight}px`;
 
   if (!isNaN(maxHeight)) {
-    txtaElem.style.overflowY = height >= maxHeight ? 'auto' : 'hidden';
+    textAreaElem.style.overflowY = height >= maxHeight ? 'auto' : 'hidden';
   }
 }
 
-function TextInput({ className, getTextFromBLL, setTextToBLL, sendText, labels }) {
-
-  const txtaElem = createRef();
+function TextInput({ getTextFromBLL, setTextToBLL, sendText, className, labels }) {
+  const textAreaElem = createRef();
   useEffect(() => {
     // создаем ref на textarea и при рендере компонента и применяем к нему autoResize в useEffect   
-    autoResize(txtaElem.current);
-    // вставляем в textarea не отправленный текст из BLL
-    setCurrentTextUI(getTextFromBLL());
-  }, [txtaElem]);
-
-  // const [focused, setFocused] = useState(false)
-  // const onFocus = () => setFocused(true);
-  // const onBlur = () => setFocused(false);
+    autoResize(textAreaElem.current);
+  }, [textAreaElem]);
 
   const keyDownFunc = (e) => {
     if (e.code === 'Enter' && e.ctrlKey) {
       sendText();
-      setCurrentTextUI(getTextFromBLL());
     };
   }
   useEffect(() => {
@@ -39,23 +31,18 @@ function TextInput({ className, getTextFromBLL, setTextToBLL, sendText, labels }
     return () => document.removeEventListener('keydown', keyDownFunc);
   });
 
-  const [currentTextUI, setCurrentTextUI] = useState(getTextFromBLL());
   const onInput = (e) => {
     setTextToBLL(e.target.value);
-    setCurrentTextUI(getTextFromBLL());
     autoResize(e.target);
   }
   const onClick = () => {
     sendText();
-    setCurrentTextUI(getTextFromBLL());
   }
   return (
     <div className={[s.TextInput, className].join(' ')}>
       <textarea
-        ref={txtaElem}
-        value={currentTextUI}
-        // onFocus={onFocus}
-        // onBlur={onBlur}
+        ref={textAreaElem}
+        value={getTextFromBLL()}
         onInput={onInput}
         className='scrollBar'
         name="TextInput"

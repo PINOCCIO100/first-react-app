@@ -1,16 +1,11 @@
-import { useEffect } from 'react';
-import { React } from 'react';
 import s from './PostPostedList.module.css';
 import PostPosted from './PostPosted/PostPosted';
 
-function PostPostedList({ initializePosts, usersProfileInfo, children }) {
-  useEffect(() => {
-    initializePosts()
-  }, []);
+function PostPostedList({  usersProfileInfo, curUserPosts }) {
   return (
     <div className={s.postPostedList + " scrollBar"} >
       {
-        children.map((post) => {
+        curUserPosts.map((post) => {
           return (<PostPosted
             key={post.messageID}
             post={post}

@@ -1,4 +1,3 @@
-import React from 'react';
 import ButtonRating from './ButtonRating/ButtonRating';
 import s from './PostPosted.module.css';
 

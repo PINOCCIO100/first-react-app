@@ -1,42 +1,39 @@
 import TextInput from '../../../_sharedComponents/TextInput/TextInput';
 import { setPostPosterTextActionCreator, addPostActionCreator } from '../../../../dataBase/reducers/usersPostsReducer';
-import { StoreContext } from '../../../_contexts/StoreContext';
+import { connect } from 'react-redux';
 
-function TextInputPostBlockContainer({ setPostedPosts, ...props }) {
-  return (
-    <StoreContext.Consumer>
-      {
-        store => {
-          const currentUserID = store.getState().ProfileState.currentUserID;
-
-          const getTextFromBLL = () => {
-            return store.getState().PostsState.usersPostPosterText[currentUserID];
-          }
-          const setTextToBLL = (currentTextUI) => {
-            store.dispatch(setPostPosterTextActionCreator(currentUserID, currentTextUI));
-          }
-          const addPost = () => {
-            store.dispatch(addPostActionCreator(currentUserID));
-            setPostedPosts([...store.getState().PostsState.usersPosts[currentUserID]]);
-          };
-          return (
-            <>
-              <TextInput
-                getTextFromBLL={getTextFromBLL}
-                setTextToBLL={setTextToBLL}
-                sendText={addPost}
-                labels={{
-                  placeholder: 'Your news...',
-                  button: 'Send',
-                }}
-                {...props}
-              />
-            </>
-          )
-        }
-      }
-    </StoreContext.Consumer>
-  );
+const mapStateToProps = (state) => {
+  const currentUserID = state.ProfileState.currentUserID;
+  return {
+    currentUserID,
+    curUserPostPosterText: state.PostsState.usersPostPosterText[currentUserID],
+  }
+}
+const mapDispatchToProps = {
+  setPostPosterTextActionCreator,
+  addPostActionCreator,
 }
 
-export default TextInputPostBlockContainer;
+const mergeToProps = (mapStateToProps, mapDispatchToProps, ownProps) => {
+  const currentUserID = mapStateToProps.currentUserID;
+  return {
+    ...mapStateToProps,
+    ...mapDispatchToProps,
+    ...ownProps,
+    getTextFromBLL() {
+      return mapStateToProps.curUserPostPosterText;
+    },
+    setTextToBLL(currentTextUI) {
+      mapDispatchToProps.setPostPosterTextActionCreator(currentUserID, currentTextUI);
+    },
+    sendText() {
+      mapDispatchToProps.addPostActionCreator(currentUserID);
+    },
+    labels: {
+      placeholder: 'Your news...',
+      button: 'Send',
+    },
+  }
+}
+
+export const TextInputPostBlockContainer = connect(mapStateToProps, mapDispatchToProps, mergeToProps)(TextInput)

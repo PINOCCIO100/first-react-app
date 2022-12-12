@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './DialogsSidebar.module.css';
 
 import FriendCard from './FriendCard/FriendCard';

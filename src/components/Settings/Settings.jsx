@@ -1,7 +1,6 @@
-import React from 'react';
 import s from './Settings.module.css';
 
-import IDSelectorContainer from './IDSelectorContainer/IDSelectorContainer';
+import { IDSelectorContainer } from './IDSelectorContainer/IDSelectorContainer';
 
 function Settings() {
   return (

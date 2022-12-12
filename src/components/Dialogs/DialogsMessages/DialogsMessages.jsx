@@ -1,24 +1,17 @@
-import { React, useState } from 'react';
 import s from './DialogsMessages.module.css';
-// TODO как-то убрать импорты
 
-import TextInputDialogsMessagesContainer from './TextInputDialogsMessagesContainer/TextInputDialogsMessagesContainer';
-import DialogsMessagesListContainer from './DialogsMessagesListContainer/DialogsMessagesListContainer';
-
+import { TextInputDialogsMessagesContainer } from './TextInputDialogsMessagesContainer/TextInputDialogsMessagesContainer';
+import { DialogsMessagesListContainer } from './DialogsMessagesListContainer/DialogsMessagesListContainer';
+import { useParams } from 'react-router-dom';
 
 export function DialogsMessages() {
-
-  const [arrayOfDialogText, setArrayOfDialogText] = useState([]);
-
   return (
     <div className={s.DialogsMessages}>
       <div className={s.DialogsMessages__container + " scrollBar"}>
-        <DialogsMessagesListContainer setArrayOfDialogText={setArrayOfDialogText} >
-          {arrayOfDialogText}
-        </DialogsMessagesListContainer>
+        <DialogsMessagesListContainer />
       </div>
       <TextInputDialogsMessagesContainer
-        setArrayOfDialogText={setArrayOfDialogText}
+        userID={useParams().userID}
         className={s.DialogsMessages__TextInput}
       />
     </div >

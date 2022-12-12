@@ -1,8 +1,7 @@
-import React from 'react';
 import s from './Header.module.css';
 import logo from './apple.png';
 
-function Header(props) {
+function Header() {
   return (
     <header className={s["header"]}>
       <div className={s["header__logo"]}>

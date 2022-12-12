@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import s from './ButtonRating.module.css';
 
 function ButtonRating({ like, dislike }) {

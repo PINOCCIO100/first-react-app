@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './UserCard.module.css';
 
 function UserCard({ userProfileInfo }) {

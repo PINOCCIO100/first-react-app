@@ -1,29 +1,29 @@
-import { useContext } from "react";
-import { StoreContext } from "../../_contexts/StoreContext";
+import { connect } from "react-redux";
+import { setCurrentUserIDActionCreator } from "../../../dataBase/reducers/usersProfileInfoReducer";
 
 import IDSelector from "../IDSelector/IDSelector";
 
-function IDSelectorContainer() {
-  const store = useContext(StoreContext);
 
-  const usersProfileInfo = store.getState().ProfileState.usersProfileInfo
-
-  const getInfoFromBLL = () => {
-    return store.getState().ProfileState.currentUserID;
+const mapStateToProps = (state) => {
+  return {
+    currentUserID: state.ProfileState.currentUserID,
+    usersProfileInfo: { ...state.ProfileState.usersProfileInfo },
   }
-
-  const setInfoFToBLL = (userID) => {
-    store.getState().ProfileState.currentUserID = userID;
-  }
-
-  return (
-    <IDSelector getInfoFromBLL={getInfoFromBLL} setInfoFToBLL={setInfoFToBLL}    >
-      {
-        Object.keys(usersProfileInfo)
-          .map((userID) => <option key={userID} value={userID}>{userID}</option>)
-      }
-    </IDSelector>
-  )
 }
 
-export default IDSelectorContainer;
+const mapDispatchToState = {
+  setCurrentUserIDActionCreator,
+}
+
+const mergeToProps = (mapStateToProps, mapDispatchToState, ownProps) => {
+  return {
+    ...mapStateToProps,
+    ...mapDispatchToState,
+    ...ownProps,
+    setInfoFToBLL(userID) {
+      mapDispatchToState.setCurrentUserIDActionCreator(userID);
+    },
+  }
+}
+
+export const IDSelectorContainer = connect(mapStateToProps, mapDispatchToState, mergeToProps)(IDSelector);

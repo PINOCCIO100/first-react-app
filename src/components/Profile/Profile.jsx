@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './Profile.module.css';
 import banner from './banner.jpg';
 
