@@ -1,30 +1,26 @@
-import { useContext } from "react";
-import { StoreContext } from "../../../../_contexts/StoreContext";
-import PostPosted from "../PostPosted/PostPosted";
+import { connect } from "react-redux";
 import PostPostedList from "../PostPostedList";
 
-function PostPostedListContainer({ children, setPostedPosts, ...props }) {
-  const store = useContext(StoreContext);
-  const currentUserID = store.getState().ProfileState.currentUserID;
-  const usersProfileInfo = store.getState().ProfileState.usersProfileInfo;
-  const initializePosts = () => {
-    setPostedPosts([...store.getState().PostsState.usersPosts[currentUserID]]);
-  }
-  return (
-    <>
-      <PostPostedList {...props} initializePosts={initializePosts} >
-        {
-          children.map((post) => {
-            return (<PostPosted
-              key={post.messageID}
-              post={post}
-              photo={usersProfileInfo[post.userID].photo} />);
-          })
-        }
-      </PostPostedList>
-    </>
-  )
 
+let mapStateToProps = (state) => {
+  const currentUserID = state.ProfileState.currentUserID;
+  const usersProfileInfo = { ...state.ProfileState.usersProfileInfo };
+  const curUserPosts = [...state.PostsState.usersPosts[currentUserID]];
+  return {
+    usersProfileInfo,
+    curUserPosts,
+    }
 }
 
-export default PostPostedListContainer;
+let mergeToProps = (mapStateToProps, mapDispatchToProps, ownProps) => {
+  return {
+    ...mapStateToProps,
+    ...mapDispatchToProps,
+    ...ownProps,
+    initializePosts: () => {
+      ownProps.setPostedPosts(mapStateToProps.curUserPosts);
+    }
+  }
+}
+
+export const PostPostedListContainer = connect(mapStateToProps, null, mergeToProps)(PostPostedList)

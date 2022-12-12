@@ -2,7 +2,7 @@ import { React, useState } from 'react';
 import s from './PostBlock.module.css';
 
 import TextInputPostBlockContainer from './TextInputPostBlockContainer/TextInputPostBlockContainer';
-import PostPostedListContainer from './PostPostedList/PostPostedListContainer/PostPostedListContainer';
+import { PostPostedListContainer } from './PostPostedList/PostPostedListContainer/PostPostedListContainer';
 
 
 function PostBlock(props) {
