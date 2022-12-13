@@ -5,8 +5,8 @@ const mapStateToProps = (state) => {
   const currentUserID = state.ProfileState.currentUserID;
   return {
     currentUserID,
-    usersProfileInfo: { ...state.ProfileState.usersProfileInfo },
-    curUserMessages: { ...state.DialogsState.usersMessages[currentUserID] },
+    usersProfileInfo: state.ProfileState.usersProfileInfo,
+    curUserMessages: state.DialogsState.usersMessages[currentUserID],
   }
 }
 

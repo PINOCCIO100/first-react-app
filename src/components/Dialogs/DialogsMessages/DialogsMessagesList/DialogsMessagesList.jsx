@@ -4,7 +4,6 @@ import s from './DialogsMessagesList.module.css';
 
 function DialogsMessagesList({ usersProfileInfo, currentUserID, curUserMessages }) {
   const { userID } = useParams();
-
   let key = Date.now();
   return (
     <div className={s.DialogsMessagesList}>

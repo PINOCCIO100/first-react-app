@@ -31,7 +31,7 @@ function TextInput({ getTextFromBLL, setTextToBLL, sendText, className, labels }
     return () => document.removeEventListener('keydown', keyDownFunc);
   });
 
-  const onInput = (e) => {
+  const onChange = (e) => {
     setTextToBLL(e.target.value);
     autoResize(e.target);
   }
@@ -43,7 +43,7 @@ function TextInput({ getTextFromBLL, setTextToBLL, sendText, className, labels }
       <textarea
         ref={textAreaElem}
         value={getTextFromBLL()}
-        onInput={onInput}
+        onChange={onChange}
         className='scrollBar'
         name="TextInput"
         placeholder={labels.placeholder}

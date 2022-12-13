@@ -5,8 +5,8 @@ let mapStateToProps = (state) => {
   const currentUserID = state.ProfileState.currentUserID;
   return {
     currentUserID,
-    usersProfileInfo: { ...state.ProfileState.usersProfileInfo },
-    curUserPosts: [...state.PostsState.usersPosts[currentUserID]],
+    usersProfileInfo: state.ProfileState.usersProfileInfo,
+    curUserPosts: state.PostsState.usersPosts[currentUserID],
   }
 }
 

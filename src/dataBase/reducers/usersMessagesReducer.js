@@ -2,7 +2,6 @@ import { usersMessages } from "../usersMessages/usersMessages";
 import { currentUserID } from '../usersProfileInfo/usersProfileInfo';
 import { usersMessageSenderText } from '../usersMessages/usersMessages';
 
-
 const SET_MESSAGE_SENDER_TEXT = 'SET-MESSAGE-SENDER-TEXT';
 const SEND_MESSAGE = 'SEND-MESSAGE';
 
@@ -13,29 +12,38 @@ let initialState = {
 };
 
 const usersMessagesReducer = (state = initialState, action) => {
-  const newState = {
-    currentUserID: state.currentUserID,
-    usersMessageSenderText: { ...state.usersMessageSenderText },
-    usersMessages: { ...state.usersMessages },
-  }
-
-  let curUserMessageSenderText = newState.usersMessageSenderText[action.curUsID] = { ...state.usersMessageSenderText[action.curUsID] };
 
   switch (action.type) {
-    case SEND_MESSAGE:
-      if (curUserMessageSenderText[action.userID] === '') return state;
-      newState.usersMessages[action.curUsID][action.userID] = [
-        ...newState.usersMessages[action.curUsID][action.userID],
+    case SEND_MESSAGE: {
+      if (state.usersMessageSenderText[action.curUsID][action.userID] === '') return state;
+
+      const newState = { ...state };
+
+      newState.usersMessages = { ...state.usersMessages };
+      const curUserMessages = newState.usersMessages[action.curUsID] = { ...state.usersMessages[[action.curUsID]] };
+
+      newState.usersMessageSenderText = { ...state.usersMessageSenderText };
+      const curUserMessageSenderText = newState.usersMessageSenderText[action.curUsID] = { ...state.usersMessageSenderText[action.curUsID] };
+
+      curUserMessages[action.userID] = [
+        ...curUserMessages[action.userID],
         {
           me: true,
           message: curUserMessageSenderText[action.userID],
         }
       ];
       curUserMessageSenderText[action.userID] = '';
-      return newState
-    case SET_MESSAGE_SENDER_TEXT:
+      return newState;
+    }
+    case SET_MESSAGE_SENDER_TEXT: {
+      const newState = { ...state };
+
+      newState.usersMessageSenderText = { ...state.usersMessageSenderText };
+      const curUserMessageSenderText = newState.usersMessageSenderText[action.curUsID] = { ...state.usersMessageSenderText[action.curUsID] };
+
       curUserMessageSenderText[action.userID] = action.text;
       return newState;
+    }
     default:
       return state;
   }
