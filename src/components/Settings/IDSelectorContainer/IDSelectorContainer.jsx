@@ -7,7 +7,7 @@ import IDSelector from "../IDSelector/IDSelector";
 const mapStateToProps = (state) => {
   return {
     currentUserID: state.ProfileState.currentUserID,
-    usersProfileInfo: { ...state.ProfileState.usersProfileInfo },
+    usersProfileInfo: state.ProfileState.usersProfileInfo,
   }
 }
 
