@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import s from './Sidebar.module.css';
 
+// TODO: переименовать Sidebar в Navbar
 
 function Sidebar() {
   return (
@@ -17,6 +18,9 @@ function Sidebar() {
         </li>
         <li>
           <Link className={s.link + " Link"} to='/music'>Music</Link>
+        </li>
+        <li>
+          <Link className={s.link + " Link"} to='/find-users'>Find users</Link>
         </li>
         <li>
           <Link className={s.link + " Link"} to='/settings'>Settings</Link>

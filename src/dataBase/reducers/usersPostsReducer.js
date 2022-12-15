@@ -10,10 +10,6 @@ let initialState = {
 };
 
 const usersPostsReducer = (state = initialState, action) => {
-  // let newState = {
-  //   usersPostPosterText: { ...state.usersPostPosterText },
-  //   usersPosts: { ...state.usersPosts },
-  // };
 
   switch (action.type) {
     case CREATE_POST: {
