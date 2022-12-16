@@ -1,0 +1,31 @@
+.UsersListPagination {
+  -webkit-user-select: none;
+          user-select: none;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 10px;
+  font-size: 30px;
+  padding: 0 20px;
+  margin: 0 0 10px 0;
+  overflow: hidden;
+}
+.UsersListPagination > li {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 10px;
+  border: 3px solid var(--color-bg-8);
+  border-radius: 10px;
+}
+
+.activePage {
+  background: var(--color-bg-4);
+  font-weight: 900;
+}

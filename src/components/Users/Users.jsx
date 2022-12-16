@@ -1,5 +1,5 @@
 import s from './Users.module.css';
-import { UsersListContainer } from './UsersList/UsersListContainer';
+import UsersListContainer from './UsersList/UsersListContainer';
 
 function Users() {
   return (

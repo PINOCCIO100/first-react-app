@@ -3,30 +3,6 @@
   height: 100%;
 }
 
-.UserList__pages {
-  user-select: none;
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  justify-content: flex-start;
-  column-gap: 10px;
-  font-size: 30px;
-  padding: 0 20px;
-  margin: 0 0 10px 0;
-  overflow: hidden;
-
-  >li {
-    padding: 10px;
-    border: 3px solid var(--color-bg-8);
-    border-radius: 10px;
-  }
-}
-
-.activePage {
-  background: var(--color-bg-4);
-  font-weight: 900;
-}
-
 .UserList__users {
   height: 100%;
   width: 100%;
