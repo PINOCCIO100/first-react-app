@@ -2,59 +2,14 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
-
-// let key = 55;
-// let initialState = {
-//   users: [
-//     {
-//       id: 1,
-//       name: 'Dmitry K.',
-//       photo: `https://picsum.photos/seed/${key++}/300/300`,
-//       followed: true,
-//       birthDate: '2 january',
-//       city: 'Minsk',
-//       education: 'BSU\'11',
-//       webSite: 'https://it-kamasutra.com',
-//       status: `Hello world! My name is ${key++}! How are you?`
-//     },
-//     {
-//       id: 7,
-//       name: 'Petya P.',
-//       photo: `https://picsum.photos/seed/${key++}/300/300`,
-//       followed: false,
-//       birthDate: '2 january',
-//       city: 'Moscow',
-//       education: 'BSU\'11',
-//       webSite: 'https://it-kamasutra.com',
-//       status: `Hello world! My name is ${key++}! How are you?`
-//     },
-//     {
-//       id: 8,
-//       name: 'Vasya V.',
-//       photo: `https://picsum.photos/seed/${key++}/300/300`,
-//       followed: false,
-//       birthDate: '2 january',
-//       city: 'Kiev',
-//       education: 'BSU\'11',
-//       webSite: 'https://it-kamasutra.com',
-//       status: `Hello world! My name is ${key++}! How are you?`
-//     },
-//     {
-//       id: 9,
-//       name: 'Sergei S.',
-//       photo: `https://picsum.photos/seed/${key++}/300/300`,
-//       followed: false,
-//       birthDate: '2 january',
-//       city: 'Grozniy',
-//       education: 'BSU\'11',
-//       webSite: 'https://it-kamasutra.com',
-//       status: `Hello world! My name is ${key++}! How are you?`
-//     },
-//   ]
-// };
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
+const SET_TOTAL_COUNT = 'SET-TOTAL-COUNT';
 
 let initialState = {
-  users: []
+  users: [],
+  pageSize: 3,
+  totalUsersCount: 10,
+  currentPage: 2,
 }
 
 const usersPageReducer = (state = initialState, action) => {
@@ -74,15 +29,26 @@ const usersPageReducer = (state = initialState, action) => {
       }
     }
     case SET_USERS: {
-      if (action.payload.init) {
-        return {
-          ...state,
-          users: [...action.payload.users],
-        }
-      }
+      // action.payload.init - признак, нужный для загрузки 
+      // пользователей  при создании компонента (во избежание двойного рендера) 
       return {
         ...state,
-        users: [...state.users, ...action.payload.users],
+        users:
+          action.payload.init ?
+            [...action.payload.users] :
+            [...state.users, ...action.payload.users],
+      }
+    }
+    case SET_CURRENT_PAGE: {
+      return {
+        ...state,
+        currentPage: action.payload.page,
+      }
+    }
+    case SET_TOTAL_COUNT: {
+      return {
+        ...state,
+        totalUsersCount: action.payload.totalCount,
       }
     }
     default:
@@ -91,29 +57,34 @@ const usersPageReducer = (state = initialState, action) => {
 }
 export default usersPageReducer;
 
+
 export const followAC = (userID) => {
   return {
     type: FOLLOW,
-    payload: {
-      userID: userID,
-    },
+    payload: { userID },
   }
 }
 export const unfollowAC = (userID) => {
   return {
     type: UNFOLLOW,
-    payload: {
-      userID: userID,
-    },
-
+    payload: { userID },
   }
 }
 export const setUsersAC = (users, init = false) => {
   return {
     type: SET_USERS,
-    payload: {
-      init: init,
-      users: users,
-    }
+    payload: { init, users }
+  }
+}
+export const setCurrentPageAC = (page) => {
+  return {
+    type: SET_CURRENT_PAGE,
+    payload: { page }
+  }
+}
+export const setTotalCountAC = (totalCount) => {
+  return {
+    type: SET_TOTAL_COUNT,
+    payload: { totalCount }
   }
 }

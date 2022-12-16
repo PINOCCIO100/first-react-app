@@ -81,7 +81,7 @@
       grid-template-areas:
         "name city"
         "status city";
-      grid-template-columns: 1fr minmax(150px, 20%);
+      grid-template-columns: 1fr minmax(auto, 30%);
       grid-template-rows: 1fr minmax(25%, auto);
 
       // >* {
@@ -118,5 +118,5 @@
   font-weight: 700;
   white-space: pre-wrap;
   word-break: keep-all;
-  overflow-wrap: break-word;
+  // overflow-wrap: break-word;
 }
