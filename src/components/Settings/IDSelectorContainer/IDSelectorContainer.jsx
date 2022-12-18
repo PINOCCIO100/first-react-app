@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { setCurrentUserIDActionCreator } from "../../../dataBase/reducers/usersProfileInfoReducer";
+import { setCurrentUserID } from "../../../dataBase/reducers/usersProfileInfoReducer";
 
 import IDSelector from "../IDSelector/IDSelector";
 
@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToState = {
-  setCurrentUserIDActionCreator,
+  setCurrentUserID,
 }
 
 const mergeToProps = (mapStateToProps, mapDispatchToState, ownProps) => {
@@ -21,7 +21,7 @@ const mergeToProps = (mapStateToProps, mapDispatchToState, ownProps) => {
     ...mapDispatchToState,
     ...ownProps,
     setInfoFToBLL(userID) {
-      mapDispatchToState.setCurrentUserIDActionCreator(userID);
+      mapDispatchToState.setCurrentUserID(userID);
     },
   }
 }

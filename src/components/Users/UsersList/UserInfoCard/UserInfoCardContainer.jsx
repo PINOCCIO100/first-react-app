@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { followAC, unfollowAC } from '../../../../dataBase/reducers/usersPageReducer';
+import { follow, unfollow } from '../../../../dataBase/reducers/usersPageReducer';
 import UserInfoCard from './UserInfoCard';
 
 export const UserInfoCardContainer = connect(
@@ -10,5 +10,5 @@ export const UserInfoCardContainer = connect(
     })
     return { user };
   },
-  { followAC, unfollowAC }
+  { follow, unfollow }
 )(UserInfoCard);

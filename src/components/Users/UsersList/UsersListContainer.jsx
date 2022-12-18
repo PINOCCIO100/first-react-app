@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setUsersAC, setCurrentPageAC, setTotalCountAC, setIsFetchingAC } from '../../../dataBase/reducers/usersPageReducer';
+import { setUsers, setCurrentPage, setTotalCount, setIsFetching } from '../../../dataBase/reducers/usersPageReducer';
 import React from 'react';
 import axios from 'axios';
 
@@ -14,11 +14,11 @@ class UsersListContainer extends React.Component {
   }
 
   getUsers = (currentPage) => {
-    this.props.setIsFetchingAC(true);
+    this.props.setIsFetching(true);
     axios.get('https://jsonplaceholder.typicode.com/users')
       .then(response => {
         // при каждом ajax обновляем totalCountUsers
-        this.props.setTotalCountAC(response.data.length);
+        this.props.setTotalCount(response.data.length);
         return response.data.slice(
           // jsonplaceholder.typicode.com/users не поддерживает частичный вывод, поэтому сделал доп. логику   
           this.props.pageSize * (currentPage - 1),
@@ -28,14 +28,14 @@ class UsersListContainer extends React.Component {
       //   setTimeout(() => resolve(usersList), 300)
       // }))
       .then(usersList => {
-        this.props.setIsFetchingAC(false);
-        this.props.setUsersAC(
+        this.props.setIsFetching(false);
+        this.props.setUsers(
           usersList.map((item, index) => ({ ...item, followed: Boolean(index % 2) })), true);
       });
   }
 
   onClick = (page) => {
-    this.props.setCurrentPageAC(page);
+    this.props.setCurrentPage(page);
     this.getUsers(page);
   }
 
@@ -70,9 +70,9 @@ export default connect(
     }
   },
   {
-    setUsersAC,
-    setCurrentPageAC,
-    setTotalCountAC,
-    setIsFetchingAC,
+    setUsers,
+    setCurrentPage,
+    setTotalCount,
+    setIsFetching,
   }
 )(UsersListContainer);

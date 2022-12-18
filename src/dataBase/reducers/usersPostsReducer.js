@@ -53,12 +53,12 @@ const usersPostsReducer = (state = initialState, action) => {
   }
 }
 
-export const addPostActionCreator = (curUsID) => ({
+export const addPost = (curUsID) => ({
   type: CREATE_POST,
   curUsID: curUsID,
 });
 
-export const setPostPosterTextActionCreator = (curUsID, text) => ({
+export const setPostPosterText = (curUsID, text) => ({
   type: SET_POST_POSTER_TEXT,
   curUsID: curUsID,
   text: text,

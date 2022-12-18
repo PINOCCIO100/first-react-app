@@ -49,13 +49,13 @@ const usersMessagesReducer = (state = initialState, action) => {
   }
 }
 
-export const sendMessageSenderTextActionCreator = (curUsID, userID) => ({
+export const sendMessageSenderText = (curUsID, userID) => ({
   type: SEND_MESSAGE,
   curUsID: curUsID,
   userID: userID,
 });
 
-export const setMessageSenderTextActionCreator = (curUsID, userID, text) => ({
+export const setMessageSenderText = (curUsID, userID, text) => ({
   type: SET_MESSAGE_SENDER_TEXT,
   curUsID: curUsID,
   userID: userID,

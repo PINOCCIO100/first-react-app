@@ -1,5 +1,5 @@
 import TextInput from '../../../_sharedComponents/TextInput/TextInput';
-import { setPostPosterTextActionCreator, addPostActionCreator } from '../../../../dataBase/reducers/usersPostsReducer';
+import { setPostPosterText, addPost } from '../../../../dataBase/reducers/usersPostsReducer';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
@@ -10,8 +10,8 @@ const mapStateToProps = (state) => {
   }
 }
 const mapDispatchToProps = {
-  setPostPosterTextActionCreator,
-  addPostActionCreator,
+  setPostPosterText,
+  addPost,
 }
 
 const mergeToProps = (mapStateToProps, mapDispatchToProps, ownProps) => {
@@ -24,10 +24,10 @@ const mergeToProps = (mapStateToProps, mapDispatchToProps, ownProps) => {
       return mapStateToProps.curUserPostPosterText;
     },
     setTextToBLL(currentTextUI) {
-      mapDispatchToProps.setPostPosterTextActionCreator(currentUserID, currentTextUI);
+      mapDispatchToProps.setPostPosterText(currentUserID, currentTextUI);
     },
     sendText() {
-      mapDispatchToProps.addPostActionCreator(currentUserID);
+      mapDispatchToProps.addPost(currentUserID);
     },
     labels: {
       placeholder: 'Your news...',

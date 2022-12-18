@@ -2,14 +2,14 @@ import ProfilePhoto from '../../../_sharedComponents/ProfilePhoto/ProfilePhoto';
 import s from './UserInfoCard.module.css';
 import anonymPhoto from '../../../../media/usersPhoto/default.png';
 
-function UserInfoCard({ user, followAC, unfollowAC }) {
+function UserInfoCard({ user, follow, unfollow }) {
   return (
     <div className={s.UserInfoCard}>
       <div className={s.UserInfoCard__container}>
         <div className={s.UserInfoCard__column}>
           <ProfilePhoto src={user.photo ?? anonymPhoto} className={s.UserInfoCard__photo} />
           <button
-            onClick={() => user.followed ? unfollowAC(user.id) : followAC(user.id)}
+            onClick={() => user.followed ? unfollow(user.id) : follow(user.id)}
             className={[s.UserInfoCard__followButton, user.followed ? s.follow : s.unfollow].join(' ')}
           >
             {user.followed ? 'Follow' : 'Unfollow'}

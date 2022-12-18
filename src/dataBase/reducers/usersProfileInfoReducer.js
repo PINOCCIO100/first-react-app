@@ -22,7 +22,7 @@ const usersProfileInfoReducer = (state = initialState, action) => {
   }
 }
 
-export const setCurrentUserIDActionCreator = (userID) => ({
+export const setCurrentUserID = (userID) => ({
   type: SET_CURRENT_USER_ID,
   userID: userID,
 });

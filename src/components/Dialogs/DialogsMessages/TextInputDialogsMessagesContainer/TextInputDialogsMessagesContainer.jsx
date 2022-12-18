@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { sendMessageSenderTextActionCreator, setMessageSenderTextActionCreator } from "../../../../dataBase/reducers/usersMessagesReducer";
+import { sendMessageSenderText, setMessageSenderText } from "../../../../dataBase/reducers/usersMessagesReducer";
 import TextInput from "../../../_sharedComponents/TextInput/TextInput";
 
 
@@ -13,8 +13,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  setMessageSenderTextActionCreator,
-  sendMessageSenderTextActionCreator,
+  setMessageSenderText,
+  sendMessageSenderText,
 }
 
 const mergeToProps = (mapStateToProps, mapDispatchToProps, ownProps) => {
@@ -25,10 +25,10 @@ const mergeToProps = (mapStateToProps, mapDispatchToProps, ownProps) => {
       return mapStateToProps.curUsersMessageSenderText[ownProps.userID];
     },
     setTextToBLL(currentTextUI) {
-      mapDispatchToProps.setMessageSenderTextActionCreator(currentUserID, ownProps.userID, currentTextUI);
+      mapDispatchToProps.setMessageSenderText(currentUserID, ownProps.userID, currentTextUI);
     },
     sendText() {
-      mapDispatchToProps.sendMessageSenderTextActionCreator(currentUserID, ownProps.userID);
+      mapDispatchToProps.sendMessageSenderText(currentUserID, ownProps.userID);
     },
     labels: {
       placeholder: 'Text your message...',
