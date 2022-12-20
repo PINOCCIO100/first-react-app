@@ -6,6 +6,8 @@ import axios from 'axios';
 import UsersList from './UsersList';
 import UsersListPagination from './UsersListPagination/UsersListPagination';
 import Preloader from '../../_sharedComponents/Preloader/Preloader';
+import { userProfileTransformer } from '../../../dataBase/utility/responseTransformLayer/userProfileTransformer';
+import { expandUsersProfileInfo } from '../../../dataBase/utility/responseTransformLayer/expandersForRespons';
 
 class UsersListContainer extends React.Component {
 
@@ -17,9 +19,12 @@ class UsersListContainer extends React.Component {
     this.props.setIsFetching(true);
     axios.get('https://jsonplaceholder.typicode.com/users')
       .then(response => {
+        // Трансформирую и дополняю response.data своими данными, пока не поднял сервер
+        //TODO: в дальнейшем убрать.
+        const expandedResponse = expandUsersProfileInfo(response.data.map(p => userProfileTransformer(p)));
         // при каждом ajax обновляем totalCountUsers
-        this.props.setTotalCount(response.data.length);
-        return response.data.slice(
+        this.props.setTotalCount(expandedResponse.length);
+        return expandedResponse.slice(
           // jsonplaceholder.typicode.com/users не поддерживает частичный вывод, поэтому сделал доп. логику   
           this.props.pageSize * (currentPage - 1),
           this.props.pageSize * currentPage)
@@ -40,6 +45,8 @@ class UsersListContainer extends React.Component {
   }
 
   render() {
+    // TODO: Вместо роли "обертки" UsersListContainer также выполняет функции презентационной компоненты
+    // Надо исправить и вынести всю UI составляющую в презент. компоненту
     return (
       <>
         <UsersListPagination

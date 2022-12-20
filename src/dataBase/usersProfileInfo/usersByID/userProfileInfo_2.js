@@ -2,8 +2,8 @@
 import userProfilePhoto_2 from '../../../media/usersPhoto/2/avatar.jpg';
 
 const userProfileInfo = {
-  photo: userProfilePhoto_2,
   name: 'Rustam N.',
+  photo: userProfilePhoto_2,
   birthDate: '08 august',
   city: 'Rsaevo',
   education: 'SPMI\'14',

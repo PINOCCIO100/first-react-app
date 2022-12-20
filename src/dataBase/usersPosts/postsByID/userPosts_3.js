@@ -35,7 +35,7 @@ export const userPosts = [
   },
   {
     messageID: 4,
-    userID: 4,
+    userID: 2,
     message: message,
     time : time,
     rating : {

@@ -34,16 +34,6 @@ const userPosts = [
     }
   },
   {
-    messageID: 4,
-    userID: 4,
-    message: message,
-    time: time,
-    rating: {
-      likes: 5,
-      dislikes: 1,
-    }
-  },
-  {
     messageID: 5,
     userID: 2,
     message: message,

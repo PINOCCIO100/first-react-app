@@ -1,7 +1,7 @@
 import s from './PostPostedList.module.css';
 import PostPosted from './PostPosted/PostPosted';
 
-function PostPostedList({  usersProfileInfo, curUserPosts }) {
+function PostPostedList({ usersProfileInfo, curUserPosts }) {
   return (
     <div className={s.postPostedList + " scrollBar"} >
       {

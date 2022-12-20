@@ -1,13 +1,16 @@
 import ProfilePhoto from '../../../_sharedComponents/ProfilePhoto/ProfilePhoto';
 import s from './UserInfoCard.module.css';
 import anonymPhoto from '../../../../media/usersPhoto/default.png';
+import { NavLink } from 'react-router-dom';
 
 function UserInfoCard({ user, follow, unfollow }) {
   return (
     <div className={s.UserInfoCard}>
       <div className={s.UserInfoCard__container}>
         <div className={s.UserInfoCard__column}>
-          <ProfilePhoto src={user.photo ?? anonymPhoto} className={s.UserInfoCard__photo} />
+          <NavLink to={`/profile/${user.id}`}>
+            <ProfilePhoto src={user.photo ?? anonymPhoto} className={s.UserInfoCard__photo} />
+          </NavLink>
           <button
             onClick={() => user.followed ? unfollow(user.id) : follow(user.id)}
             className={[s.UserInfoCard__followButton, user.followed ? s.follow : s.unfollow].join(' ')}

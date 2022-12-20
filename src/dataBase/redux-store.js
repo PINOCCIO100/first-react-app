@@ -1,5 +1,5 @@
 import { combineReducers, createStore } from "redux";
-import usersMessagesReducer from './reducers/usersMessagesReducer';
+// import usersMessagesReducer from './reducers/usersMessagesReducer';
 import usersPostsReducer from './reducers/usersPostsReducer';
 import usersProfileInfoReducer from "./reducers/usersProfileInfoReducer";
 import usersPageReducer from './reducers/usersPageReducer';
@@ -7,7 +7,7 @@ import usersPageReducer from './reducers/usersPageReducer';
 
 let reducers = combineReducers({
   PostsState: usersPostsReducer,
-  DialogsState: usersMessagesReducer,
+  // DialogsState: usersMessagesReducer,
   ProfileState: usersProfileInfoReducer,
   UsersPage: usersPageReducer,
 });
