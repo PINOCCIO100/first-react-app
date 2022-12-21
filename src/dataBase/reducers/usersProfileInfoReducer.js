@@ -11,25 +11,22 @@ let initialState = {
 }
 
 const usersProfileInfoReducer = (state = initialState, action) => {
-  const newState = {
-    currentUserID: state.currentUserID,
-    usersProfileInfo: { ...state.usersProfileInfo },
-  }
   switch (action.type) {
-    // Смена текущего пользователя
     case SET_CURRENT_USER_ID:
-      newState.currentUserID = action.userID;
-      return newState;
+      return {
+        ...state,
+        currentUserID: action.payload.userID,
+      };
     case SET_USER_PROFILE:
       return {
         ...state,
         userProfileInfo: action.payload.profile,
-      }
+      };
     case SET_IS_FETCHING:
       return {
         ...state,
         isFetching: action.payload.isFetching,
-      }
+      };
     default:
       return state
   }
@@ -37,7 +34,7 @@ const usersProfileInfoReducer = (state = initialState, action) => {
 
 export const setCurrentUserID = (userID) => ({
   type: SET_CURRENT_USER_ID,
-  userID: userID,
+  payload: { userID },
 });
 
 export const setUserProfile = (profile) => ({

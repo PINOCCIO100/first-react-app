@@ -1,8 +1,8 @@
 import s from './IDSelector.module.css';
 
-function IDSelector({ currentUserID, usersProfileInfo, setInfoFToBLL }) {
+function IDSelector({ currentUserID, usersProfileInfoDefault, setCurrentUserID }) {
   const onChange = (e) => {
-    setInfoFToBLL(e.target.value);
+    setCurrentUserID(e.target.value);
   }
   return (
     <div className={s.IDSelector}>
@@ -11,8 +11,7 @@ function IDSelector({ currentUserID, usersProfileInfo, setInfoFToBLL }) {
       </p>
       <select onChange={onChange} defaultValue={currentUserID}>
         {
-          Object.keys(usersProfileInfo)
-            .map((userID) => <option key={userID} value={userID}>{userID}</option>)
+          usersProfileInfoDefault.map((user) => <option key={user.id} value={user.id}>{user.id}</option>)
         }
       </select>
     </div>

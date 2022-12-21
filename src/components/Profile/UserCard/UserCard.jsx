@@ -4,7 +4,7 @@ function UserCard({ userProfileInfo }) {
   return (
     <div className={s.UserCard}>
       <div className={s.UserCard__userProfilePhoto}>
-        <img src={userProfileInfo.photo ?? anonymPhoto} alt="UserCard__photo" className={s.UserCard__photo} />
+        <img src={userProfileInfo.photo || anonymPhoto} alt="UserCard__photo" className={s.UserCard__photo} />
       </div>
       <div className={s.UserCard__textPart}>
         <h1 className={s.UserCard__userName}>{userProfileInfo.name}</h1>

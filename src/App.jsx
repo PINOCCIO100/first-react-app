@@ -27,7 +27,7 @@ function App({ store }) {
             <Route path="news/*" element={<News />} />
             <Route path="music/*" element={<Music />} /> */}
             <Route path="find-users/*" element={<Users />} />
-            <Route path="settings/*" element={<Settings store={store} />} />
+            <Route path="settings/*" element={<Settings />} />
           </Routes>
         </div>
       </div>

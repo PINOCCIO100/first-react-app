@@ -9,7 +9,10 @@ function UserInfoCard({ user, follow, unfollow }) {
       <div className={s.UserInfoCard__container}>
         <div className={s.UserInfoCard__column}>
           <NavLink to={`/profile/${user.id}`}>
-            <ProfilePhoto src={user.photo ?? anonymPhoto} className={s.UserInfoCard__photo} />
+            <ProfilePhoto
+              src={user.photo ?? anonymPhoto}
+              className={s.UserInfoCard__photo}
+            />
           </NavLink>
           <button
             onClick={() => user.followed ? unfollow(user.id) : follow(user.id)}
