@@ -1,13 +1,13 @@
-.header {
+.Header {
   width: 100%;
   grid-area: header;
   background-color: var(--color-bg-4);
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   padding: 15px;
 
-  .header__logo {
+  .Header__logo {
     height: 50px;
     overflow: hidden;
 
@@ -15,5 +15,18 @@
       height: 100%;
       object-fit: contain;
     }
+  }
+
+  .Header__login {
+    .Header__navLink {
+
+      &:link,
+      &:visited {
+        color: inherit;
+      }
+    }
+
+    font-weight: 700;
+    font-size: 25px;
   }
 }

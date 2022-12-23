@@ -1,17 +1,24 @@
-.header {
+.Header {
   width: 100%;
   grid-area: header;
   background-color: var(--color-bg-4);
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   padding: 15px;
 }
-.header .header__logo {
+.Header .Header__logo {
   height: 50px;
   overflow: hidden;
 }
-.header .header__logo img {
+.Header .Header__logo img {
   height: 100%;
   object-fit: contain;
+}
+.Header .Header__login {
+  font-weight: 700;
+  font-size: 25px;
+}
+.Header .Header__login .Header__navLink:link, .Header .Header__login .Header__navLink:visited {
+  color: inherit;
 }
