@@ -5,8 +5,8 @@ import React from 'react';
 import UsersList from './UsersList';
 import UsersListPagination from './UsersListPagination/UsersListPagination';
 import Preloader from '../../_sharedComponents/Preloader/Preloader';
-import { reqUsersList } from '../../api/reqUsersList';
-import { reqUsersAvatar } from '../../api/reqUsersAvatar';
+import { reqUsersList } from '../../../api/reqUsersList';
+import { reqUsersAvatar } from '../../../api/reqUsersAvatar';
 
 class UsersListContainer extends React.Component {
 
@@ -22,9 +22,9 @@ class UsersListContainer extends React.Component {
       })
       .then(async usersList => {
         const res = await reqUsersAvatar(usersList.map(p => p.id));
-        return usersList.map((p, ind) => ({ ...p, photo: res.data[ind] }))
+        return usersList.map((p, ind) => ({ ...p, photo: res[ind] }))
       })
-      .then(async usersList => {
+      .then(usersList => {
         this.props.setUsers(usersList, true);
         this.props.setIsFetching(false);
       })
@@ -39,7 +39,6 @@ class UsersListContainer extends React.Component {
     // TODO: Вместо роли "обертки" UsersListContainer также выполняет функции презентационной компоненты
     // Надо исправить и вынести всю UI составляющую в презент. компоненту
     return (
-
       <>
         <UsersListPagination
           onClick={this.onClick}
