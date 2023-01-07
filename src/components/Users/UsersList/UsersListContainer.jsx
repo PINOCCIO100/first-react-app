@@ -5,8 +5,8 @@ import React from 'react';
 import UsersList from './UsersList';
 import UsersListPagination from './UsersListPagination/UsersListPagination';
 import Preloader from '../../_sharedComponents/Preloader/Preloader';
-import { reqUsersList } from '../../api/reqUsersList';
-import { reqUsersAvatar } from '../../api/reqUsersAvatar';
+import { reqUsersList } from '../../../api/reqUsersList';
+import { reqUsersAvatar } from '../../../api/reqUsersAvatar';
 
 class UsersListContainer extends React.Component {
 

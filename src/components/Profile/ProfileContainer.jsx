@@ -6,8 +6,8 @@ import { setUserProfile, setIsFetching } from '../../dataBase/reducers/usersProf
 
 import Preloader from '../_sharedComponents/Preloader/Preloader';
 import Profile from './Profile';
-import { reqUserProfileInfo } from '../api/reqUserProfileInfo';
-import { reqUsersAvatar } from '../api/reqUsersAvatar';
+import { reqUserProfileInfo } from '../../api/reqUserProfileInfo';
+import { reqUsersAvatar } from '../../api/reqUsersAvatar';
 
 
 class ProfileContainerAPI extends React.Component {
