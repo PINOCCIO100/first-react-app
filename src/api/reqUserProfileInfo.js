@@ -1,5 +1,5 @@
-import axios from "axios";
+import { fetcher } from "./fetcher";
 
 export async function reqUserProfileInfo(userID) {
-  return axios.get(`api/users/${userID}`);
+  return await fetcher.get(`/api/users/${userID}`);
 }
