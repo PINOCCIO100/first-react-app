@@ -1,30 +1,26 @@
-//TODO: Разобраться, почему json файл парсится автоматически
 
-import { fetcher } from "./fetcher";
+import { REACT_APP_API_URL } from "./fetcher";
 
-// Если получаем массив с ID пользователей, получаем массив с аватарками (blob-url)
-// Если переменную с ID - переменную с аватаркой  
 
 // const template = async (userID) => {
-//   const req = `${process.env.REACT_APP_API_URL}/avatars/${userID}/avatar.jpg`;
-//   try { await fetcher.get(req).then(res => res.status) }
-//   catch (e) { return undefined }
-//   return req;
+//   return await fetcher.get(`/api/avatars/${userID}`).then(res => res);
 // }
 
-const template = async (userID) => {
-  return await fetcher.get(`/api/avatars/${userID}`).then(res => res);
+
+// Если получаем массив с ID пользователей, получаем массив с аватарками (api-endpoint)
+// Если переменную с ID - переменную с аватаркой  
+
+const template = (userID) => {
+  return `${REACT_APP_API_URL}/api/avatars/${userID}`
 }
 
-export async function reqUsersAvatar(IDSource) {
+export function reqUsersAvatar(IDSource) {
   if (Array.isArray(IDSource)) {
     const res = [];
     for (let i = 0; i < IDSource.length; i++) {
-      const x = await template(IDSource[i]);
-      // console.log(x);
-      res[i] = x.data;
+      res[i] = template(IDSource[i]);
     }
     return res;
   };
-  return await template(IDSource);
+  return template(IDSource);
 }

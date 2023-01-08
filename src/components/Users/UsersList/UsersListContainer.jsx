@@ -10,7 +10,7 @@ import { reqUsersAvatar } from '../../../api/reqUsersAvatar';
 
 class UsersListContainer extends React.Component {
 
-  componentWillMount() {
+  componentDidMount() {
     this.getUsers(this.props.currentPage, this.props.pageSize);
   }
   getUsers = (currentPage, pageSize) => {
@@ -20,8 +20,8 @@ class UsersListContainer extends React.Component {
         this.props.setTotalCount(response.data.totalCount);
         return response.data.usersProfileInfo
       })
-      .then(async usersList => {
-        const res = await reqUsersAvatar(usersList.map(p => p.id));
+      .then(usersList => {
+        const res = reqUsersAvatar(usersList.map(p => p.id));
         return usersList.map((p, ind) => ({ ...p, photo: res[ind] }))
       })
       .then(usersList => {

@@ -3,11 +3,13 @@ const SET_USER_DATA = 'SET-USER-DATA';
 const SET_AUTH = 'SET-AUTH';
 
 const initialState = {
-  userID: null,
-  email: null,
-  login: null,
-  isFetching: false,
+  userData: {
+    userID: null,
+    email: null,
+    password: null,
+  },
   isAuth: false,
+  isFetching: false,
 };
 
 export default function authReducer(state = initialState, action) {
@@ -15,7 +17,7 @@ export default function authReducer(state = initialState, action) {
     case SET_USER_DATA:
       return {
         ...state,
-        ...action.payload.data,
+        userData: { ...action.payload.userData },
       };
     case SET_IS_FETCHING:
       return {
@@ -36,10 +38,10 @@ export const setIsFetching = (isFetching) => ({
   type: SET_IS_FETCHING,
   payload: { isFetching }
 });
-export const setUserData = (userID, email, login) => ({
+export const setUserData = (userID, email, password) => ({
   type: SET_USER_DATA,
   payload: {
-    data: { userID, email, login }
+    userData: { userID, email, password }
   }
 });
 export const setIsAuth = (isAuth) => ({

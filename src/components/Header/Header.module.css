@@ -22,3 +22,7 @@
 .Header .Header__login .Header__navLink:link, .Header .Header__login .Header__navLink:visited {
   color: inherit;
 }
+
+.Header__notAuth {
+  background-color: brown;
+}

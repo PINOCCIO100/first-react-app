@@ -1,20 +1,15 @@
 import ProfilePhoto from '../../../_sharedComponents/ProfilePhoto/ProfilePhoto';
 import s from './UserInfoCard.module.css';
-import anonymPhoto from '../../../../media/usersPhoto/default.png';
 import { NavLink } from 'react-router-dom';
 
 function UserInfoCard({ user, follow, unfollow }) {
-  const blob = new Blob([user.photo], { type: "image/jpeg" })
-  const avatar = URL.createObjectURL(blob);
-  console.log(blob);
   return (
     <div className={s.UserInfoCard}>
       <div className={s.UserInfoCard__container}>
         <div className={s.UserInfoCard__column}>
           <NavLink to={`/profile/${user.id}`}>
             <ProfilePhoto
-              // src={user.photo ?? anonymPhoto}
-              src={avatar}
+              src={user.photo}
               className={s.UserInfoCard__photo}
             />
           </NavLink>

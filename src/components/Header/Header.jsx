@@ -2,9 +2,9 @@ import s from './Header.module.css';
 import logo from './apple.png';
 import { NavLink } from 'react-router-dom';
 
-function Header() {
+function Header({ isAuth }) {
   return (
-    <header className={s.Header}>
+    <header className={[s.Header, isAuth ? s.Header__notAuth : null].join(' ')}>
       <div className={s.Header__logo}>
         <img src={logo} alt="ico" />
       </div>

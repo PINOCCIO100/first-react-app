@@ -10,4 +10,4 @@ class HeaderContainerAPI extends React.Component {
   }
 }
 
-export default connect()(HeaderContainerAPI);
+export default connect((state) => ({ isAuth: state.Auth.isAuth }))(HeaderContainerAPI);
