@@ -7,7 +7,7 @@ function Auth({ submitUserData, curUsID }) {
 
   const onClick = (e) => {
     e.preventDefault();
-    submitUserData({ curUsID, email, password });
+    submitUserData({ email, password });
     setEmail(''); setPassword('');
   }
   const [email, setEmail] = useState('');

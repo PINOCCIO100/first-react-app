@@ -14,8 +14,8 @@ class ProfileContainerAPI extends React.Component {
   componentDidMount() {
     this.props.setIsFetching(true);
     reqUserProfileInfo(this.props.userID)
-      .then(async response => {
-        const userAvatar = await reqUsersAvatar(this.props.userID);
+      .then(response => {
+        const userAvatar = reqUsersAvatar(this.props.userID);
         return { ...response.data, photo: userAvatar }
       })
       .then(userProfile => {
