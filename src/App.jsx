@@ -1,10 +1,8 @@
-import { Outlet, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './App.css';
 import './UI/UI.css';
-
-import { setIsAuth } from './dataBase/reducers/authReducer';
 
 // import Profile from './components/Profile/Profile';
 // import Dialogs from './components/Dialogs/Dialogs';
@@ -17,33 +15,30 @@ import Sidebar from './components/SideBar/Sidebar';
 import Users from './components/Users/Users';
 import ProfileRouter from './components/Profile/ProfileRouter';
 import AuthContainer from './components/Auth/AuthContainer';
-import { fetcher } from './api/fetcher';
+import TrailingPage from './components/TrailingPage/TrailingPage';
 
-function App({ isAuth, setIsAuth }) {
 
-  fetcher.post('/api/auth', {
-    userName: 'Ruslan',
-    password: '54321',
-  })
-    // .then(res => console.log(res))
+//TODO: Сделать редирект на /login если !isAuth
 
+function App({ isAuth }) {
   return (
     <div className="App__wrapper">
       <HeaderContainer />
       <Sidebar />
       <div className="App__content-wrapper">
         {
-          isAuth ?
+          !isAuth ?
             <AuthContainer /> :
             < Routes >
+              <Route path='/*' element={<ProfileRouter />} />
               <Route path="login/*" element={<AuthContainer />} />
-              <Route index element={<ProfileRouter />} />
               <Route path="profile/*" element={<ProfileRouter />} />
               <Route path="find-users/*" element={<Users />} />
               <Route path="dialogs/*" element={null} />
               <Route path="news/*" element={null} />
               <Route path="music/*" element={null} />
               <Route path="settings/*" element={null} />
+              <Route path='*' element={<TrailingPage />} />
             </Routes >
         }
       </div>
@@ -51,4 +46,4 @@ function App({ isAuth, setIsAuth }) {
   )
 }
 
-export default connect((state) => ({ isAuth: state.Auth.isAuth }), { setIsAuth })(App);
+export default connect((state) => ({ isAuth: state.Auth.isAuth }))(App);

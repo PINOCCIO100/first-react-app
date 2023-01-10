@@ -6,6 +6,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px;
+  font-weight: 700;
+  font-size: 25px;
 
   .Header__logo {
     height: 50px;
@@ -18,19 +20,14 @@
   }
 
   .Header__login {
-    .Header__navLink {
+    cursor: default;
+  }
 
-      &:link,
-      &:visited {
-        color: inherit;
-      }
-    }
-
-    font-weight: 700;
-    font-size: 25px;
+  .Header__logout {
+    cursor: pointer;
   }
 }
 
-.Header__notAuth{
+.Header__notAuth {
   background-color: brown;
 }

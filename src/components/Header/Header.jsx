@@ -1,19 +1,17 @@
 import s from './Header.module.css';
 import logo from './apple.png';
-import { NavLink } from 'react-router-dom';
 
-function Header({ isAuth }) {
+function Header({ isAuth, setIsAuth }) {
   return (
-    <header className={[s.Header, isAuth ? s.Header__notAuth : null].join(' ')}>
+    <header className={[s.Header, isAuth ? null : s.Header__notAuth].join(' ')}>
       <div className={s.Header__logo}>
-        <img src={logo} alt="ico" />
+        <img src={logo} alt="ico" /> 
       </div>
-      <div className={s.Header__login}>
-        <NavLink
-          to={'/login'}
-          className={s.Header__navLink}
-        >Login</NavLink>
-      </div>
+      {
+        isAuth ?
+          <div className={s.Header__logout} onClick={() => setIsAuth(false)}>Logout</div> :
+          <div className={s.Header__login}>Login</div>
+      }
     </header >
   );
 }
